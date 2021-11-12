@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postAuthBoard } from "../../../actions/authBoard_actions";
 import AuthBoardPost from "./Sections/AuthBoardPost";
-import AuthBoardFeed from "./Sections/AuthBoardFeed";
+import AuthBoardFeeds from "./Sections/AuthBoardFeeds";
 
 const AuthBoard = (props) => {
     const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const AuthBoard = (props) => {
     return (
         <React.Fragment>
             <AuthBoardPost />
-            <AuthBoardFeed />
+            <AuthBoardFeeds />
         </React.Fragment>
     );
 };
