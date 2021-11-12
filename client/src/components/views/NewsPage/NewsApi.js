@@ -28,15 +28,8 @@ function NewsApi({ sliders }) {
     autoplay: true,
     autoplaySpeed: 1000,
     cssEase: "linear",
-
-    afterChange: function (index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-      );
-    },
   };
 
-  const StyledSlider = styled(Slider)``;
 
   const [articles, setArticles] = useState([]);
 
@@ -46,7 +39,6 @@ function NewsApi({ sliders }) {
         "https://newsapi.org/v2/top-headlines?country=us&apiKey=55ee2d88a6d74797b9d1dead15f2b8d5"
       );
       setArticles(res.data.articles);
-      // console.log(res);
     };
     getArticles();
   }, [articles]);
@@ -57,6 +49,7 @@ function NewsApi({ sliders }) {
       <Slider {...settings}>
         {articles.map(({ title, description, url, urlToImage }) => (
           <NewsItem
+            key={Number}
             title={title}
             description={description}
             url={url}
