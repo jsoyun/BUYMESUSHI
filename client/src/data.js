@@ -27,19 +27,19 @@ export const PartnersItem = [
     image: "/img/partners/googlelogo.png",
     bg: "000000",
   },
-  {
-    id: 2,
-    image: "/img/partners/TESLA.png",
-    bg: "000000",
-  },
-  {
-    id: 3,
-    image: "/img/partners/samsung.png",
-    bg: "000000",
-  },
-  {
-    id: 4,
-    image: "/img/partners/kakaocommerce.jpg",
-    bg: "000000",
-  },
+  // {
+  //   id: 2,
+  //   image: "/img/partners/TESLA.png",
+  //   bg: "000000",
+  // },
+  // {
+  //   id: 3,
+  //   image: "/img/partners/samsung.png",
+  //   bg: "000000",
+  // },
+  // {
+  //   id: 4,
+  //   image: "/img/partners/kakaocommerce.jpg",
+  //   bg: "000000",
+  // },
 ];
