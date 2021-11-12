@@ -54,7 +54,6 @@ function NewsApi({ sliders }) {
   return (
     <>
       <NewsHead>News and Features</NewsHead>
-      <hr />
       <Slider {...settings}>
         {articles.map(({ title, description, url, urlToImage }) => (
           <NewsItem

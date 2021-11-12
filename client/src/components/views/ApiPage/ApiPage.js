@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import Slider from "react-slick";
 import styled from "styled-components";
 import WeatherApiModal from "./WeatherApiModal";
-import SeaLevelApiModal from "./SeaLevelApiModal";
+import SeaLevApiModal from "./SeaLevApiModal";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -60,7 +60,7 @@ function ApiPage({ sliders }) {
           <WeatherApiModal />
         </div>
         <div>
-          <SeaLevelApiModal />
+          <SeaLevApiModal />
         </div>
         <div>
           <WeatherApiModal />
