@@ -20,7 +20,7 @@ function ApiPage({ sliders }) {
     // 드래그해서 슬라이드 가능
     swipeToSlide: true,
     arrow: true,
-    // centerMode: true,
+    centerMode: true,
 
     afterChange: function (index) {
       console.log(

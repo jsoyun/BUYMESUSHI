@@ -50,7 +50,7 @@ const SeaTempApiModalItem = () => {
           {
             label: "기온(섭씨)",
             borderColor: "salmon",
-            fill: true,
+            fill: false,
             data: arr?.map(a => a.monthly)
           },
         ]
