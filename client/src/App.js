@@ -18,7 +18,6 @@ import ProductScreen from "./components/views/ShoppingPage/ProductScreen";
 import AuthBoard from "./components/views/AuthBoard/AuthBoard";
 import { HomeWorkSharp } from "@material-ui/icons";
 // 추후 삭제
-import SignUp from "./components/views/RegisterPage/Register";
 import UploadForm from "./components/views/AuthBoard/UploadImage/UploadForm";
 
 function App() {
