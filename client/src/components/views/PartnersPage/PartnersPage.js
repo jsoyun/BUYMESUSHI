@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { PartnersItem } from "../../../data";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated, config } from "react-spring";
 
 const PartnersHead = styled.h1``;
 const Container = styled.div`
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   box-shadow: 0px 16px 17px -5px #000000;
   cursor: pointer;
 `;
-const Partner = styled.div`
+const Partner = styled(animated.div)`
   padding: 5px;
   position: absolute;
   background: #c7d2fe66;
@@ -46,15 +46,25 @@ const trans = (x, y, s) =>
   `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 const PartnersPage = () => {
+  // const [props, set] = useSpring(() => ({
+  //   xys: [0, 0, 1],
+  //   config: { mass: 200, transition: 200, friction: 50 },
+  // }));
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
-    config: { mass: 200, transition: 200, friction: 50 },
+    config: config.default,
   }));
   return (
     <>
       <PartnersHead>UsEarth Partners</PartnersHead>
       <Container>
-        <Wrapper columns={5}>
+        <Wrapper
+          onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+          onMouseLeave={() => set({ xys: [0, 0, 1] })}
+          style={{
+            transform: props.xys.interpolate(trans),
+          }}
+        >
           {PartnersItem.map((item) => (
             <Partner bg={item.bg} key={item.id}>
               <Image src={item.image} />
