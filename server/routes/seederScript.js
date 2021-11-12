@@ -1,8 +1,8 @@
-const Product = require('../models/Product');
-const User = require('../models/User');
-const AuthBoard = require('../models/AuthBoard');
-const { products } = require('../data/products');
-const { users } = require('../data/users');
+const Product = require("../models/Product");
+const User = require("../models/User");
+const AuthBoard = require("../models/AuthBoard");
+const { products } = require("../data/products");
+const { users } = require("../data/users");
 //const { authBoards } = require('../data/authBoards');
 
 const importDate = async () => {
@@ -17,10 +17,10 @@ const importDate = async () => {
         // console.log(b);
         const authBoards = [
             {
-                body: '최씨가 올림',
-                photo: '/img/authBoard/abc.jpg',
+                authBody: "최씨가 올림",
+                photo: "/img/authBoard/abc.jpg",
                 likes: [b],
-                comments: [{ text: 'asdf' }, b],
+                comments: [{ text: "asdf" }, b],
             },
         ];
         await AuthBoard.deleteMany();
@@ -28,7 +28,7 @@ const importDate = async () => {
         const c = await AuthBoard.findOne({});
         // console.log(c);
 
-        console.log('Data Import Success');
+        console.log("Data Import Success");
     } catch (error) {
         console.error(error);
     }
