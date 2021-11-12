@@ -9,14 +9,13 @@ const Container = styled.div`
   flex-grow: row;
   flex-wrap: nowrap;
   float: left;
-  border: 1px solid blue;
 `;
 
 export default function SeaTempApiModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <>
-      <button onClick={() => setModalIsOpen(true)}>시간의 흐름에 따른 해수면 높이 변화</button>
+      <button onClick={() => setModalIsOpen(true)}>지면 온도 변화</button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <Container>
           <SeaTempApiModalItem />

@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import WeatherApiModal from "./WeatherApiModal";
 import SeaTempApiModal from "./SeaTempApiModal";
+import GreenHouseApiModal from "./GreenHouseApiModal";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -63,7 +64,7 @@ function ApiPage({ sliders }) {
           <SeaTempApiModal />
         </div>
         <div>
-          <WeatherApiModal />
+          <GreenHouseApiModal />
         </div>
       </StyledSlider>
     </div>

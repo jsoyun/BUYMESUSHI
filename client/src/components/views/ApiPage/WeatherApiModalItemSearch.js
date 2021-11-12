@@ -9,7 +9,7 @@ function WeatherApiModalItemSearch(props) {
   return (
     <div className="displayweather">
       {data.cod !== 404 ? (
-        <React.Fragment>
+        <>
           <div className="maincard">
             <span className="cardtitle">
               도시 : {data.name} 국가 : {data.sys.country} 의 날씨
@@ -115,7 +115,7 @@ function WeatherApiModalItemSearch(props) {
               </table>
             </div>
           </div>
-        </React.Fragment>
+        </>
       ) : (
         <div className="maincard">
           <h2>{data.message}</h2>

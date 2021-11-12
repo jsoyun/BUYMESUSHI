@@ -28,6 +28,7 @@ function NewsApi({ sliders }) {
     autoplay: true,
     autoplaySpeed: 1000,
     cssEase: "linear",
+
   };
 
 
@@ -49,7 +50,7 @@ function NewsApi({ sliders }) {
       <Slider {...settings}>
         {articles.map(({ title, description, url, urlToImage }) => (
           <NewsItem
-            key={Number}
+            key={articles.id}
             title={title}
             description={description}
             url={url}
