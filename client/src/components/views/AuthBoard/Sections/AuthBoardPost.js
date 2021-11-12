@@ -38,12 +38,10 @@ const AuthBoardPost = () => {
         let form = document.getElementById("authboard_post");
         let formData = new FormData(form);
 
-        axios
-            .post("http://localhost:5000/api/authBoard/post", formData)
-            .then((response) => {
-                console.log(response.data);
-                console.log("포스트 완료");
-            });
+        axios.post("/api/authBoard/post", formData).then((response) => {
+            console.log(response.data);
+            console.log("포스트 완료");
+        });
 
         // let body = {
         //     body: Body,

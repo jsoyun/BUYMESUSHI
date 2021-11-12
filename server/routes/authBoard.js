@@ -38,6 +38,7 @@ const upload = multer({
 
 router.get("/", async (req, res) => {
     try {
+        //console.log(req.cookies);
         // const user = res.locals.user;
         // console.log(user);
 
@@ -55,6 +56,7 @@ router.post("/post", upload.single("authBoardPhoto"), async (req, res) => {
         // 아래 : Object: null prototype 삭제
         // const obj = JSON.parse(JSON.stringify(req.body));
         // console.log(obj);
+
         const user = res.locals.user;
         const authBoardBody = req.body.authBody;
         console.log(user);
@@ -64,7 +66,7 @@ router.post("/post", upload.single("authBoardPhoto"), async (req, res) => {
         const insertMongo = {
             authBody: authBoardBody,
             photo: `${req.file.destination}/${req.file.filename}`,
-            // postedBy: req.user._id,
+            postedBy: req.user._id,
         };
 
         AuthBoard.insertMany(insertMongo)
