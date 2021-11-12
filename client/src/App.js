@@ -21,57 +21,43 @@ import SignUp from "./components/views/RegisterPage/Register";
 import UploadForm from "./components/views/AuthBoard/UploadImage/UploadForm";
 
 function App() {
-    return (
-        <Router>
-            <NavBar />
-            {/* <BackDrop /> */}
-            <div>
-                <Switch>
-                    <Route exact path="/" component={Auth(LandingPage, null)} />
-                    <Route
-                        exact
-                        path="/login"
-                        component={Auth(LoginPage, false)}
-                    />
-                    <Route
-                        exact
-                        path="/register"
-                        component={Auth(RegisterPage, false)}
-                    />
-                    <Route exact path="/about" component={Auth(About, null)} />
+  return (
+    <Router>
+      <NavBar />
+      {/* <BackDrop /> */}
+      <div>
+        <Switch>
+          <Route exact path="/" component={Auth(LandingPage, null)} />
+          <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/about" component={Auth(About, null)} />
 
-                    {/* usEarth 페이지 추후 null -> true로 변경 */}
-                    <Route
-                        exact
-                        path="/authboard"
-                        component={Auth(AuthBoard, true)}
-                    />
-                    {/* <Route exact path="/shop" component={Auth(About, null)} /> */}
-                    <Route
-                        exact
-                        path="/products"
-                        component={Auth(HomeScreen, null)}
-                    />
-                    <Route
-                        exact
-                        path="/products/:id"
-                        component={Auth(ProductScreen, null)}
-                    />
-                    <Route
-                        exact
-                        path="/MyPage"
-                        component={Auth(MyPage, null)}
-                    />
+          {/* usEarth 페이지 추후 null -> true로 변경 */}
+          <Route exact path="/authboard" component={Auth(AuthBoard, true)} />
+          {/* <Route exact path="/shop" component={Auth(About, null)} /> */}
+          <Route
+            exact
+            // path="/products"
+            path="/product"
+            component={Auth(HomeScreen, null)}
+          />
+          <Route
+            exact
+            // path="/products/:id"
+            path="/product/:id"
+            component={Auth(ProductScreen, null)}
+          />
+          <Route exact path="/MyPage" component={Auth(MyPage, null)} />
 
-                    <Route exact path="/board" component={Auth(About, null)} />
+          <Route exact path="/board" component={Auth(About, null)} />
 
-                    {/* 추후 삭제 */}
-                    <Route exact path="/signup" component={SignUp} />
-                    <Route exact path="/upload" component={UploadForm} />
-                </Switch>
-            </div>
-        </Router>
-    );
+          {/* 추후 삭제 */}
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/upload" component={UploadForm} />
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

@@ -6,18 +6,20 @@ import user from "./user_reducer";
 import authBoard from "./authBoard_reducer";
 import cartReducer from "./cartReducer";
 import {
-    getProductDetailsReducer,
-    getProductsReducer,
+  getProductDetailsReducer,
+  getProductsReducer,
 } from "./productReducers";
+//action은 어디서 해?
+
 // import productShop from
 
 const rootReducer = combineReducers({
-    user,
-    authBoard,
+  user,
+  authBoard,
 
-    cart: cartReducer,
-    getProducts: getProductsReducer,
-    getProductDetails: getProductDetailsReducer,
+  cart: cartReducer,
+  getProducts: getProductsReducer,
+  getProductDetails: getProductDetailsReducer,
 });
 
 export default rootReducer;
