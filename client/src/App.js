@@ -17,20 +17,13 @@ import ProductScreen from "./components/views/ShoppingPage/ProductScreen";
 //쇼핑목록 안 components
 import AuthBoard from "./components/views/AuthBoard/AuthBoard";
 import { HomeWorkSharp } from "@material-ui/icons";
-
-// 아래는 전역으로 스타일 컴포넌트 사용해 사이드 여백 넣을때 추후 사용예정
-// import { createGlobalStyle } from "styled-components";
-
-// const GlobalStyle = createGlobalStyle`
-// *{
-//   mar
-// }
-// `
+// 추후 삭제
+import SignUp from "./components/views/RegisterPage/Register";
+import UploadForm from "./components/views/AuthBoard/UploadImage/UploadForm";
 
 function App() {
   return (
     <Router>
-      {/* <GlobalStyle /> */}
       <NavBar />
       {/* <BackDrop /> */}
       <div>
@@ -41,11 +34,17 @@ function App() {
           <Route exact path="/about" component={Auth(About, null)} />
 
           {/* usEarth 페이지 추후 null -> true로 변경 */}
-          <Route exact path="/authboard" component={Auth(AuthBoard, null)} />
+          <Route exact path="/authboard" component={Auth(AuthBoard, true)} />
           {/* <Route exact path="/shop" component={Auth(About, null)} /> */}
-          <Route exact path="/product" component={Auth(HomeScreen, null)} />
           <Route
             exact
+            // path="/products"
+            path="/product"
+            component={Auth(HomeScreen, null)}
+          />
+          <Route
+            exact
+            // path="/products/:id"
             path="/product/:id"
             component={Auth(ProductScreen, null)}
           />
@@ -55,6 +54,7 @@ function App() {
 
           {/* 추후 삭제 */}
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/upload" component={UploadForm} />
         </Switch>
       </div>
     </Router>

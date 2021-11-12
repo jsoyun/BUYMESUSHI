@@ -70,6 +70,7 @@ function ApiPage({ sliders }) {
     </div>
   );
 }
+
 Modal.setAppElement("#root");
 
 export default ApiPage;
