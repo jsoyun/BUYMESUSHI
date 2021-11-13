@@ -13,24 +13,20 @@ const AuthBoardFeeds = () => {
     ]);
     useEffect(async () => {
         try {
-            const res = await axios
-                .get("/api/authboard")
-                .then((response) => {
-                    console.log(response.data);
-                })
-                .catch((err) => console.error(err));
-            // console.log(res);
+            const res = await axios.get("/api/authboard");
 
-            const _Data = await res.map((rowData) => ({
+            const _Data = await res.data.authBoards.map((rowData) => ({
                 authBody: rowData.authBody,
                 photo: rowData.photo,
                 postedBy: rowData.postedBy,
             }));
+
             setData(Data.concat(_Data));
         } catch (error) {
             console.error(error);
         }
     }, []);
+    console.log(Data);
     // console.log(Data);
     return (
         <div>

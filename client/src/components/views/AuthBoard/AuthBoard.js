@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { postAuthBoard } from "../../../actions/authBoard_actions";
 import AuthBoardPost from "./Sections/AuthBoardPost";
 import AuthBoardFeeds from "./Sections/AuthBoardFeeds";
+import "./AuthBoard.css";
 
 const AuthBoard = (props) => {
     const dispatch = useDispatch();
@@ -31,10 +32,13 @@ const AuthBoard = (props) => {
     // }, []);
 
     return (
-        <React.Fragment>
-            <AuthBoardPost />
-            <AuthBoardFeeds />
-        </React.Fragment>
+        <div className="authBoard-container">
+            <h1>지키미인증 페이지</h1>
+            <React.Fragment>
+                <AuthBoardPost />
+                <AuthBoardFeeds />
+            </React.Fragment>
+        </div>
     );
 };
 

@@ -44,7 +44,7 @@ function App() {
                     <Route
                         exact
                         path="/authboard"
-                        component={Auth(AuthBoard, null)}
+                        component={Auth(AuthBoard, true)}
                     />
                     {/* <Route exact path="/shop" component={Auth(About, null)} /> */}
                     <Route
