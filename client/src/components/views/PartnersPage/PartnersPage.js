@@ -45,7 +45,7 @@ const Partner = styled.div`
   transition: all var(--transition-time);
   border-radius: var(--border-radius);
   background-clip: border-box;
-  background: #e6f7ff;
+  background: #c7d2fe66;
   /* transition: 0.7s; */
   /* background: linear-gradient(0deg, #1e1f2a 0%, #2f313d 67%); */
 `;

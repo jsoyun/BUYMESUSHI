@@ -11,10 +11,11 @@ import {
 } from "@material-ui/icons";
 import styled from "styled-components";
 import { sliderItems } from "../../../data";
-import { useSpring, animated, config } from "react-spring";
+// import Axios from "axios";
 
 const Container = styled.div`
   width: 100%;
+  height: vh;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -51,42 +52,26 @@ const Slide = styled.div`
   height: 75vh;
   display: flex;
   align-items: center;
-  /* background-color: #${(props) => props.bg}; */
+  background-color: #${(props) => props.bg};
 `;
 
 const ImgContainer = styled.div`
-  position: absolute;
-  width: 100vw;
   height: 100%;
   flex: 1;
-  z-index: 2;
 `;
 
 const Image = styled.img`
-  width: 100%;
   height: 100%;
-  size: "cover";
-  z-index: -1;
 `;
 
 const InfoContainer = styled.div`
-  width: 32vw;
-  height: 50vh;
-  margin-left: 55%;
-  display: inline-block;
-  padding: 3em;
-  background: #c7d2fe66;
-  border-radius: 10px;
-  z-index: 5;
-  position: relative;
-  backdrop-filter: blur(10px);
-  border: 2px solid transparent;
-  background-clip: border-box;
-  cursor: pointer;
+  flex: 1;
+  padding: 30px;
+  margin-bottom: 75px;
 `;
 
 const Title = styled.h1`
-  font-size: 46px;
+  font-size: 50px;
 `;
 
 const Desc = styled.p`
@@ -100,29 +85,25 @@ const Button = styled.button`
   padding: 10px;
   font-size: 20px;
   background-color: transparent;
-  background: linear-gradient(to left, raba(255, 255, 255, 0.15), transparent);
   cursor: pointer;
-  border-radius: 30%;
-  overflow: hidden;
-  &:hover {
-    letter-spacing: 3px;
-  }
 `;
 
-const calc = (x, y) => [
-  -(y - window.innerHeight / 2) / 20,
-  (x - window.innerWidth / 2) / 20,
-  1,
-];
-const trans = (x, y, s) =>
-  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+// const NewsItem = styled.div``;
 
 const SliderPage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-  const [props, set] = useSpring(() => ({
-    xys: [0, 0, 1],
-    config: config.default,
-  }));
+  // const [articles, setArticles] = useState([]);
+
+  // useEffect(() => {
+  //   const getArticles = async () => {
+  //     const res = await Axios.get(
+  //       "GET https://newsapi.org/v2/top-headlines?country=us&apiKey=55ee2d88a6d74797b9d1dead15f2b8d5"
+  //     );
+  //     setArticles(res.data.articles)
+  //     console.log(res);
+  //   };
+  //   getArticles();
+  // });
 
   const handleClick = (direction) => {
     if (direction === "left") {
@@ -143,15 +124,7 @@ const SliderPage = () => {
               <ImgContainer>
                 <Image src={item.img} />
               </ImgContainer>
-              <InfoContainer
-                onMouseMove={({ clientX: x, clientY: y }) =>
-                  set({ xys: calc(x, y) })
-                }
-                onMouseLeave={() => set({ xys: [0, 0, 1] })}
-                style={{
-                  transform: props.xys.interpolate(trans),
-                }}
-              >
+              <InfoContainer>
                 <Title>{item.title}</Title>
                 <Desc>{item.desc}</Desc>
                 <Button>더보기</Button>
@@ -163,6 +136,7 @@ const SliderPage = () => {
           <ArrowForwardIosRounded />
         </Arrow>
       </Container>
+      {/* <NewsItem></NewsItem> */}
     </>
   );
 };
