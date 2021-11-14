@@ -53,6 +53,7 @@ const Partner = styled.div`
 const Organization = styled.div`
   width: 140px;
   height: 50px;
+  margin: 20px 32px;
 `;
 
 const Image = styled.img`
