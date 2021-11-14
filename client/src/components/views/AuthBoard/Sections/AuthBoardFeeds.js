@@ -30,6 +30,7 @@ const AuthBoardFeeds = () => {
     // console.log(Data);
     return (
         <div>
+            asdf
             <img src="img/authBoard/abc.jpg" style={{ width: "150px" }} />
         </div>
     );

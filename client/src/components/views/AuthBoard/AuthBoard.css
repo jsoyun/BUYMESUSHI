@@ -8,6 +8,7 @@
 }
 
 .AuthBoardPost-container {
+    margin: 0 auto;
     /* border: 1px solid black; */
 }
 .AuthBoardPost-photoPlace {
@@ -48,5 +49,5 @@
 }
 
 .css-14tjg8b-MuiPaper-root-MuiCard-root {
-    margin: 10px auto;
+    margin: 15px auto;
 }
