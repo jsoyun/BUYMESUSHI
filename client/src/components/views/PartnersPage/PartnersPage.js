@@ -28,7 +28,7 @@ const Container = styled.div`
   height: 24vh;
   padding: 15px;
   margin-bottom: 10px;
-  border: 2px solid blue;
+  background-image: url("");
   flex-wrap: wrap;
 `;
 
