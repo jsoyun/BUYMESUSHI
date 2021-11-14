@@ -1,5 +1,10 @@
 import React from "react";
 import "./Footer.css";
+import Instagram from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
 const Footer = () => {
   return (
@@ -29,10 +34,11 @@ const Footer = () => {
           <div className="col">
             <h4>Connect Us</h4>
             <ul className="list-unstyled">
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
+              <Instagram fontSize="large" />
+              <TwitterIcon fontSize="large" />
+              <FacebookIcon fontSize="large" />
+              <GitHubIcon fontSize="large" />
+              <YouTubeIcon fontSize="large" />
             </ul>
           </div>
         </div>
