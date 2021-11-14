@@ -5,7 +5,6 @@
 .authBoard-container {
     margin: auto 240px;
     min-width: 800px;
-    text-align: center;
 }
 
 .AuthBoardPost-container {
@@ -46,4 +45,8 @@
 }
 .AuthBoardPost-submit-btn {
     float: right;
+}
+
+.css-14tjg8b-MuiPaper-root-MuiCard-root {
+    margin: 10px auto;
 }

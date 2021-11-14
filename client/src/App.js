@@ -6,7 +6,6 @@ import LoginPage from "./components/views/LoginPage/LoginPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import Auth from "./hoc/auth";
 import NavBar from "./components/views/NavBar/NavBar";
-import SignUp from "./components/views/RegisterPage/Register";
 import About from "./components/views/AboutPage/About";
 
 //page
@@ -18,7 +17,6 @@ import ProductScreen from "./components/views/ShoppingPage/ProductScreen";
 import AuthBoard from "./components/views/AuthBoard/AuthBoard";
 import { HomeWorkSharp } from "@material-ui/icons";
 // 추후 삭제
-import UploadForm from "./components/views/AuthBoard/UploadImage/UploadForm";
 
 function App() {
     return (
@@ -66,10 +64,6 @@ function App() {
                     />
 
                     <Route exact path="/board" component={Auth(About, null)} />
-
-                    {/* 추후 삭제 */}
-                    <Route exact path="/signup" component={SignUp} />
-                    <Route exact path="/upload" component={UploadForm} />
                 </Switch>
             </div>
         </Router>

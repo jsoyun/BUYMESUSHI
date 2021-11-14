@@ -69,13 +69,16 @@ router.post("/post", upload.single("authBoardPhoto"), async (req, res) => {
             postedBy: req.user._id,
         };
 
-        AuthBoard.insertMany(insertMongo)
-            .then(() => {
-                return res.status(200).json({ postAuthBoard: true });
-            })
-            .catch((err) => {
-                return res.json({ postAuthBoard: false });
-            });
+        await AuthBoard.insertMany(insertMongo);
+        // .then(() => {
+        //     return res.status(200).json({ postAuthBoard: true });
+        // })
+        // .catch((err) => {
+        //     return res.json({ postAuthBoard: false });
+        // });
+        const findAuthBoard = await AuthBoard.find({});
+
+        return res.status(200).json({ findAuthBoard });
     } catch (error) {
         console.log(error);
     }

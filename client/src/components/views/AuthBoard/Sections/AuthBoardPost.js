@@ -17,6 +17,16 @@ const AuthBoardPost = () => {
 
     const [fileUrl, setFileUrl] = useState(null);
 
+    ///////////////////////////////////////////////
+    const [Data, setData] = useState([
+        {
+            authBody: "",
+            photo: "",
+            postedBy: "",
+        },
+    ]);
+    ///////////////////////////////////////////////
+
     const onBodyHandler = (event) => {
         setBody(event.currentTarget.value);
     };
@@ -32,8 +42,13 @@ const AuthBoardPost = () => {
     const setBodyClear = () => {
         setBody("");
     };
+    const setPhotoClear = () => {
+        setPhoto("");
+        setFileUrl("");
+    };
 
     const onSubmitHandler = (event) => {
+        // event.preventDefault();
         if (Body == "") {
             event.preventDefault();
             return alert("본문을 입력해 주세요!");
@@ -47,7 +62,12 @@ const AuthBoardPost = () => {
         axios.post("/api/authBoard/post", formData).then((response) => {
             console.log(response.data);
             console.log("포스트 완료");
+            ///////////////////////////////////////////////
+            console.log(response);
+            ///////////////////////////////////////////////
         });
+        // setBodyClear();
+        // setPhotoClear();
     };
 
     const Input = styled("input")({
