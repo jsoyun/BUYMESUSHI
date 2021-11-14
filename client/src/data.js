@@ -24,22 +24,67 @@ export const sliderItems = [
 export const PartnersItem = [
   {
     id: 1,
-    image: "/img/partners/googlelogo.png",
-    bg: "000000",
+    image: "/img/logo/googlelogo.png",
+    image2: "/img/logo/googlelogo-1 (2).png",
   },
-  // {
-  //   id: 2,
-  //   image: "/img/partners/TESLA.png",
-  //   bg: "000000",
-  // },
-  // {
-  //   id: 3,
-  //   image: "/img/partners/samsung.png",
-  //   bg: "000000",
-  // },
-  // {
-  //   id: 4,
-  //   image: "/img/partners/kakaocommerce.jpg",
-  //   bg: "000000",
-  // },
+  {
+    id: 2,
+    image: "/img/logo/naver.png",
+    image2: "/img/logo/naver (4).png",
+  },
+  {
+    id: 3,
+    image: "/img/logo/TESLA.png",
+    image2: "/img/logo/TESLA-1.png",
+  },
+  {
+    id: 4,
+    image: "/img/logo/samsung.png",
+    image2: "/img/logo/samsung-2.png",
+  },
+  {
+    id: 5,
+    image: "/img/logo/daum.png",
+    image2: "/img/logo/daum-2.png",
+  },
+  {
+    id: 6,
+    image: "/img/logo/visa.png",
+    image2: "/img/logo/visa-2.png",
+  },
+  {
+    id: 7,
+    image: "/img/logo/youtube.png",
+    image2: "/img/logo/youtube-2.png",
+  },
+];
+export const Partners = [
+  {
+    id: 1,
+    img: "/img/logo/환경부.jpg",
+  },
+  {
+    id: 2,
+    img: "/img/logo/에코마일리지.jpg",
+  },
+  {
+    id: 3,
+    img: "/img/logo/epa.jpg",
+  },
+  {
+    id: 4,
+    img: "/img/logo/humanis.jpg",
+  },
+  {
+    id: 5,
+    img: "/img/logo/kcen.jpg",
+  },
+  {
+    id: 6,
+    img: "/img/logo/kepco.jpg",
+  },
+  {
+    id: 7,
+    img: "/img/logo/지속가능발전포털.gif",
+  },
 ];

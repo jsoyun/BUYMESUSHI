@@ -18,6 +18,7 @@ const LandingPage = (props) => {
       <ApiPage />
       <br />
       <NewsApi />
+      <br />
       <PartnersPage />
     </div>
   );
