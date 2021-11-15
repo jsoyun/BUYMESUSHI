@@ -50,6 +50,7 @@ function App() {
           <Route exact path="/board" component={Auth(About, null)} />
         </Switch>
       </div>
+      <Footer />
     </Router>
   );
 }
