@@ -37,6 +37,7 @@ export default function AuthBoardFeedsCard() {
     useEffect(async () => {
         try {
             const res = await axios.get("/api/authboard");
+            console.log(res.data.authBoards);
 
             const _Data = await res.data.authBoards.map(
                 (rowData) => (
@@ -49,7 +50,6 @@ export default function AuthBoardFeedsCard() {
                     }
                 )
             );
-
             setData(Data.concat(_Data));
         } catch (error) {
             console.error(error);

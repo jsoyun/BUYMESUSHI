@@ -8,8 +8,21 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const NewsHead = styled.h1``;
+const NewsHead = styled.h1`
+  font-size: 36px;
+  color: #555;
+  text-align: center;
+`;
 
+const Hr = styled.hr`
+  width: 10%;
+  height: 5px;
+  border: none;
+  background: #3b5998;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+`;
 function NewsApi({ sliders }) {
   const settings = {
     className: "center",
@@ -28,9 +41,7 @@ function NewsApi({ sliders }) {
     autoplay: true,
     autoplaySpeed: 1000,
     cssEase: "linear",
-
   };
-
 
   const [articles, setArticles] = useState([]);
 
@@ -47,6 +58,7 @@ function NewsApi({ sliders }) {
   return (
     <>
       <NewsHead>News and Features</NewsHead>
+      <Hr />
       <Slider {...settings}>
         {articles.map(({ title, description, url, urlToImage }) => (
           <NewsItem

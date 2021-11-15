@@ -46,7 +46,7 @@ router.get("/", async (req, res) => {
         const authBoards = await AuthBoard.find({})
             .populate("postedBy")
             .populate("likes");
-
+        console.log(authBoards);
         // console.log("find : ", authBoards);
 
         res.json({ authBoards });

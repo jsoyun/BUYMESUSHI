@@ -8,8 +8,8 @@ const { users } = require("../data/users");
 const importDate = async () => {
     try {
         // await Product.deleteMany();
-        await Product.collection.drop();
-        await Product.insertMany(products);
+        // await Product.collection.drop();
+        // await Product.insertMany(products);
         // await User.deleteMany();
         // await User.insertMany(users);
         const a = await User.find({});
