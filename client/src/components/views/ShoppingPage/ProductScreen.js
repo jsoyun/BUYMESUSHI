@@ -59,24 +59,24 @@ const ProductScreen = ({ match, history }) => {
           </div>
           <div className="left_info">
             <p className="left_name">{product.name}</p>
-            <p>price:${product.price}</p>
-            <p>description: {product.description}</p>
+            <p>가격:${product.price}</p>
+            <p>상품 설명: {product.description}</p>
           </div>
           <div className="productscreen_right">
             <div></div>
           </div>
           <div className="right_info">
             <p>
-              price:<span>${product.price}</span>
+              가격:<span>${product.price}</span>
             </p>
             <p>
-              Status:
+              상태:
               <span>
-                {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+                {product.countInStock > 0 ? "구매가능" : "구매불가능"}
               </span>
             </p>
             <p>
-              Qty
+              수량
               <select value={qty} onChange={(e) => setQty(e.target.value)}>
                 {/* <option value="1">1</option>
                 <option value="2">2</option>
