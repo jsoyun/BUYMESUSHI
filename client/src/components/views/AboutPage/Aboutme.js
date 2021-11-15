@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
 import { ActiveItem } from "react-scroll-slider";
-
-// import Content from "../Content";
-// import imageUrl from "img/gif/trashhhhhh.gif";
-
 
 const Wrapper = styled.div`
   height: 100%;
@@ -27,7 +22,6 @@ const Description = styled.div`
 
 const forwardStyleImage = { transform: "translateY(-100%)", opacity: 0 };
 const backwardStyleImage = { transform: "translateY(100%)", opacity: 0 };
-
 const forwardStyleContent = { transform: "translateX(100%)", opacity: 0 };
 const backwardStyleContent = { transform: "translateX(-100%)", opacity: 0 };
 

@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
 import { ActiveItem } from "react-scroll-slider";
-
-// import Content from "../Content";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -22,13 +19,6 @@ const Description = styled.div`
   background-color: #d9ecf3;
   font-size: 30px;
 `;
-
-// const Image = styled.div`
-//   width: 500px;
-//   height: 100%;
-//   background-size: cover;
-//   background-position: center;
-// `;
 
 const forwardStyleImage = { transform: "translateX(-100%)", opacity: 0 };
 const backwardStyleImage = { transform: "translateX(100%)", opacity: 0 };

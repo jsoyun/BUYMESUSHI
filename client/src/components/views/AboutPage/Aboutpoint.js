@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
 import { ActiveItem } from "react-scroll-slider";
-
-// import Content from "../Content";
-// import imageUrl from "img/gif/aboutpoint.gif";
-
 
 const Wrapper = styled.div`
   height: 100%;
