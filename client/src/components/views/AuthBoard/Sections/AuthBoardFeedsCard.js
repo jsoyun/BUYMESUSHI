@@ -25,13 +25,11 @@ export default function AuthBoardFeedsCard() {
     const [lastIdx, setLastIdx] = useState(0);
     const [PostUpId, setPostUpId] = useState("");
 
-    const onPostUpIdHandler = (e) => {
-        setPostUpId(e.rowData._id);
-    };
     console.log(PostUpId);
-
     const onThumbUpHandler = () => {
-        // axios.get(`/api/authBoard/like/${postUpId}`);
+        axios
+            .post(`/api/authBoard/like/${PostUpId}`, { PostUpId })
+            .then((res) => console.log(res.data));
     };
 
     useEffect(async () => {
@@ -87,13 +85,22 @@ export default function AuthBoardFeedsCard() {
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
-                            <IconButton
-                                onClick={() => {
-                                    setPostUpId(rowData._id);
+                            <div
+                                className="AuthBoard-like-btn"
+                                onClick={async () => {
+                                    try {
+                                        await setPostUpId(rowData._id);
+                                        await onThumbUpHandler();
+                                    } catch (error) {
+                                        console.error(error);
+                                    }
                                 }}
+                                // onClick={onThumbUpHandler}
                             >
-                                <ThumbUpOffAltIcon />
-                            </IconButton>
+                                <IconButton>
+                                    <ThumbUpOffAltIcon />
+                                </IconButton>
+                            </div>
                             <IconButton type="submit">
                                 <ThumbDownOffAltIcon />
                             </IconButton>
