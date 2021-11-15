@@ -58,8 +58,8 @@ const Organization = styled.div`
 `;
 
 const Image = styled.img`
-  width: 120px;
-  height: 40px;
+  width: 110px;
+  height: 35px;
   margin-left: 10px;
   margin-top: 10px;
   justify-content: center;
@@ -70,8 +70,8 @@ const Image = styled.img`
 `;
 
 const Image2 = styled.img`
-  width: 120px;
-  height: 40px;
+  width: 110px;
+  height: 35px;
   margin-left: 10px;
   margin-top: 10px;
   transform: translateY(0);
