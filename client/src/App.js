@@ -8,7 +8,7 @@ import Auth from "./hoc/auth";
 import NavBar from "./components/views/NavBar/NavBar";
 import SignUp from "./components/views/RegisterPage/Register";
 import About from "./components/views/AboutPage/About";
-
+import Footer from "./components/views/Footer/Footer";
 //page
 
 import HomeScreen from "./components/views/ShoppingPage/HomeScreen";
@@ -56,6 +56,7 @@ function App() {
           <Route exact path="/upload" component={UploadForm} />
         </Switch>
       </div>
+      <Footer />
     </Router>
   );
 }

@@ -1,76 +1,102 @@
-import React from "react";
+import React, { Children } from "react";
 import styled from "styled-components";
-import { PartnersItem } from "../../../data";
-import { useSpring, animated, config } from "react-spring";
+import { PartnersItem, Partners } from "../../../data";
+// import { useSpring, animated, config } from "react-spring";
 
-const PartnersHead = styled.h1``;
+const PartnersHead = styled.h1`
+  font-size: 36px;
+  color: #555;
+  text-align: center;
+`;
+
+const Hr = styled.hr`
+  width: 10%;
+  height: 5px;
+  border: none;
+  background: #26ccca;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 20px;
+`;
+
 const Container = styled.div`
-  box-sizing: border-box;
-  margin: 0 auto;
-`;
-const Wrapper = styled.div`
-  max-width: 100vw;
-  height: 120px;
-  padding: 3% 3%;
+  display: flex;
   position: relative;
-  background: linear-gradient(0deg, #1e1f2a 0%, #2f313d 67%);
-  box-shadow: inset 0px 0px 50px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 16px 17px -5px #000000;
-  cursor: pointer;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+  height: 24vh;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-image: url("");
+  flex-wrap: wrap;
 `;
-const Partner = styled(animated.div)`
-  padding: 5px;
-  position: absolute;
-  background: #c7d2fe66;
-  border-radius: 10px;
-  z-index: 1;
-  position: absolute;
-  backdrop-filter: blur(10px);
+
+const Partner = styled.div`
+  --border-radius: 0.7rem;
+  width: 140px;
+  height: 50px;
+  /* position: absolute; */
   border: 2px solid transparent;
-  background-clip: border-box;
+  backdrop-filter: blur(1px);
   cursor: pointer;
+  margin: 20px 32px;
+  box-shadow: 0px 7px 7px -5px #7a7a7a;
+  transition: all var(--transition-time);
+  border-radius: var(--border-radius);
+  background-clip: border-box;
+  background: #c7d2fe66;
+  /* transition: 0.7s; */
+  /* background: linear-gradient(0deg, #1e1f2a 0%, #2f313d 67%); */
+`;
+
+const Organization = styled.div`
+  width: 140px;
+  height: 50px;
+  margin: 20px 32px;
 `;
 
 const Image = styled.img`
   width: 120px;
   height: 40px;
+  margin-left: 10px;
+  margin-top: 10px;
   justify-content: center;
+  position: absolute;
+  &:hover {
+    display: none;
+  }
 `;
 
-const calc = (x, y) => [
-  -(y - window.innerHeight / 2) / 20,
-  (x - window.innerWidth / 2) / 20,
-  1,
-];
-const trans = (x, y, s) =>
-  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+const Image2 = styled.img`
+  width: 120px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 10px;
+  transform: translateY(0);
+  transition: 1s;
+  &:hover {
+    display: none;
+  }
+`;
 
 const PartnersPage = () => {
-  // const [props, set] = useSpring(() => ({
-  //   xys: [0, 0, 1],
-  //   config: { mass: 200, transition: 200, friction: 50 },
-  // }));
-  const [props, set] = useSpring(() => ({
-    xys: [0, 0, 1],
-    config: config.default,
-  }));
   return (
     <>
       <PartnersHead>UsEarth Partners</PartnersHead>
+      <Hr />
       <Container>
-        <Wrapper
-          onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-          onMouseLeave={() => set({ xys: [0, 0, 1] })}
-          style={{
-            transform: props.xys.interpolate(trans),
-          }}
-        >
-          {PartnersItem.map((item) => (
-            <Partner bg={item.bg} key={item.id}>
-              <Image src={item.image} />
-            </Partner>
-          ))}
-        </Wrapper>
+        {PartnersItem.map((item) => (
+          <Partner key={item.id}>
+            <Image src={item.image} />
+            <Image2 src={item.image2} />
+          </Partner>
+        ))}
+        {Partners.map((item) => (
+          <Organization key={item.id}>
+            <Image src={item.img} />
+          </Organization>
+        ))}
       </Container>
     </>
   );
