@@ -34,32 +34,45 @@ const MyPage = () => {
   };
 
   return (
-    <div className="cartscreen">
-      <div className="cartscreen_left">
-        <h2>Shopping Cart</h2>
-        {cartItems.length === 0 ? (
-          <div>
-            Your cart is empty <Link to="/product">Go back</Link>
+    <div className="MyPage">
+      마이페이지야
+      <div className="AuthBoard">인증페이지 부분</div>
+      <div className="cartscreen">
+        <div className="cartscreen_left">
+          <div className="cartscreen_right">
+            <div className="cartscreen_info">
+              <p>subtotal ({getCartCount()}) items</p>
+              <p>${getCartSubTotasl().toFixed(2)}</p>
+            </div>
+            <div>
+              <button>Proceed To Checkout</button>
+            </div>
           </div>
-        ) : (
-          cartItems.map((item) => (
-            <CartItem
-              key={item.product}
-              item={item}
-              qtyChangeHandler={qtyChangeHandler}
-              removeHandler={removeHandler}
-            />
-          ))
-        )}
-      </div>
-      <div className="cartscreen_right">
-        <div className="cartscreen_info">
-          <p>subtotal ({getCartCount()}) items</p>
-          <p>${getCartSubTotasl().toFixed(2)}</p>
+          <h2>Shopping Cart</h2>
+          {cartItems.length === 0 ? (
+            <div>
+              Your cart is empty <Link to="/product">Go back</Link>
+            </div>
+          ) : (
+            cartItems.map((item) => (
+              <CartItem
+                key={item.product}
+                item={item}
+                qtyChangeHandler={qtyChangeHandler}
+                removeHandler={removeHandler}
+              />
+            ))
+          )}
         </div>
-        <div>
-          <button>Proceed To Checkout</button>
-        </div>
+        {/* <div className="cartscreen_right">
+          <div className="cartscreen_info">
+            <p>subtotal ({getCartCount()}) items</p>
+            <p>${getCartSubTotasl().toFixed(2)}</p>
+          </div>
+          <div>
+            <button>Proceed To Checkout</button>
+          </div>
+        </div> */}
       </div>
     </div>
   );
