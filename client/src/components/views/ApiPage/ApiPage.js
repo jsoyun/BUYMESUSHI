@@ -53,8 +53,7 @@ function ApiPage({ sliders }) {
   `;
 
   return (
-    <div style={{ padding: "0 25px" }}>
-      <h2>환경 지표의 변화</h2>
+    <div style={{ padding: "0 25px", marginTop: "25px" }}>
       <StyledSlider {...settings}>
         {/* ApiPageModal이라는 컴포넌트를 가져왔는데 이건 map 함수 써서 반복되게 해야 하나... */}
         <div>
