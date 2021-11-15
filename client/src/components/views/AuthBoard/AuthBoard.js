@@ -8,6 +8,7 @@ import AuthBoardFeeds from "./Sections/AuthBoardFeeds";
 import AuthBoardFeedsCard from "./Sections/AuthBoardFeedsCard";
 
 import "./AuthBoard.css";
+import AlignItemsList from "./Sections/AlignItemsList";
 
 const AuthBoard = (props) => {
     const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const AuthBoard = (props) => {
             <React.Fragment>
                 <AuthBoardPost />
                 <AuthBoardFeedsCard />
+                <AlignItemsList />
             </React.Fragment>
         </div>
     );

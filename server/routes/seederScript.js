@@ -25,6 +25,7 @@ const importDate = async () => {
                     { text: "asdf", postedBy: b },
                     { text: "sdfsdf", postedBy: c },
                 ],
+                postedBy: b,
             },
         ];
         // await AuthBoard.deleteMany();

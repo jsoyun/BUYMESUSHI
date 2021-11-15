@@ -43,8 +43,12 @@ router.get("/", async (req, res) => {
         const user = res.locals.user;
 
         // console.log(user);
-        const authBoards = await AuthBoard.find({});
+        const authBoards = await AuthBoard.find({})
+            .populate("postedBy")
+            .populate("likes");
+
         // console.log("find : ", authBoards);
+
         res.json({ authBoards });
     } catch (error) {
         console.log(error);
@@ -82,6 +86,10 @@ router.post("/post", upload.single("authBoardPhoto"), async (req, res) => {
     } catch (error) {
         console.log(error);
     }
+});
+
+router.post("/like/:id", (req, res) => {
+    console.log(req);
 });
 
 router.get("/:id", (req, res) => {

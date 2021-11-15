@@ -10,6 +10,7 @@ const authBoardschema = new mongoose.Schema({
         //required: true,
     },
     likes: [{ type: ObjectId, ref: "User" }],
+    dislikes: [{ type: ObjectId, ref: "User" }],
     comments: [
         {
             text: { type: String },

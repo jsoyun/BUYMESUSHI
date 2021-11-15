@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -8,19 +8,32 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 
 export default function AuthBoardFeedsCard() {
     const [Data, setData] = useState([
         {
-            authBody: "",
-            photo: "",
-            postedBy: "",
+            authBody:
+                "UsEarth에 오신것을 환연합니다! 많은 인증 사진들이 당신의 선택을 기다리고 있습니다! 참여 부탁드려요 ",
+            photo: "img/authBoard/iwantyou.jpg",
+            postedBy: "Admin",
         },
     ]);
     const [lastIdx, setLastIdx] = useState(0);
+    const [PostUpId, setPostUpId] = useState("");
+
+    const onPostUpIdHandler = (e) => {
+        setPostUpId(e.rowData._id);
+    };
+    console.log(PostUpId);
+
+    const onThumbUpHandler = () => {
+        // axios.get(`/api/authBoard/like/${postUpId}`);
+    };
+
     useEffect(async () => {
         try {
             const res = await axios.get("/api/authboard");
@@ -29,32 +42,28 @@ export default function AuthBoardFeedsCard() {
                 (rowData) => (
                     setLastIdx(lastIdx + 1),
                     {
+                        _id: rowData._id,
                         authBody: rowData.authBody,
                         photo: rowData.photo,
-                        postedBy: rowData.postedBy,
+                        postedBy: rowData.postedBy.nickname,
                     }
                 )
             );
 
             setData(Data.concat(_Data));
-            console.log("useEffect 안 : ", Data);
         } catch (error) {
             console.error(error);
         }
     }, []);
-    console.log("useEffect 밖 : ", Data[1]);
 
     return (
         <React.Fragment>
             {lastIdx !== 0 ? (
-                Data.map((rowData) => (
-                    <Card sx={{ maxWidth: 600 }}>
+                Data.map((rowData, index) => (
+                    <Card sx={{ maxWidth: 600 }} key={index}>
                         <CardHeader
                             avatar={
-                                <Avatar
-                                    sx={{ bgcolor: red[500] }}
-                                    aria-label="user"
-                                >
+                                <Avatar aria-label="user">
                                     <img
                                         src="img/authBoard/abc.jpg"
                                         style={{
@@ -65,10 +74,11 @@ export default function AuthBoardFeedsCard() {
                                 </Avatar>
                             }
                             title={rowData.postedBy}
+                            titleTypographyProps={{ variant: "h5" }}
                         />
                         <CardMedia
                             component="img"
-                            height="400"
+                            height="500"
                             image={rowData.photo}
                         />
                         <CardContent>
@@ -77,14 +87,23 @@ export default function AuthBoardFeedsCard() {
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
-                            <IconButton aria-label="add to favorites">
-                                <FavoriteIcon />
+                            <IconButton
+                                onClick={() => {
+                                    setPostUpId(rowData._id);
+                                }}
+                            >
+                                <ThumbUpOffAltIcon />
                             </IconButton>
-                            <IconButton aria-label="share">
-                                <ShareIcon />
+                            <IconButton type="submit">
+                                <ThumbDownOffAltIcon />
                             </IconButton>
+                            <div
+                                className="AuthBoardFeedsId"
+                                style={{ display: "none" }}
+                            >
+                                {rowData._id}
+                            </div>
                         </CardActions>
-                        {console.log("return 안 : ", Data)}
                     </Card>
                 ))
             ) : (
@@ -92,40 +111,6 @@ export default function AuthBoardFeedsCard() {
                     <h1>작성된 글이 없음.</h1>
                 </div>
             )}
-            {/* <Card sx={{ maxWidth: 600 }}>
-                <CardHeader
-                    avatar={
-                        <Avatar sx={{ bgcolor: red[500] }} aria-label="user">
-                            <img
-                                src="img/authBoard/abc.jpg"
-                                style={{ width: "40px", height: "40px" }}
-                            />
-                        </Avatar>
-                    }
-                    title="Shrimp and Chorizo Paella"
-                />
-                <CardMedia
-                    component="img"
-                    height="400"
-                    image="img/authBoard/abc.jpg"
-                />
-                <CardContent>
-                    <Typography variant="h6" color="text.secondary">
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </CardContent>
-                <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                    </IconButton>
-                    <IconButton aria-label="share">
-                        <ShareIcon />
-                    </IconButton>
-                </CardActions>
-                {console.log("return 안 : ", Data)}
-            </Card> */}
         </React.Fragment>
     );
 }

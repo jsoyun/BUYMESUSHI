@@ -1,7 +1,9 @@
 * {
     box-sizing: border-box;
 }
-
+body {
+    background-color: #f5f5ff;
+}
 .authBoard-container {
     margin: auto 240px;
     min-width: 800px;
@@ -15,21 +17,21 @@
     margin: 0 auto;
     background-color: #efefef;
     width: 300px;
-    height: 300px;
+    height: 500px;
 }
 .AuthBoardPost-photoPlace > img {
     width: 300px;
-    height: 300px;
+    height: 400px;
 }
 .AuthBoardPost-Body-area {
-    width: 600px;
+    width: 568px;
     height: 100px;
     margin: 10px auto;
 }
 .AuthBoardPost-Body {
     margin: 10px auto;
     display: block;
-    width: 600px;
+    width: 546px;
     height: 100px;
     border-radius: 5px;
     border: 1px solid black;
@@ -44,10 +46,14 @@
     height: 50px;
     margin: 0 auto;
 }
-.AuthBoardPost-submit-btn {
-    float: right;
-}
 
 .css-14tjg8b-MuiPaper-root-MuiCard-root {
     margin: 15px auto;
+}
+.css-et1ao3-MuiTypography-root {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.css-1t6e9jv-MuiCardActions-root {
+    justify-content: space-between;
 }

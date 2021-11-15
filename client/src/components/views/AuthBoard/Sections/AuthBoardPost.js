@@ -5,9 +5,14 @@ import { useDispatch } from "react-redux";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import { Input } from "@mui/material";
-import { border } from "@mui/system";
+
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Typography from "@mui/material/Typography";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShareIcon from "@mui/icons-material/Share";
 
 const AuthBoardPost = () => {
     const [Body, setBody] = useState("");
@@ -56,7 +61,57 @@ const AuthBoardPost = () => {
 
     return (
         <div className="AuthBoardPost-container">
-            <React.Fragment>
+            <form
+                onSubmit={onSubmitHandler}
+                encType="multipart/form-data"
+                id="authboard_post"
+            >
+                <Card sx={{ maxWidth: 600 }}>
+                    <CardMedia
+                        className="AuthBoardPost-photoPlace"
+                        component="img"
+                        height="400"
+                        image={fileUrl}
+                    />
+                    <CardContent>
+                        <div className="AuthBoardPost-Body-area">
+                            <input
+                                className="AuthBoardPost-Body"
+                                type="text"
+                                name="authBody"
+                                value={Body}
+                                onChange={onBodyHandler}
+                            />
+                        </div>
+                    </CardContent>
+                    <CardActions>
+                        <Button
+                            variant="contained"
+                            component="label"
+                            className="AuthBoardPost-Photo"
+                        >
+                            Upload Image
+                            <input
+                                id="input-image"
+                                type="file"
+                                name="authBoardPhoto"
+                                value={Photo}
+                                onChange={onPhotoHandler}
+                                hidden
+                            />
+                        </Button>
+                        <Button
+                            variant="contained"
+                            type="submit"
+                            className="AuthBoardPost-submit-btn"
+                        >
+                            제출
+                        </Button>
+                    </CardActions>
+                </Card>
+            </form>
+
+            {/* <React.Fragment>
                 <div className="AuthBoardPost-photoPlace">
                     <img src={fileUrl} />
                 </div>
@@ -80,7 +135,7 @@ const AuthBoardPost = () => {
                             component="label"
                             className="AuthBoardPost-Photo"
                         >
-                            Upload File
+                            Upload Image
                             <input
                                 id="input-image"
                                 type="file"
@@ -99,7 +154,7 @@ const AuthBoardPost = () => {
                         </Button>
                     </div>
                 </form>
-            </React.Fragment>
+            </React.Fragment> */}
         </div>
     );
 };
