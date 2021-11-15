@@ -1,9 +1,10 @@
+import express from 'express';
+import * as userController from '../controllers/user.js';
+import * as authMiddleware from '../middlewares/auth.js';
 const express = require('express');
 const User = require('../models/User');
 const { auth } = require('../middleware/auth');
-
 const router = express.Router();
-
 function getErrors(error) {
     let errorArray = [];
     if (error) {
@@ -188,5 +189,13 @@ router.get('/logout', auth, (req, res) => {
             });
     });
 });
+
+router.post('/signup', userController.signUp);
+router.post('/check-exists', userController.checkExists);
+router.post('/login', userController.login, authMiddleware.issueToken);
+router.post('/logout', userController.logout);
+router.post('/silent-refresh', authMiddleware.issueAccessToken);
+router.post('/email-verify', userController.emailVerify);
+router.post('/subscribe-push', authMiddleware.verifyToken, userController.subscribePush);
 
 module.exports = router;
