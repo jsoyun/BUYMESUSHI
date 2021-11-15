@@ -30,6 +30,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "react-scroll-slider": "^1.0.1",
     "react-slick": "^0.28.1",
     "react-spring": "^9.3.0",
     "redux": "^4.1.2",

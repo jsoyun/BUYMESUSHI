@@ -37,7 +37,11 @@ const Footer = () => {
               <Instagram fontSize="large" />
               <TwitterIcon fontSize="large" />
               <FacebookIcon fontSize="large" />
-              <GitHubIcon fontSize="large" />
+              <GitHubIcon
+                fontSize="large"
+                color="secondary"
+                link="https://github.com/buymesushi/BUYMESUSHI.git"
+              />
               <YouTubeIcon fontSize="large" />
             </ul>
           </div>
