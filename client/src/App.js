@@ -7,6 +7,7 @@ import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import Auth from "./hoc/auth";
 import NavBar from "./components/views/NavBar/NavBar";
 import About from "./components/views/AboutPage/About";
+import Board from "./components/views/BoardPage/Board";
 import Footer from "./components/views/Footer/Footer";
 //page
 
@@ -47,7 +48,7 @@ function App() {
           />
           <Route exact path="/MyPage" component={Auth(MyPage, null)} />
 
-          <Route exact path="/board" component={Auth(About, null)} />
+          <Route exact path="/board" component={Auth(Board, null)} />
         </Switch>
       </div>
       <Footer />
