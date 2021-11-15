@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
-import Button from '@mui/material/Button';
+import React, { useState } from "react";
+import Button from "@mui/material/Button";
 
-import axios from 'axios';
-import { withRouter } from 'react-router';
-import { useSelector } from 'react-redux';
+import axios from "axios";
+import { withRouter } from "react-router";
+import { useSelector } from "react-redux";
 
 const RightMenu = (props) => {
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+
+  const getCartCount = () => {
+    return cartItems.reduce((qty, item) => qty + Number(item.qty), 0);
+  };
+
   const user = useSelector((state) => state.user);
   console.log(user.userData);
 
@@ -39,7 +46,7 @@ const RightMenu = (props) => {
         <Button sx={{ ml: 10, mr: 1 }} color="inherit" href="/MyPage">
           마이페이지
           <i className="fas fa-shopping-cart"></i>
-          <span className="cartlogo_badge">0</span>
+          <span className="cartlogo_badge">{getCartCount()}</span>
         </Button>
       </div>
     );

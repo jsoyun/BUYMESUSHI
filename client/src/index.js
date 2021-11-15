@@ -16,11 +16,22 @@ const createStoreWithMiddleware = applyMiddleware(
   ReduxThunk
 )(createStore);
 
+//유지
+const cartFromLocalStorage = localStorage.getItem("cart")
+  ? JSON.parse(localStorage.getItem("cart"))
+  : [];
+const INITIAL_STATE = {
+  cart: {
+    cartItems: cartFromLocalStorage,
+  },
+};
+
 ReactDOM.render(
   <Provider
     //스토어 만든거를 store에 넣어줌
     store={createStoreWithMiddleware(
       Reducer,
+      INITIAL_STATE,
       // window.__REDUX_DEVTOOLS_EXTENSION__ &&
       //     window.__REDUX_DEVTOOLS_EXTENSION__()
       composeWithDevTools()

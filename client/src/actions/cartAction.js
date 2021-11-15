@@ -7,10 +7,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
   dispatch({
     type: actionTypes.ADD_TO_CART,
     payload: {
-      // product: data._id,
-      //Unhandled Rejection (TypeError): Cannot read properties of null (reading '_id')
-      //에러 떠서 임시로 바꿔놓음
-      product: data.id,
+      product: data._id,
       name: data.name,
       imageUrl: data.imageUrl,
       price: data.price,
