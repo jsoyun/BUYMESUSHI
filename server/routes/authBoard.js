@@ -89,7 +89,8 @@ router.post("/post", upload.single("authBoardPhoto"), async (req, res) => {
 });
 
 router.post("/like/:id", (req, res) => {
-    console.log(req);
+    console.log(req.body);
+    res.send("hi123");
 });
 
 router.get("/:id", (req, res) => {
