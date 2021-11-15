@@ -7,6 +7,7 @@ const PartnersHead = styled.h1`
   font-size: 36px;
   color: #555;
   text-align: center;
+  margin-top: 50px;
 `;
 
 const Hr = styled.hr`
@@ -27,7 +28,7 @@ const Container = styled.div`
   width: 100vw;
   height: 24vh;
   padding: 15px;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
   background-image: url("");
   flex-wrap: wrap;
 `;
