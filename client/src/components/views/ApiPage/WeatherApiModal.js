@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import styled from "styled-components";
 import WeatherApiModalItem from './WeatherApiModalItem';
+import Button from '@mui/material/Button';
 
 const Container = styled.div`
   width: 100%;
@@ -17,7 +18,7 @@ export default function WeatherApiModal() {
 
   return (
     <>
-      <button onClick={() => setModalIsOpen(true)}>전세계 도시별 날씨</button>
+      <Button variant="contained" size="large" onClick={() => setModalIsOpen(true)}>전세계 도시별 날씨</Button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <Container>
           <WeatherApiModalItem />
