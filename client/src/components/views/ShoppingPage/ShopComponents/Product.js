@@ -10,6 +10,7 @@ const Product = ({ imageUrl, name, price, description, productId }) => {
         <p className="info_description">{description.substring(0, 100)}...</p>
         <p className="info_price">{price}</p>
         <Link to={`/product/${productId}`} className="info_button">
+          {/* <Link to={`/product/${match.params.id}}`} className="info_button"> */}
           view
         </Link>
       </div>
