@@ -5,6 +5,7 @@ import SliderPage from "../SliderPage/SliderPage";
 import ApiPage from "../ApiPage/ApiPage.js";
 import NewsApi from "../NewsPage/NewsApi";
 import PartnersPage from "../PartnersPage/PartnersPage";
+import Footer from "../Footer/Footer";
 
 const LandingPage = (props) => {
   // paging은 App.js에서 라우팅하는 방식으로 해결.
@@ -18,6 +19,7 @@ const LandingPage = (props) => {
       <ApiPage />
       <br />
       <NewsApi />
+      <br />
       <PartnersPage />
     </div>
   );
