@@ -7,6 +7,7 @@ import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import Auth from "./hoc/auth";
 import NavBar from "./components/views/NavBar/NavBar";
 import About from "./components/views/AboutPage/About";
+import BoardPage from "./components/views/BoardPage/Board";
 import Footer from "./components/views/Footer/Footer";
 //page
 
@@ -28,7 +29,7 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/about" component={Auth(About, null)} />
+          <Route exact path="/Board" component={Auth(BoardPage, null)} />
 
           {/* usEarth 페이지 추후 null -> true로 변경 */}
           <Route exact path="/authboard" component={Auth(AuthBoard, true)} />
@@ -47,7 +48,7 @@ function App() {
           />
           <Route exact path="/MyPage" component={Auth(MyPage, null)} />
 
-          <Route exact path="/board" component={Auth(About, null)} />
+          <Route exact path="/board" component={Auth(BoardPage, null)} />
         </Switch>
       </div>
       <Footer />
