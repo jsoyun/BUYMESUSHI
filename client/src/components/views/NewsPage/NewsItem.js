@@ -5,9 +5,9 @@ import styled from "styled-components";
 
 const Item = styled.div`
   position: relative;
-  width: 355px;
+  width: 364px;
   height: 420px;
-  border: 2px solid red;
+  border: 7px solid #3b5998;
   background-color: black;
   display: flex;
   position: relative;
@@ -16,7 +16,7 @@ const Item = styled.div`
 `;
 
 const NewsImg = styled.img`
-  width: 355px;
+  width: 352px;
   height: 200px;
   position: absolute;
   background-position: center;

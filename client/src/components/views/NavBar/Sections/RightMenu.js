@@ -12,6 +12,10 @@ const BtnBox = styled.div`
   }
 `;
 
+const ButtonBox = styled.div`
+  display: flex;
+`;
+
 const RightMenu = (props) => {
   const user = useSelector((state) => state.user);
   console.log(user.userData);
@@ -29,26 +33,26 @@ const RightMenu = (props) => {
   if (user.userData && !user.userData.isAuth) {
     return (
       <BtnBox>
-        <Button sx={{ ml: 2, mr: 1 }} href="/login" color="inherit">
+        <Button sx={{ ml: 10, mr: 1 }} href="/login" color="inherit">
           Login
         </Button>
-        <Button sx={{ mr: 5 }} href="/register" color="inherit">
+        <Button sx={{ mr: 7 }} href="/register" color="inherit">
           Register
         </Button>
       </BtnBox>
     );
   } else {
     return (
-      <div>
-        <Button sx={{ mr: 30 }} color="inherit" onClick={onClickHandler}>
+      <ButtonBox>
+        <Button sx={{ ml: 10, mr: 1 }} color="inherit" onClick={onClickHandler}>
           Logout
         </Button>
-        <Button sx={{ ml: 10, mr: 1 }} color="inherit" href="/MyPage">
+        <Button sx={{ ml: 1, mr: 1 }} color="inherit" href="/MyPage">
           마이페이지
           <i className="fas fa-shopping-cart"></i>
           <span className="cartlogo_badge">0</span>
         </Button>
-      </div>
+      </ButtonBox>
     );
   }
 };
