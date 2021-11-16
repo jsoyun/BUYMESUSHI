@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import "./Board.css";
+import "./Board.css";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -10,7 +10,10 @@ import BoardBtn from "../BoardPage/BoardBtn";
 // import Board from '../../../'
 
 function ArticleList() {
-  const [articleList, setArticleList] = useState([]);
+  // const [articleList, setArticleList] = useState([]);
+  const toBoardWrite = () => {
+    // router.get('/BoardWrite');
+  };
   useEffect(() => {
     axios
       .get(
@@ -18,7 +21,7 @@ function ArticleList() {
       )
       .then((response) => {
         errorHandler(response.data.data);
-        setArticleList(response.data.data);
+        // setArticleList(response.data.data);
       });
   }, []);
   return (
@@ -32,7 +35,7 @@ function ArticleList() {
       <div class="article">
         <div class="wrapper">
           <table>
-            <thead>ㅎㅇㅎㅇ</thead>
+            <thead><h1>자유게시판</h1></thead>
             {/* <form action="/board" method="POST"> */}
             <tr>
               <th class="num">게시글 번호</th>
@@ -69,8 +72,7 @@ function ArticleList() {
             <tr>
               <td class="num">0</td>
               <td class="title">
-                <p>이상한 말은 하지 말아주세여</p>
-                <span class="update">공지</span>
+                <p>건전한 대화 부탁드립니다.</p>
               </td>
               <td>관리자 일동</td>
               <td class="views">33</td>
@@ -81,7 +83,7 @@ function ArticleList() {
 
           {/* boardwrite로 페이지를 넘겨주는 버튼 */}
           <div>
-            <button class="boardwrite" onclick="location.href='BoardWrite'">글 작성</button>
+            <button class="boardwrite" onClick={toBoardWrite}>글 작성</button>
           </div>
           {/* 글 10개당 page 넘어가는 페이징 필요  */}
           {/* <div class="pages">
