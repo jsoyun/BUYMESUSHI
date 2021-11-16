@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { dateFormat } from "../../../services/date-format";
 import { BoardError } from "../../../redux/constants/BoardError";
 import { errorHandler } from "../../../services/error-handler";
+import BoardBtn from "../BoardPage/BoardBtn";
 
 function ArticleList() {
   const [articleList, setArticleList] = useState([]);
@@ -46,6 +47,7 @@ function ArticleList() {
           })}
         </tbody>
       </table>
+      <BoardBtn />
     </div>
   );
 }
