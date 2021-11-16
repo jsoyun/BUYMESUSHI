@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
-import Button from '@mui/material/Button';
+import React, { useState } from "react";
+import Button from "@mui/material/Button";
+import styled from "styled-components";
+import axios from "axios";
+import { withRouter } from "react-router";
+import { useSelector } from "react-redux";
 
-import axios from 'axios';
-import { withRouter } from 'react-router';
-import { useSelector } from 'react-redux';
+const BtnBox = styled.div`
+  display: flex;
+  @media only screen and (max-width: 954px) {
+    display: block;
+  }
+`;
 
 const RightMenu = (props) => {
   const user = useSelector((state) => state.user);
@@ -21,14 +28,14 @@ const RightMenu = (props) => {
 
   if (user.userData && !user.userData.isAuth) {
     return (
-      <div>
-        <Button sx={{ ml: 10, mr: 1 }} href="/login" color="inherit">
+      <BtnBox>
+        <Button sx={{ ml: 2, mr: 1 }} href="/login" color="inherit">
           Login
         </Button>
-        <Button sx={{ mr: 30 }} href="/register" color="inherit">
+        <Button sx={{ mr: 5 }} href="/register" color="inherit">
           Register
         </Button>
-      </div>
+      </BtnBox>
     );
   } else {
     return (

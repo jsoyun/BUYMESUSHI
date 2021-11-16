@@ -3,13 +3,18 @@ import Button from "@mui/material/Button";
 
 import { withRouter } from "react-router";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
+
+const Navi = styled.div`
+  display: flex;
+`;
 
 const RightMenu = (props) => {
   const user = useSelector((state) => state.user);
   console.log(user.userData);
 
   return (
-    <div>
+    <Navi>
       <Button sx={{ mr: 1 }} href="/about" color="inherit">
         소개
       </Button>
@@ -25,7 +30,7 @@ const RightMenu = (props) => {
       <Button sx={{ mr: 1 }} href="/board" color="inherit">
         게시판
       </Button>
-    </div>
+    </Navi>
   );
 };
 

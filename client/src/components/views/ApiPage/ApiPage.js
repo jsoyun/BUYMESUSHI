@@ -30,15 +30,22 @@ function ApiPage({ sliders }) {
   };
 
   // 슬라이드 CSS 커스텀
+  const Container = styled.div`
+    width: 100%;
+    background-color: black;
+  `;
+
   const StyledSlider = styled(Slider)`
     .slick-list {
-      width: 1600px;
-      margin: 0 auto;
+      width: 95vw;
+      margin: 0;
+      background-color: black;
     }
 
     .slick-slide div {
       /* align-items: center; */
       text-align: center;
+      background-color: black;
       /* border: 2px #5c75bb; */
     }
 
@@ -53,20 +60,29 @@ function ApiPage({ sliders }) {
   `;
 
   return (
-    <div style={{ padding: "0 25px", marginTop: "25px" }}>
-      <StyledSlider {...settings}>
-        {/* ApiPageModal이라는 컴포넌트를 가져왔는데 이건 map 함수 써서 반복되게 해야 하나... */}
-        <div>
-          <WeatherApiModal />
-        </div>
-        <div>
-          <SeaTempApiModal />
-        </div>
-        <div>
-          <GreenHouseApiModal />
-        </div>
-      </StyledSlider>
-    </div>
+    <Container>
+      <div
+        style={{
+          paddingLeft: "35px",
+          paddingRight: "35px",
+          paddingTop: "18px",
+          paddingBottom: "18px",
+        }}
+      >
+        <StyledSlider {...settings}>
+          {/* ApiPageModal이라는 컴포넌트를 가져왔는데 이건 map 함수 써서 반복되게 해야 하나... */}
+          <div>
+            <WeatherApiModal />
+          </div>
+          <div>
+            <SeaTempApiModal />
+          </div>
+          <div>
+            <GreenHouseApiModal />
+          </div>
+        </StyledSlider>
+      </div>
+    </Container>
   );
 }
 

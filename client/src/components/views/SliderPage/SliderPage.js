@@ -48,7 +48,7 @@ const Wrapper = styled.div`
 
 const Slide = styled.div`
   width: 100vw;
-  height: 75vh;
+  height: 78vh;
   display: flex;
   align-items: center;
   /* background-color: #${(props) => props.bg}; */
@@ -72,7 +72,7 @@ const Image = styled.img`
 const InfoContainer = styled.div`
   width: 40vw;
   height: 62vh;
-  margin-left: 55%;
+  margin-left: 52%;
   display: inline-block;
   padding: 3em;
   background: #c7d2fe66;

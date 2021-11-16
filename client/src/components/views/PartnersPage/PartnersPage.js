@@ -27,9 +27,8 @@ const Container = styled.div`
   justify-content: space-between;
   width: 100vw;
   height: 24vh;
-  padding: 15px;
   margin-bottom: 50px;
-  background-image: url("");
+  background-image: url(./img/main_logobox.JPG);
   flex-wrap: wrap;
 `;
 
@@ -49,6 +48,10 @@ const Partner = styled.div`
   background: #c7d2fe66;
   /* transition: 0.7s; */
   /* background: linear-gradient(0deg, #1e1f2a 0%, #2f313d 67%); */
+  @media only screen and (max-width: 99vw) {
+    width: 50px;
+    height: 20px;
+  }
 `;
 
 const Organization = styled.div`
@@ -59,7 +62,7 @@ const Organization = styled.div`
 
 const Image = styled.img`
   width: 110px;
-  height: 35px;
+  height: 34px;
   margin-left: 10px;
   margin-top: 10px;
   justify-content: center;
@@ -71,7 +74,7 @@ const Image = styled.img`
 
 const Image2 = styled.img`
   width: 110px;
-  height: 35px;
+  height: 34px;
   margin-left: 10px;
   margin-top: 10px;
   transform: translateY(0);

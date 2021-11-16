@@ -6,7 +6,7 @@ import "prismjs/themes/prism.css";
 import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight-all.js";
 import axios from "axios";
 import { useHistory, useLocation } from "react-router-dom";
-import { errorHandler } from "./services/error-handler";
+import { errorHandler } from "../../../services/error-handler";
 
 function Write() {
   const { state } = useLocation();
@@ -91,35 +91,40 @@ function Write() {
 
   return (
     <div className="container m-auto is-max-desktop">
+      <form>
+        <div className="block">
+          <input
+            className="input"
+            type="text"
+            placeholder="제목"
+            defaultValue={state ? state.article.subject : ""}
+            onChange={onSubjectChange}
+          />
+        </div>
+        <div className="block">
+          <Editor
+            initialValue={state ? state.article.text : ""}
+            previewStyle="vertical"
+            height="700px"
+            initialEditType="wysiwyg"
+            ref={editorRef}
+            onChange={onTextChange}
+            hooks={{
+              addImageBlobHook: async (blob, callback) => {
+                const url = await uploadImage(blob);
+                callback(url, "alt text");
+                return false;
+              },
+            }}
+            plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
+          />
+        </div>
+      </form>
       <div className="block">
-        <input
-          className="input"
-          type="text"
-          placeholder="제목"
-          defaultValue={state ? state.article.subject : ""}
-          onChange={onSubjectChange}
-        />
-      </div>
-      <div className="block">
-        <Editor
-          initialValue={state ? state.article.text : ""}
-          previewStyle="vertical"
-          height="700px"
-          initialEditType="wysiwyg"
-          ref={editorRef}
-          onChange={onTextChange}
-          hooks={{
-            addImageBlobHook: async (blob, callback) => {
-              const url = await uploadImage(blob);
-              callback(url, "alt text");
-              return false;
-            },
-          }}
-          plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
-        />
-      </div>
-      <div className="block">
-        <button className="button is-fullwidth is-primary" onClick={onClick}>
+        <button
+          className="button is-fullwidth is-primary"
+          onClick="location.href='/board"
+        >
           작성
         </button>
       </div>

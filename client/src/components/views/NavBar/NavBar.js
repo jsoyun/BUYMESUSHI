@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 import "./NavBar.css";
-import { Link } from "@mui/material";
+import { createTheme, Link } from "@mui/material";
 import axios from "axios";
 import { withRouter } from "react-router";
 import RightMenu from "./Sections/RightMenu";
@@ -22,9 +22,10 @@ const NavBar = (props) => {
       }
     });
   };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ background: "#000000" }}>
         <Toolbar>
           <Link href="/" sx={{ ml: 30, mr: 2 }}>
             <img className="navbar-logo" src="img/usEarth.png" />

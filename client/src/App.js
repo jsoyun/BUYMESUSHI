@@ -9,6 +9,7 @@ import Auth from "./hoc/auth";
 import NavBar from "./components/views/NavBar/NavBar";
 import About from "./components/views/AboutPage/About";
 import Board from "./components/views/BoardPage/Board";
+import Write from "./components/views/BoardPage/WriteBoard";
 import Article from "./components/views/BoardPage/ViewBoard";
 import Footer from "./components/views/Footer/Footer";
 //page
@@ -27,7 +28,7 @@ function App() {
       <NavBar />
       {/* <BackDrop /> */}
       <div>
-        <Switch>
+        <Switch className="switch">
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
@@ -51,10 +52,11 @@ function App() {
           <Route exact path="/MyPage" component={Auth(MyPage, null)} />
 
           <Route exact path="/board" component={Auth(Board, null)} />
+          <Route exact path="/write" component={Auth(Write, null)} />
           <Route
-            path="/article/:articleId"
-            render={() => <Article component={Auth(MyPage, null)} />}
             exact
+            path="/article/:articleId"
+            render={() => <Article component={Auth(Article, null)} />}
           />
         </Switch>
       </div>
