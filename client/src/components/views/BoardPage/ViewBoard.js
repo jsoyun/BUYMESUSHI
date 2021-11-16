@@ -7,6 +7,7 @@ import Comment from "../../../Comment";
 import { formatFullDate } from "../../../services/date-format";
 import { BoardError } from "../../../redux/constants/BoardError";
 import { errorHandler } from "../../../services/error-handler";
+import BoardBtn from "../BoardPage/BoardBtn";
 
 function Article({ userId }) {
   const [article, setArticle] = useState({});
@@ -122,6 +123,7 @@ function Article({ userId }) {
         <hr />
         <Comment userId={userId} articleId={article.articleId} />
       </div>
+      <BoardBtn />
     </div>
   );
 }

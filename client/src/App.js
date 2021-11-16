@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { observer } from "mobx-react";
 //import NavBar from "./components/views/NavBar/NavBar";
 import LandingPage from "./components/views/LandingPage/LandingPage";
 import LoginPage from "./components/views/LoginPage/LoginPage";
@@ -62,4 +63,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);
