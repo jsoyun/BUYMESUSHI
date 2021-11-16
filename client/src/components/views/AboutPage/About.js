@@ -14,7 +14,7 @@ import { Link as Scroll } from "react-scroll";
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100vh",
-    backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/bg.jpg"})`,
+    backgroundImage: `url(${process.env.PUBLIC_URL + "/img/about/bg.jpg"})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   },
@@ -24,9 +24,14 @@ const useStyles = makeStyles((theme) => ({
   title: {
     color: "#3b5998",
     fontSize: "4.5rem",
+    textShadow: "2px 2px #fff",
+  },
+  colorText: {
+    color: "#008099",
+    textShadow: "2px 2px #fff",
   },
   goDown: {
-    color: "#5AFF3D",
+    color: "black",
     fontSize: "4rem",
   },
 }));
@@ -48,7 +53,7 @@ export default function About() {
           <div className={classes.container}>
             <h1 className={classes.title}>
               Welcome to <br />
-              us<span className={classes.colorText}>Earth.</span>
+              us<span className={classes.colorText}>Earth</span>
             </h1>
             <Scroll to="place-to-visit" smooth={true}>
               <IconButton>
@@ -59,10 +64,10 @@ export default function About() {
         </Collapse>
 
         <Aboutme />
-        <Aboutpoint />
+        {/* <Aboutpoint />
         <Aboutget />
         <Aboutuse />
-        <Aboutcoin />
+        <Aboutcoin /> */}
       </div>
     </Carousel>
   );
