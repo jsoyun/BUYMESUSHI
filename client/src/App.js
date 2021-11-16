@@ -9,7 +9,7 @@ import Auth from "./hoc/auth";
 import NavBar from "./components/views/NavBar/NavBar";
 import About from "./components/views/AboutPage/About";
 import Board from "./components/views/BoardPage/Board";
-import Article from "./components/views/BoardPage/ViewBoard";
+// import WriteBoard from "./components/views/BoardPage/WriteBoard";
 import Footer from "./components/views/Footer/Footer";
 //page
 
@@ -51,9 +51,10 @@ function App() {
           <Route exact path="/MyPage" component={Auth(MyPage, null)} />
 
           <Route exact path="/board" component={Auth(Board, null)} />
+          {/* <Route exact path="/write" component={Auth(WriteBoard, null)} /> */}
           <Route
             path="/article/:articleId"
-            render={() => <Article component={Auth(MyPage, null)} />}
+            // render={() => <Article component={Auth(MyPage, null)} />}
             exact
           />
         </Switch>

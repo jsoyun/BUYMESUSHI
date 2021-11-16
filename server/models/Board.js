@@ -1,23 +1,23 @@
-// models/Post.js
-
-var mongoose = require("mongoose");
-
+const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema.Types;
 // schema
-var postSchema = mongoose.Schema({
-  // 1
+const BoardSchema = mongoose.Schema({
   title: { type: String, required: true },
   body: { type: String, required: true },
-  comments: [
-    {
-      text: { type: String },
-      postedBy: { type: ObjectId, ref: "User" },
-    },
-  ], // 2
+  // comments: [
+  //   {
+  //     text: { type: String },
+  //     postedBy: { type: ObjectId, ref: "User" },
+  //   },
+  // ],
   postedBy: { type: ObjectId, ref: "User" },
   createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date },
+  // updatedAt: { type: Date },
+  viewcount: {
+    type: Number,
+    default: 0,
+  },
 });
 
-// model & export
-var Post = mongoose.model("post", postSchema);
-module.exports = Post;
+const Board = mongoose.model("post", BoardSchema);
+module.exports = Board;
