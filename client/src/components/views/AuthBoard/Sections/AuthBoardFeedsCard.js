@@ -23,6 +23,8 @@ export default function AuthBoardFeedsCard() {
                 'UsEarth에 오신것을 환연합니다! 많은 인증 사진들이 당신의 선택을 기다리고 있습니다! 참여 부탁드려요 ',
             photo: 'img/authBoard/iwantyou.jpg',
             postedBy: 'Admin',
+            likes: ['1'],
+            dislikes: ['1'],
         },
     ]);
     const [lastIdx, setLastIdx] = useState(0);
@@ -48,6 +50,8 @@ export default function AuthBoardFeedsCard() {
                             authBody: rowData.authBody,
                             photo: rowData.photo,
                             postedBy: rowData.postedBy.nickname,
+                            likes: rowData.likes,
+                            dislikes: rowData.dislikes,
                         }
                     )
                 );
@@ -66,20 +70,19 @@ export default function AuthBoardFeedsCard() {
             .put('/api/authBoard/like', {
                 postId: id,
             })
-            .then((res) => res.json())
-            .then((result) => {
-                console.log('result : ', result);
-                console.log('Data : ', Data);
-                //   console.log(result)
-                const newData = result.map((item) => {
-                    if (item._id == result._id) {
-                        return result;
-                    } else {
-                        return item;
-                    }
-                });
-                setData(Data.concat(newData));
+            // .then((res) => res.json())
+            .then((result) => {})
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+    const dislikePost = (id) => {
+        axios
+            .put('/api/authBoard/dislike', {
+                postId: id,
             })
+            // .then((res) => res.json())
+            .then((result) => {})
             .catch((err) => {
                 console.log(err);
             });
@@ -115,11 +118,13 @@ export default function AuthBoardFeedsCard() {
                                 {rowData.authBody}
                             </Typography>
                         </CardContent>
+                        <div>좋아요{rowData.likes.length}</div>
+                        <div>싫어요{rowData.dislikes.length}</div>
                         <CardActions disableSpacing>
                             <div
                                 className="AuthBoard-like-btn"
-                                onClick={async () => {
-                                    setPostUpId(rowData._id);
+                                onClick={() => {
+                                    likePost(rowData._id);
                                 }}
                                 // onClick={onThumbUpHandler}
                             >
@@ -127,9 +132,18 @@ export default function AuthBoardFeedsCard() {
                                     <ThumbUpOffAltIcon />
                                 </IconButton>
                             </div>
-                            <IconButton type="submit">
-                                <ThumbDownOffAltIcon />
-                            </IconButton>
+                            <div
+                                className="AuthBoard-dislike-btn"
+                                onClick={() => {
+                                    dislikePost(rowData._id);
+                                }}
+                                // onClick={onThumbUpHandler}
+                            >
+                                <IconButton type="submit">
+                                    <ThumbDownOffAltIcon />
+                                </IconButton>
+                            </div>
+
                             <div
                                 className="AuthBoardFeedsId"
                                 style={{ display: 'none' }}
@@ -137,14 +151,6 @@ export default function AuthBoardFeedsCard() {
                                 {rowData._id}
                             </div>
                         </CardActions>
-                        <i
-                            className="material-icons"
-                            onClick={() => {
-                                likePost(rowData._id);
-                            }}
-                        >
-                            thumb_up
-                        </i>
                     </Card>
                 ))
             ) : (
