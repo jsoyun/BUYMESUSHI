@@ -3,7 +3,7 @@ import "./Board.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { dateFormat } from "../../../services/date-format";
-// import { BoardError } from "../../../redux/constants/BoardError";
+import { BoardError } from "../../../redux/constants/BoardError";
 import { errorHandler } from "../../../services/error-handler";
 
 function ArticleList() {
