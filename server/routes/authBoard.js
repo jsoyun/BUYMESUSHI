@@ -105,14 +105,12 @@ router.put('/like', async (req, res) => {
                     { _id: findPost._id },
                     { $pop: { likes: user._id } }
                 );
-                return;
             } else {
                 console.log('asdf');
                 await AuthBoard.updateOne(
                     { _id: findPost._id },
                     { $push: { likes: user._id } }
                 );
-                return;
             }
         }
     } catch (error) {}
