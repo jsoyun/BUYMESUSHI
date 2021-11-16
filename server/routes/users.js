@@ -35,89 +35,6 @@ router.post('/register', (req, res) => {
     // 여기랑
     const user = new User(req.body);
 
-    // User.findOne({ email: req.body.email }, (err, doc) => {
-    //     console.log(doc);
-    // });
-
-    //////////////////////////////////////////////////////////////
-    // user.save(async (err, userInfo) => {
-    //     if (err) {
-    //         let errors = getErrors(err);
-    //         //Send Errors to browser
-    //         console.log(errors);
-    //         return res.json({ success: false });
-    //     }
-
-    //     await User.findOne({ email: req.body.email }, async (err, data) => {
-    //         if (!data) {
-    //             await User.findOne(
-    //                 { nickname: req.body.nickname },
-    //                 (err, data1) => {
-    //                     if (!data1)
-    //                         return res.status(200).json({ success: true });
-    //                     else return res.json({ success: false });
-    //                 }
-    //             );
-    //             // return res.json({
-    //             //     success: false,
-    //             //     alertMessage: '이메일 중복',
-    //             // });
-    //         } else {
-    //             console.log('이메일 없으면');
-    //             await User.findOne(
-    //                 { nickname: req.body.nickname },
-    //                 (err, data1) => {
-    //                     if (!data1) {
-    //                         console.log('닉네임 없으면');
-    //                         return res.status(200).json({ success: true });
-    //                     } else {
-    //                         return res.json({
-    //                             success: false,
-    //                             alertMessage: '닉네임 중복',
-    //                         });
-    //                     }
-    //                 }
-    //             );
-    //         }
-    //     });
-    // });
-
-    ////////////////////////////////////////////////////////////////////////////////////
-
-    // User.findOne({ email: req.body.email }, (err, userInfo2) => {
-    //     if (!userInfo2) {
-    //         console.log('이메일 없으면');
-    //         User.findOne({ nickname: req.body.nickname }, (err, userInfo3) => {
-    //             console.log('닉네임 없으면');
-    //             if (!userInfo3) {
-    //                 user.save((err, userInfo) => {
-    //                     if (err) {
-    //                         let errors = getErrors(err);
-    //                         //Send Errors to browser
-    //                         console.log(errors);
-
-    //                         return res.json({ success: false });
-    //                     }
-    //                     return res.status(200).json({ success: true });
-    //                 });
-    //             } else {
-    //                 console.log('닉네임 있으면');
-    //                 return res.json({
-    //                     success: false,
-    //                     alertMessage: '닉네임 중복',
-    //                 });
-    //             }
-    //         });
-    //     } else {
-    //         console.log('있으면');
-    //         return res.json({
-    //             success: false,
-    //             alertMessage: '이메일 중복',
-    //         });
-    //     }
-    // });
-
-    //여기
     user.save(async (err, userInfo) => {
         if (err) {
             let errors = getErrors(err);
@@ -176,6 +93,7 @@ router.get('/auth', auth, (req, res) => {
         nickname: req.user.nickname,
         role: req.user.role,
         image: req.user.image,
+        token: req.user.token,
     });
 });
 

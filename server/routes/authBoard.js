@@ -1,11 +1,11 @@
-const express = require("express");
-const AuthBoard = require("../models/AuthBoard");
-const User = require("../models/User");
+const express = require('express');
+const AuthBoard = require('../models/AuthBoard');
+const User = require('../models/User');
 
-const multer = require("multer");
-const path = require("path");
+const multer = require('multer');
+const path = require('path');
 
-const { auth } = require("../middleware/auth");
+const { auth } = require('../middleware/auth');
 const router = express.Router();
 // 추후 다시 변경
 router.use(auth);
@@ -15,11 +15,11 @@ router.use((req, res, next) => {
 });
 
 const storageEngine = multer.diskStorage({
-    destination: "client/public/img/authBoard",
+    destination: 'client/public/img/authBoard',
     filename: function (req, file, callback) {
         callback(
             null,
-            file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+            file.fieldname + '-' + Date.now() + path.extname(file.originalname)
         );
     },
 });
@@ -29,7 +29,7 @@ const fileFilter = (req, file, callback) => {
     if (pattern.test(path.extname(file.originalname))) {
         callback(null, true);
     } else {
-        callback("Error: not a valid file");
+        callback('Error: not a valid file');
     }
 };
 const upload = multer({
@@ -37,16 +37,16 @@ const upload = multer({
     fileFilter,
 });
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         //console.log(req.cookies);
         const user = res.locals.user;
 
         // console.log(user);
         const authBoards = await AuthBoard.find({})
-            .populate("postedBy")
-            .populate("likes");
-        console.log(authBoards);
+            .populate('postedBy')
+            .populate('likes');
+        // console.log(authBoards);
         // console.log("find : ", authBoards);
 
         res.json({ authBoards });
@@ -55,7 +55,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.post("/post", upload.single("authBoardPhoto"), async (req, res) => {
+router.post('/post', upload.single('authBoardPhoto'), async (req, res) => {
     try {
         // 아래 : Object: null prototype 삭제
         // const obj = JSON.parse(JSON.stringify(req.body));
@@ -88,13 +88,40 @@ router.post("/post", upload.single("authBoardPhoto"), async (req, res) => {
     }
 });
 
-router.post("/like/:id", (req, res) => {
-    console.log(req.body);
-    res.send("hi123");
+router.post('/like', (req, res) => {
+    res.send('hi123');
+});
+router.put('/like', async (req, res) => {
+    try {
+        const user = res.locals.user;
+        const findPost = await AuthBoard.findOne({
+            _id: req.body.postId,
+        }).populate('likes');
+
+        for (let i = 0; i < findPost.likes.length; i++) {
+            console.log(i, ' : ', findPost.likes[i]._id);
+            if (findPost.likes[i].nickname === user.nickname) {
+                await AuthBoard.updateOne(
+                    { _id: findPost._id },
+                    { $pop: { likes: user._id } }
+                );
+                return;
+            } else {
+                console.log('asdf');
+                await AuthBoard.updateOne(
+                    { _id: findPost._id },
+                    { $push: { likes: user._id } }
+                );
+                return;
+            }
+        }
+    } catch (error) {}
+
+    res.status(200).json([{ asdf: 'asdf' }]);
 });
 
-router.get("/:id", (req, res) => {
-    res.send("hi2");
+router.get('/:id', (req, res) => {
+    res.send('hi2');
 });
 
 module.exports = router;

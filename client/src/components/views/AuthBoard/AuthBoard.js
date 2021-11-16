@@ -1,14 +1,14 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { postAuthBoard } from "../../../actions/authBoard_actions";
-import AuthBoardPost from "./Sections/AuthBoardPost";
-import AuthBoardFeeds from "./Sections/AuthBoardFeeds";
-import AuthBoardFeedsCard from "./Sections/AuthBoardFeedsCard";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { postAuthBoard } from '../../../actions/authBoard_actions';
+import AuthBoardPost from './Sections/AuthBoardPost';
+import AuthBoardFeeds from './Sections/AuthBoardFeeds';
+import AuthBoardFeedsCard from './Sections/AuthBoardFeedsCard';
 
-import "./AuthBoard.css";
-import AlignItemsList from "./Sections/AlignItemsList";
+import './AuthBoard.css';
+import AlignItemsList from './Sections/AlignItemsList';
 
 const AuthBoard = (props) => {
     const dispatch = useDispatch();
