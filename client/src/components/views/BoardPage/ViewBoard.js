@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-// import "@toast-ui/editor/dist/toastui-editor-viewer.css";
-// import { Viewer } from "@toast-ui/react-editor";
+import "@toast-ui/editor/dist/toastui-editor-viewer.css";
+import { Viewer } from "@toast-ui/react-editor";
 import Comment from "../../../Comment";
 import { formatFullDate } from "../../../services/date-format";
 import { BoardError } from "../../../redux/constants/BoardError";
