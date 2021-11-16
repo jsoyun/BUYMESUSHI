@@ -1,13 +1,15 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { observer } from "mobx-react";
 //import NavBar from "./components/views/NavBar/NavBar";
 import LandingPage from "./components/views/LandingPage/LandingPage";
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import Auth from "./hoc/auth";
 import NavBar from "./components/views/NavBar/NavBar";
-import AboutPage from "./components/views/AboutPage/About";
-import BoardPage from "./components/views/BoardPage/Board";
+import About from "./components/views/AboutPage/About";
+import Board from "./components/views/BoardPage/Board";
+import Article from "./components/views/BoardPage/ViewBoard";
 import Footer from "./components/views/Footer/Footer";
 //page
 
@@ -29,7 +31,7 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/about" component={Auth(AboutPage, null)} />
+          <Route exact path="/about" component={Auth(About, null)} />
 
           {/* usEarth 페이지 추후 null -> true로 변경 */}
           <Route exact path="/authboard" component={Auth(AuthBoard, true)} />
@@ -48,7 +50,12 @@ function App() {
           />
           <Route exact path="/MyPage" component={Auth(MyPage, null)} />
 
-          <Route exact path="/board" component={Auth(BoardPage, null)} />
+          <Route exact path="/board" component={Auth(Board, null)} />
+          <Route
+            path="/article/:articleId"
+            render={() => <Article component={Auth(MyPage, null)} />}
+            exact
+          />
         </Switch>
       </div>
       <Footer />
@@ -56,4 +63,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);
