@@ -11,7 +11,8 @@ import BoardBtn from "../BoardPage/BoardBtn";
 function ArticleList() {
   // const [articleList, setArticleList] = useState([]);
   const toBoardWrite = () => {
-    console.log('글 작성 클릭');
+    // console.log('글 작성 클릭');
+    window.location.href = '/BoardWrite';
   };
   useEffect(() => {
     axios
@@ -84,7 +85,7 @@ function ArticleList() {
 
           {/* boardwrite로 페이지를 넘겨주는 버튼 */}
           <div>
-            <button className="boardwrite" onClick>글 작성</button>
+            <button className="boardwrite" onClick={toBoardWrite}>글 작성</button>
           </div>
           {/* 글 10개당 page 넘어가는 페이징 필요  */}
           {/* <div className="pages">
