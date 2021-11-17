@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
-// schema
+
 const BoardSchema = mongoose.Schema({
   title: { type: String, required: true },
   body: { type: String, required: true },
@@ -20,5 +20,9 @@ const BoardSchema = mongoose.Schema({
   },
 });
 
-const Board = mongoose.model("post", BoardSchema);
+BoardSchema.pre("save", function (next) {
+  const Board = this;
+});
+
+const Board = mongoose.model("Board", BoardSchema);
 module.exports = Board;

@@ -89,7 +89,7 @@ function Board() {
           </table>
 
           <br />
-          {/* boardwrite로 페이지를 넘겨주는 버튼 */}
+          {/* boardwrite 모달을 띄워주는 버튼 */}
           <div>
             <Button variant="contained" size="large" onClick={() => setModalIsOpen(true)}>글쓰기</Button>
             <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
