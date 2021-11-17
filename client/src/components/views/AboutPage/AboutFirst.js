@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Aboutme from "./Aboutme";
-import AboutCard from "./AboutCard";
 
 import { Carousel } from "react-scroll-slider";
 
