@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
+//
 
 //Actions
 // import { getProductDetails } from "../../../actions/productActions";
 import { getProductDetails } from "../../../actions/productActions";
 import { addToCart } from "../../../actions/cartAction";
-// import { useParams } from "react-router";
 
 const ProductScreen = ({ match, history }) => {
   // const params = useParams();
@@ -21,27 +21,22 @@ const ProductScreen = ({ match, history }) => {
   const productDetails = useSelector((state) => state.getProductDetails);
   const { loading, error, product } = productDetails;
 
-  // useEffect(() => {
-  //   //이부분이 뭔지 알고 문제 찾기
-  //   if (product && params.id !== product._id) {
-  //     console.log(product.id);
-
-  //     dispatch(getProductDetails(params.id), "ooooooooo");
-  //   }
-  // }, [dispatch, product]);
-
-  // const productDetails = useSelector((state) => state.getProductDetails);
-  // const { loading, error, products } = productDetails;
-
   useEffect(() => {
     if (product && match.params.id !== product._id) {
       dispatch(getProductDetails(match.params.id));
     }
   }, [dispatch, match, product]);
 
+  //
+  const user = useSelector((state) => state.user);
+  console.log(user);
+
   const addToCartHandler = () => {
+    // dispatch(addToCart(product._id, qty, user.userData._id));
     dispatch(addToCart(product._id, qty));
     history.push(`/MyPage`);
+    //유저에 프로덕트값넣기도 하기
+    //
   };
 
   return (
@@ -59,29 +54,25 @@ const ProductScreen = ({ match, history }) => {
           </div>
           <div className="left_info">
             <p className="left_name">{product.name}</p>
-            <p>price:${product.price}</p>
-            <p>description: {product.description}</p>
+            <p>가격:${product.price}</p>
+            <p>상품 설명: {product.description}</p>
           </div>
           <div className="productscreen_right">
             <div></div>
           </div>
           <div className="right_info">
             <p>
-              price:<span>${product.price}</span>
+              가격:<span>${product.price}</span>
             </p>
             <p>
-              Status:
+              상태:
               <span>
-                {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+                {product.countInStock > 0 ? "구매가능" : "구매불가능"}
               </span>
             </p>
             <p>
-              Qty
+              수량
               <select value={qty} onChange={(e) => setQty(e.target.value)}>
-                {/* <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option> */}
                 {[...Array(product.countInStock).keys()].map((x) => (
                   <option key={x + 1} value={x + 1}>
                     {x + 1}

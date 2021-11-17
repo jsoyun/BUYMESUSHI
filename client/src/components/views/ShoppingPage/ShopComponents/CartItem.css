@@ -9,6 +9,9 @@
   place-items: center;
   margin-bottom: 8px;
 }
+.cartitem_image img {
+  width: 200px;
+}
 
 .cartitem_name {
   text-decoration: none;

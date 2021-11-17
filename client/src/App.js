@@ -40,15 +40,15 @@ function App() {
             exact
             // path="/products"
             path="/product"
-            component={Auth(HomeScreen, null)}
+            component={Auth(HomeScreen, true)}
           />
           <Route
             exact
             // path="/products/:id"
             path="/product/:id"
-            component={Auth(ProductScreen, null)}
+            component={Auth(ProductScreen, true)}
           />
-          <Route exact path="/MyPage" component={Auth(MyPage, null)} />
+          <Route exact path="/MyPage" component={Auth(MyPage, true)} />
 
           <Route exact path="/board" component={Auth(Board, null)} />
           {/* <Route exact path="/write" component={Auth(WriteBoard, null)} /> */}
