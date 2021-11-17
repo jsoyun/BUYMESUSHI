@@ -8,6 +8,7 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 //import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 //import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
@@ -40,9 +41,9 @@ export default function AuthBoardFeedsCard() {
         const fetchData = async () => {
             try {
                 const res = await axios.get("/api/authboard");
-                console.log(res.data.authBoards);
+                console.log(res.data.resultAuthBoards);
 
-                const _Data = await res.data.authBoards.map(
+                const _Data = await res.data.resultAuthBoards.map(
                     (rowData) => (
                         setLastIdx(lastIdx + 1),
                         {
@@ -118,30 +119,46 @@ export default function AuthBoardFeedsCard() {
                                 {rowData.authBody}
                             </Typography>
                         </CardContent>
-                        <div>좋아요{rowData.likes.length}</div>
-                        <div>싫어요{rowData.dislikes.length}</div>
+
                         <CardActions disableSpacing>
                             <div
                                 className="AuthBoard-like-btn"
                                 onClick={() => {
                                     likePost(rowData._id);
+                                    window.location.reload();
                                 }}
                                 // onClick={onThumbUpHandler}
                             >
-                                <IconButton>
-                                    <ThumbUpOffAltIcon />
-                                </IconButton>
+                                <Button
+                                    variant="contained"
+                                    className="AuthBoard-like-btn-area"
+                                    style={{
+                                        color: "black",
+                                        background: "#ffffff",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    인증 {rowData.likes.length}
+                                </Button>
                             </div>
                             <div
                                 className="AuthBoard-dislike-btn"
                                 onClick={() => {
                                     dislikePost(rowData._id);
+                                    window.location.reload();
                                 }}
                                 // onClick={onThumbUpHandler}
                             >
-                                <IconButton type="submit">
-                                    <ThumbDownOffAltIcon />
-                                </IconButton>
+                                <Button
+                                    variant="contained"
+                                    className="AuthBoard-like-btn-area"
+                                    style={{
+                                        background: "#e80000",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    인증 미흡 {rowData.dislikes.length}
+                                </Button>
                             </div>
 
                             <div
@@ -154,8 +171,8 @@ export default function AuthBoardFeedsCard() {
                     </Card>
                 ))
             ) : (
-                <div>
-                    <h1>작성된 글이 없음.</h1>
+                <div style={{ textAlign: "center" }}>
+                    <h1>Loading...</h1>
                 </div>
             )}
         </React.Fragment>
