@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 //import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 //import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
-import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
-import { useSelector } from 'react-redux';
+import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
+import { useSelector } from "react-redux";
 
 export default function AuthBoardFeedsCard() {
     const user = useSelector((state) => state.user.userData);
@@ -20,26 +20,26 @@ export default function AuthBoardFeedsCard() {
     const [Data, setData] = useState([
         {
             authBody:
-                'UsEarth에 오신것을 환연합니다! 많은 인증 사진들이 당신의 선택을 기다리고 있습니다! 참여 부탁드려요 ',
-            photo: 'img/authBoard/iwantyou.jpg',
-            postedBy: 'Admin',
-            likes: ['1'],
-            dislikes: ['1'],
+                "UsEarth에 오신것을 환연합니다! 많은 인증 사진들이 당신의 선택을 기다리고 있습니다! 참여 부탁드려요 ",
+            photo: "img/authBoard/iwantyou.jpg",
+            postedBy: "Admin",
+            likes: ["1"],
+            dislikes: ["1"],
         },
     ]);
     const [lastIdx, setLastIdx] = useState(0);
-    const [PostUpId, setPostUpId] = useState('');
+    const [PostUpId, setPostUpId] = useState("");
 
     const onThumbUpHandler = () => {
         axios
-            .post('/api/authBoard/like', { PostId: PostUpId })
+            .post("/api/authBoard/like", { PostId: PostUpId })
             .then((res) => console.log(res.data));
     };
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('/api/authboard');
+                const res = await axios.get("/api/authboard");
                 console.log(res.data.authBoards);
 
                 const _Data = await res.data.authBoards.map(
@@ -67,7 +67,7 @@ export default function AuthBoardFeedsCard() {
 
     const likePost = (id) => {
         axios
-            .put('/api/authBoard/like', {
+            .put("/api/authBoard/like", {
                 postId: id,
             })
             // .then((res) => res.json())
@@ -78,7 +78,7 @@ export default function AuthBoardFeedsCard() {
     };
     const dislikePost = (id) => {
         axios
-            .put('/api/authBoard/dislike', {
+            .put("/api/authBoard/dislike", {
                 postId: id,
             })
             // .then((res) => res.json())
@@ -99,14 +99,14 @@ export default function AuthBoardFeedsCard() {
                                     <img
                                         src="img/authBoard/abc.jpg"
                                         style={{
-                                            width: '40px',
-                                            height: '40px',
+                                            width: "40px",
+                                            height: "40px",
                                         }}
                                     />
                                 </Avatar>
                             }
                             title={rowData.postedBy}
-                            titleTypographyProps={{ variant: 'h5' }}
+                            titleTypographyProps={{ variant: "h5" }}
                         />
                         <CardMedia
                             component="img"
@@ -146,7 +146,7 @@ export default function AuthBoardFeedsCard() {
 
                             <div
                                 className="AuthBoardFeedsId"
-                                style={{ display: 'none' }}
+                                style={{ display: "none" }}
                             >
                                 {rowData._id}
                             </div>
