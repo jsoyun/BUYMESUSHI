@@ -25,9 +25,9 @@ const Footer = () => {
             <h4>Members</h4>
             <ul className="list-unstyled">
               <li>Site Editor: Kim Hyerin</li>
+              <li>Site Editor: Choi Hyunseok</li>
               <li>Site Editor: Lee Seongjae</li>
               <li>Site Editor: Lee Soyun</li>
-              <li>Site Editor: Choi hyunseok</li>
             </ul>
           </div>
           {/* column 3*/}
