@@ -17,6 +17,7 @@ const authBoardschema = new mongoose.Schema({
             postedBy: { type: ObjectId, ref: "User" },
         },
     ],
+
     postedBy: {
         type: ObjectId,
         ref: "User",

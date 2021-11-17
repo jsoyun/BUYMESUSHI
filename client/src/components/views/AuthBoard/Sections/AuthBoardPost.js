@@ -12,10 +12,7 @@ import CardActions from "@mui/material/CardActions";
 
 const AuthBoardPost = () => {
     const [Body, setBody] = useState("");
-    const [Like, setLike] = useState(null);
-    //const [Comment, setComment] = useState("");
     const [Photo, setPhoto] = useState("");
-
     const [fileUrl, setFileUrl] = useState(null);
 
     const onBodyHandler = (event) => {

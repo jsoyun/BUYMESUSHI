@@ -57,7 +57,11 @@ body {
 .css-1t6e9jv-MuiCardActions-root {
     justify-content: space-between;
 }
+
 .css-1rwjz6-MuiCardActions-root {
-    justify-content: space-between;
-    margin: 0 190px;
+    justify-content: space-evenly;
+    border: solid 1px #eeeeee;
+}
+.css-1jgmn5n-MuiTypography-root {
+    color: rgba(0, 0, 0);
 }

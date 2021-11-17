@@ -6,42 +6,29 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-//import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-//import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
-import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import { useSelector } from "react-redux";
+import AuthBoardComments from "./AuthBoardComments";
 
 export default function AuthBoardFeedsCard() {
     const user = useSelector((state) => state.user.userData);
 
     const [Data, setData] = useState([
         {
-            authBody:
-                "UsEarth에 오신것을 환연합니다! 많은 인증 사진들이 당신의 선택을 기다리고 있습니다! 참여 부탁드려요 ",
-            photo: "img/authBoard/iwantyou.jpg",
-            postedBy: "Admin",
-            likes: ["1"],
-            dislikes: ["1"],
+            authBody: "",
+            photo: "",
+            postedBy: "",
+            likes: [],
+            dislikes: [],
         },
     ]);
     const [lastIdx, setLastIdx] = useState(0);
-    const [PostUpId, setPostUpId] = useState("");
-
-    const onThumbUpHandler = () => {
-        axios
-            .post("/api/authBoard/like", { PostId: PostUpId })
-            .then((res) => console.log(res.data));
-    };
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const res = await axios.get("/api/authboard");
-                console.log(res.data.resultAuthBoards);
 
                 const _Data = await res.data.resultAuthBoards.map(
                     (rowData) => (
@@ -56,15 +43,14 @@ export default function AuthBoardFeedsCard() {
                         }
                     )
                 );
-                setData(Data.concat(_Data));
 
-                onThumbUpHandler();
+                setData(Data.concat(_Data));
             } catch (error) {
                 console.error(error);
             }
         };
         fetchData();
-    }, [PostUpId]);
+    }, []);
 
     const likePost = (id) => {
         axios
@@ -92,84 +78,77 @@ export default function AuthBoardFeedsCard() {
     return (
         <React.Fragment>
             {lastIdx !== 0 ? (
-                Data.map((rowData, index) => (
-                    <Card sx={{ maxWidth: 600 }} key={index}>
-                        <CardHeader
-                            avatar={
-                                <Avatar aria-label="user">
-                                    <img
-                                        src="img/authBoard/abc.jpg"
+                Data.filter((data) => data.authBody !== "")
+                    .filter((data) => data.postedBy !== user.nickname)
+                    .map((rowData, index) => (
+                        <Card sx={{ maxWidth: 600 }} key={index}>
+                            <CardHeader
+                                avatar={
+                                    <Avatar aria-label="user">
+                                        <img
+                                            src="img/authBoard/abc.jpg"
+                                            style={{
+                                                width: "40px",
+                                                height: "40px",
+                                            }}
+                                        />
+                                    </Avatar>
+                                }
+                                title={rowData.postedBy}
+                                titleTypographyProps={{ variant: "h5" }}
+                            />
+                            <CardMedia
+                                component="img"
+                                height="500"
+                                image={rowData.photo}
+                            />
+                            <CardContent>
+                                <Typography variant="h6" color="black">
+                                    {rowData.authBody}
+                                </Typography>
+                            </CardContent>
+                            <CardActions disableSpacing>
+                                <div
+                                    className="AuthBoard-like-btn"
+                                    onClick={() => {
+                                        likePost(rowData._id);
+                                        window.location.reload();
+                                    }}
+                                >
+                                    <Button
+                                        variant="contained"
+                                        className="AuthBoard-like-btn-area"
                                         style={{
-                                            width: "40px",
-                                            height: "40px",
+                                            color: "black",
+                                            background: "#ffffff",
+                                            fontWeight: "600",
                                         }}
-                                    />
-                                </Avatar>
-                            }
-                            title={rowData.postedBy}
-                            titleTypographyProps={{ variant: "h5" }}
-                        />
-                        <CardMedia
-                            component="img"
-                            height="500"
-                            image={rowData.photo}
-                        />
-                        <CardContent>
-                            <Typography variant="h6" color="text.secondary">
-                                {rowData.authBody}
-                            </Typography>
-                        </CardContent>
-
-                        <CardActions disableSpacing>
-                            <div
-                                className="AuthBoard-like-btn"
-                                onClick={() => {
-                                    likePost(rowData._id);
-                                    window.location.reload();
-                                }}
-                                // onClick={onThumbUpHandler}
-                            >
-                                <Button
-                                    variant="contained"
-                                    className="AuthBoard-like-btn-area"
-                                    style={{
-                                        color: "black",
-                                        background: "#ffffff",
-                                        fontWeight: "600",
+                                    >
+                                        인증 {rowData.likes.length}
+                                    </Button>
+                                </div>
+                                <div
+                                    className="AuthBoard-dislike-btn"
+                                    onClick={() => {
+                                        dislikePost(rowData._id);
+                                        window.location.reload();
                                     }}
                                 >
-                                    인증 {rowData.likes.length}
-                                </Button>
-                            </div>
-                            <div
-                                className="AuthBoard-dislike-btn"
-                                onClick={() => {
-                                    dislikePost(rowData._id);
-                                    window.location.reload();
-                                }}
-                                // onClick={onThumbUpHandler}
-                            >
-                                <Button
-                                    variant="contained"
-                                    className="AuthBoard-like-btn-area"
-                                    style={{
-                                        background: "#e80000",
-                                        fontWeight: "600",
-                                    }}
-                                >
-                                    인증 미흡 {rowData.dislikes.length}
-                                </Button>
-                            </div>
-
-                            <div
-                                className="AuthBoardFeedsId"
-                                style={{ display: "none" }}
-                            >
-                                {rowData._id}
-                            </div>
-                        </CardActions>
-                    </Card>
-                ))
+                                    <Button
+                                        variant="contained"
+                                        className="AuthBoard-like-btn-area"
+                                        style={{
+                                            background: "#e80000",
+                                            fontWeight: "600",
+                                        }}
+                                    >
+                                        인증 미흡 {rowData.dislikes.length}
+                                    </Button>
+                                </div>
+                            </CardActions>
+                            <AuthBoardComments authBoards={rowData._id} />
+                        </Card>
+                    ))
             ) : (
                 <div style={{ textAlign: "center" }}>
                     <h1>Loading...</h1>
