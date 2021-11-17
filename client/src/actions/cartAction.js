@@ -1,10 +1,5 @@
 import * as actionTypes from "../redux/constants/cartConstants";
 import axios from "axios";
-// //일단 넣음
-// const User = require("../../models/User");
-// // const User = require("../../../server/models/User");
-// const express = require("express");
-// const router = express.Router();
 
 // export const addToCart = (id, qty, user) => async (dispatch, getState) => {
 export const addToCart = (id, qty) => async (dispatch, getState) => {

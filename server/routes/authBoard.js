@@ -6,6 +6,7 @@ const multer = require('multer');
 const path = require('path');
 
 const { auth } = require('../middleware/auth');
+const { findOneAndDelete } = require('../models/AuthBoard');
 const router = express.Router();
 // 추후 다시 변경
 router.use(auth);
@@ -48,6 +49,15 @@ router.get('/', async (req, res) => {
             .populate('likes');
         // console.log(authBoards);
         // console.log("find : ", authBoards);
+        for (let i = 0; i < authBoards.length; i++) {
+            if (authBoards[i].likes.length < 5) {
+                console.log('likes가 5보다 작아요!');
+            }
+            if (authBoards[i].dislikes.length < 5) {
+                console.log('dislikes가 5보다 작아요!');
+            }
+        }
+        // console.log(authBoards);
 
         res.json({ authBoards });
     } catch (error) {
@@ -97,25 +107,82 @@ router.put('/like', async (req, res) => {
         const findPost = await AuthBoard.findOne({
             _id: req.body.postId,
         }).populate('likes');
+        console.log(findPost.likes.length, '개의 likes가 있음');
 
-        for (let i = 0; i < findPost.likes.length; i++) {
-            console.log(i, ' : ', findPost.likes[i]._id);
-            if (findPost.likes[i].nickname === user.nickname) {
-                await AuthBoard.updateOne(
-                    { _id: findPost._id },
-                    { $pop: { likes: user._id } }
-                );
-            } else {
-                console.log('asdf');
-                await AuthBoard.updateOne(
-                    { _id: findPost._id },
-                    { $push: { likes: user._id } }
-                );
+        if (findPost.likes.length == 0) {
+            await AuthBoard.updateOne(
+                { _id: findPost._id },
+                { $push: { likes: user._id } }
+            )
+                .then(console.log('좋아요 등록 완료'))
+                .catch((err) => console.error('등록 실패', err));
+        } else {
+            for (let i = 0; i < findPost.likes.length; i++) {
+                if (findPost.likes[i].nickname === user.nickname) {
+                    await AuthBoard.updateOne(
+                        { _id: findPost._id },
+                        { $pull: { likes: { $in: [user._id] } } }
+                    )
+                        .then(console.log('좋아요 취소 완료'))
+                        .cathch((err) => console.error(err));
+                }
             }
+            await AuthBoard.updateOne(
+                { _id: findPost._id },
+                { $push: { likes: user._id } }
+            )
+                .then(console.log('좋아요 등록 완료'))
+                .catch((err) => console.error('등록 실패', err));
         }
+
+        const AuthBoardDB = await AuthBoard.find({});
+
+        return res.status(200).json({ AuthBoardDB });
     } catch (error) {}
 
-    res.status(200).json([{ asdf: 'asdf' }]);
+    res.status(200).json([{}]);
+});
+
+router.put('/dislike', async (req, res) => {
+    try {
+        const user = res.locals.user;
+        const findPost = await AuthBoard.findOne({
+            _id: req.body.postId,
+        }).populate('dislikes');
+        console.log(findPost.dislikes.length, '개의 dislikes가 있음');
+
+        if (findPost.dislikes.length == 0) {
+            await AuthBoard.updateOne(
+                { _id: findPost._id },
+                { $push: { dislikes: user._id } }
+            )
+                .then(console.log('싫어요 등록 완료'))
+                .catch((err) => console.error('등록 실패', err));
+        } else {
+            for (let i = 0; i < findPost.dislikes.length; i++) {
+                if (findPost.dislikes[i].nickname === user.nickname) {
+                    await AuthBoard.updateOne(
+                        { _id: findPost._id },
+                        { $pull: { dislikes: { $in: [user._id] } } }
+                    )
+                        .then(console.log('싫어요 취소 완료'))
+                        .cathch((err) => console.error(err));
+                }
+            }
+            await AuthBoard.updateOne(
+                { _id: findPost._id },
+                { $push: { dislikes: user._id } }
+            )
+                .then(console.log('싫어요 등록 완료'))
+                .catch((err) => console.error('등록 실패', err));
+        }
+
+        const AuthBoardDB = await AuthBoard.find({});
+
+        return res.status(200).json({ AuthBoardDB });
+    } catch (error) {}
+
+    res.status(200).json([{}]);
 });
 
 router.get('/:id', (req, res) => {
