@@ -27,10 +27,10 @@ export default function Aboutme() {
         <AboutCards place={places[1]} checked={checked} />
       </div>
       <br />
-      <div className={classes.root} id="place-to-visit">
+      <div className={classes.root} id="place-to-point">
         <AboutCards place={places[2]} checked={checked} />
       </div>
-      <div className={classes.root} id="place-to-visit">
+      <div className={classes.root} id="place-to-coin">
         <AboutCards place={places[3]} checked={checked} />
       </div>
     </>
