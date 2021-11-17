@@ -14,6 +14,7 @@ const cookieParser = require("cookie-parser");
 
 const userRouter = require("./routes/users");
 const authBoardRouter = require("./routes/authBoard");
+const BoardRouter = require("./routes/Board");
 const productRoutes = require("./routes/productRoutes");
 const connectDB = require("./config/db");
 
@@ -44,6 +45,7 @@ app.use("/api/products", productRoutes);
 
 app.use("/api/users", userRouter);
 app.use("/api/authboard", authBoardRouter);
+app.use("/api/Board", BoardRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at ${port}`);
