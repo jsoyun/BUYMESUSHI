@@ -45,7 +45,7 @@ app.use("/api/products", productRoutes);
 
 app.use("/api/users", userRouter);
 app.use("/api/authboard", authBoardRouter);
-app.use("/api/Board", BoardRouter);
+app.use("/api/board", BoardRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at ${port}`);

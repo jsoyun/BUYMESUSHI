@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./Board.css";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
+import { withRouter, Router, Route, Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { dateFormat } from "../../../services/date-format";
-import { BoardError } from "../../../redux/constants/BoardError";
 import { errorHandler } from "../../../services/error-handler";
-import BoardBtn from "../BoardPage/BoardBtn";
+import Button from '@mui/material/Button';
+import Modal from "react-modal";
+import BoardDetail from './BoardDetail';
+import BoardWrite from './BoardWrite';
+// import BoardWrite from './BoardWrite';
 
-function ArticleList() {
-  // const [articleList, setArticleList] = useState([]);
+function Board() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const toBoardWrite = () => {
-    // console.log('글 작성 클릭');
-    window.location.href = '/BoardWrite';
+    console.log('제출 클릭');
+    window.location.href = '/boardwrite';
   };
   useEffect(() => {
     axios
       .get(
-        `${process.env.REACT_APP_REQUEST_URL}/api/article/getlist?start=1&end=100`
+        ("/api/board")
       )
       .then((response) => {
         errorHandler(response.data.data);
@@ -25,6 +27,9 @@ function ArticleList() {
       });
   }, []);
   return (
+    // <Router>
+    //   <Switch>
+    //     <Route path="/Board">
     <div className="board">
       <div className="header">
         <div className="wrapper">
@@ -76,16 +81,24 @@ function ArticleList() {
                   <p>건전한 대화 부탁드립니다.</p>
                 </td>
                 <td>관리자 일동</td>
-                <td className="views">33</td>
+                <td className="views">33,612</td>
               </tr>
               {/* </form> */}
             </tbody>
 
           </table>
 
+          <br />
           {/* boardwrite로 페이지를 넘겨주는 버튼 */}
           <div>
-            <button className="boardwrite" onClick={toBoardWrite}>글 작성</button>
+            <Button variant="contained" size="large" onClick={() => setModalIsOpen(true)}>글쓰기</Button>
+            <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+              <div>
+                <BoardWrite />
+                {/* <BoardDetail /> */}
+              </div>
+              <button onClick={() => setModalIsOpen(false)}>창 닫기</button>
+            </Modal>
           </div>
           {/* 글 10개당 page 넘어가는 페이징 필요  */}
           {/* <div className="pages">
@@ -98,7 +111,13 @@ function ArticleList() {
         </div>
       </div>
     </div>
+    //     </Route>
+    //   </Switch>
+    //   <Route path="/BoardWrtie">
+    //     <BoardWrite />
+    //   </Route>
+    // </Router>
   );
 }
 
-export default ArticleList;
+export default Board;

@@ -4,6 +4,7 @@ const { ObjectId } = mongoose.Schema.Types;
 const BoardSchema = mongoose.Schema({
   title: { type: String, required: true },
   body: { type: String, required: true },
+  img: { type: String },
   // comments: [
   //   {
   //     text: { type: String },

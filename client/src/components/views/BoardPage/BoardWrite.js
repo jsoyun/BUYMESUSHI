@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./BoardWrite.css";
+// import { errorHandler } from "../../../services/error-handler";
+import Modal from "react-modal";
 
 
 // 이미지 업로드
 if (document.getElementById('img')) {
-  document.getElementById('img').addEventListener('change', function (e) {
+  document.getElementById('img').addEventListener('imgupload', function (e) {
     const formData = new FormData();
     console.log(this, this.files);
     formData.append('img', this.files[0]);
-    axios.post('/post/img', formData)
+    axios.post('/write/img', formData)
       .then((res) => {
         document.getElementById('img-url').value = res.data.url;
         document.getElementById('img-preview').src = res.data.url;
@@ -33,40 +35,86 @@ if (document.getElementById('img')) {
 //   $(this).siblings("label").find(".length > span").text(len);
 // });
 
-
-
-
 function BoardWrite() {
+  const [Title, setTitle] = useState("");
+  const [Body, setBody] = useState("");
+  const [Img, setImg] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [fileUrl, setFileUrl] = useState(null);
+
+  const onTitleHandler = (event) => {
+    setTitle(event.currentTarget.value);
+  };
+  const onBodyHandler = (event) => {
+    setBody(event.currentTarget.value);
+  };
+
+  const onImgHandler = (event) => {
+    const imageFile = event.target.files[0];
+    const imageUrl = URL.createObjectURL(imageFile);
+
+    setFileUrl(imageUrl);
+    setImg(event.currentTarget.value);
+  };
+
+  const onSubmitHandler = (event) => {
+    if (Title === "") {
+      event.preventDefault();
+      return alert("제목이나 내용이 빈 채로 게시할 수 없습니다.");
+    } else if (Body === "") {
+      event.preventDefault();
+      return alert("제목이나 내용이 빈 채로 게시할 수 없습니다.");
+    }
+    let form = document.getElementById("comment-form");
+    let formData = new FormData(form);
+
+    axios.post("/api/board/write", formData).then((response) => {
+      console.log(response.data);
+      console.log("글쓰기 성공");
+    });
+  };
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       ("/api/boardwrite")
+  //     )
+  //     .then((response) => {
+  //       errorHandler(response.data.data);
+  //       // setArticleList(response.data.data);
+  //     });
+  // }, []);
+
   return (
     <div>
-      <form id="comment-form" action="/boardwrite" method="POST">
-        <div class="form">
-          <div class="wrapper">
-            <div class="header">
-              <span class="title1">게시글 작성</span>
-              <span class="desc">비방/심한 욕설은 제재의 대상이 될 수 있습니다.</span>
+      <form id="comment-form" onSubmit={onSubmitHandler}
+      // encType="multipart/form-data"
+      >
+        <div className="form">
+          <div className="wrapper">
+            <div className="header">
+              <span className="title1">게시글 작성</span>
             </div>
-            <div class="content">
-              <div class="half">
-                <div class="title">
-                  <label for="title">제 목 <span class="point">*</span></label>
-                  <input id="title" type="text" name="title" placeholder="제목은 필수입력 사항입니다." />
+            <div className="content">
+              <div className="half">
+                <div className="title">
+                  <label htmlFor="title">제 목 <span className="point">*</span></label>
+                  <input id="title" type="text" name="title" onChange={onTitleHandler} value={Title} placeholder="제목은 필수입력 사항입니다." />
                 </div>
-                <div class="upload_photo">
+                <div className="upload_photo">
                   <input id="img-url" type="hidden" style={{ display: "none" }} name="url" />
-                  <label id="img-label1" for="img">사진 업로드</label>
+                  <label id="img-label1" htmlFor="img">사진 업로드</label>
                   <input id="img" type="file" accept="image/*" />
                 </div>
-                <div class="action">
-                  <button class="btn_jc" type="submit"> 제출</button>
+                <div className="action">
+                  <button className="btn_jc" type="submit" onClick={() => setModalIsOpen(false)}>제 출</button>
                 </div>
               </div>
-              <div class="half">
-                <div class="content">
-                  <label for="comment">
+              <div className="half">
+                <div className="content">
+                  <label htmlFor="comment">
                     <span>내 용</span>
                   </label>
-                  <textarea id="comment" name="comment" placeholder="자유롭게 글을 작성해주세요"></textarea>
+                  <textarea id="comment" name="comment" onChange={onBodyHandler} value={Body} placeholder="자유롭게 글을 작성해주세요"></textarea>
                 </div>
               </div>
             </div>
@@ -76,6 +124,6 @@ function BoardWrite() {
     </div>
 
   );
-}
+};
 
 export default BoardWrite;

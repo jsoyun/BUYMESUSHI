@@ -5,7 +5,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require('fs');
 const { auth } = require("../middleware/auth");
-
+const mongoose = require('mongoose');
 
 const router = express.Router();
 
@@ -15,20 +15,20 @@ router.use((req, res, next) => {
   next();
 });
 
-//게시글 전체 데이터 가져와서 불러오기
+//게시글 전체 데이터 가져와서 불러오기(Board)
 router.get('/', async (req, res, next) => {
   try {
-    const posts = await Comment.findAll({
+    const posts = await Board.find({
       include: {
         model: User,
         attributes: ['id', 'nick'],
       },
       order: [['id', 'DESC']],
     });
-    res.render('board', {
-      title: '3e',
-      comments: posts,
-    });
+    // res.render('board', {
+    //   title: 'board',
+    //   comments: posts,
+    // });
 
   } catch (error) {
     console.error(error);
@@ -36,10 +36,10 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// 누른 그 해당글을 불러와야 함
+// 누른 그 해당글을 불러와야 함(BoardView)
 router.get('/:id', async (req, res, next) => {
   try {
-    const posts = await Comment.findOne({
+    const posts = await Board.findOne({
       //해당 게시글을 id값(unique)을 통해 불러오는 방법
       include: {
         model: User,
@@ -48,14 +48,14 @@ router.get('/:id', async (req, res, next) => {
       where: { id: req.params.id },
     });
     // //렌더링 되기 전 조회수 1 추가
-    // const update = await Comment.update(
+    // const update = await Board.update(
     //   {
     //   viewcount : ++posts.viewcount,
     // },
     // {where:{id : req.params.id}}
     // )
     res.render('boarddetail', {
-      title: '게시글 상세페이지 | 3e',
+      title: '게시글 상세페이지 | board',
       comments: posts,
     });
   } catch (error) {
@@ -74,25 +74,22 @@ try {
 // 
 router.get('/', async (req, res, next) => {
   try {
-    const posts = await Comment.findAll({
+    const posts = await Board.find({
       include: {
         model: User,
         attributes: ['id', 'email'],
       },
       order: [['createdAt', 'DESC']],
     });
-    res.render('boardwrite', {
-      title: '3e',
-      comments: posts,
-    });
+    // res.render('boardwrite', {
+    //   title: 'board',
+    //   comments: posts,
+    // });
   } catch (error) {
     console.error(error);
     next(error);
   }
 });
-
-
-
 // 이미지 업로드 
 const upload = multer({
   storage: multer.diskStorage({
@@ -108,11 +105,11 @@ const upload = multer({
 });
 
 // 게시글값 업로드
-router.post('/', async (req, res, next) => {
+router.post('/boardwrite', async (req, res, next) => {
   try {
     const identity = res.locals.user;
     console.log(req.user);
-    const comment = await Comment.create({
+    const comment = await Board.create({
       title: req.body.title,
       comment: req.body.comment,
       img: req.body.url,
@@ -139,7 +136,7 @@ router.post('/', upload2.none(), async (req, res, next) => {
   try {
     const identity = res.locals.user;
     console.log(req.user);
-    const post = await Comment.create({
+    const post = await Board.create({
 
       title: req.body.title,
       comment: req.body.comment,
@@ -174,7 +171,7 @@ router.post('/', upload2.none(), async (req, res, next) => {
 router.route("/:id/boardedit")
   .get(async (req, res, next) => {
     try {
-      const comment = await Comment.findOne({
+      const comment = await Board.findOne({
         include: {
           model: User,
           attributes: ['id', 'nick'],
@@ -189,7 +186,7 @@ router.route("/:id/boardedit")
   })
   .post(async (req, res, next) => {
     try {
-      const comment = await Comment.update(
+      const comment = await Board.update(
         {
           title: req.body.title,
           comment: req.body.comment,
@@ -210,7 +207,7 @@ router.route("/:id/boardedit")
 // 본인 게시글 삭제
 router.route('/:id/delete').get(async (req, res, next) => {
   try {
-    await Comment.destroy({
+    await Board.destroy({
       where: { id: req.params.id }
     });
     res.redirect('/board');
