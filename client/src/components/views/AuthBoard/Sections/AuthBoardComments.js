@@ -9,7 +9,7 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 
-export default function AuthBoardComments({ authBoards }) {
+export default function AuthBoardComments({ authBoards, commentsData }) {
     const user = useSelector((state) => state.user.userData);
     const [comments, setComments] = useState([]);
 
@@ -34,64 +34,67 @@ export default function AuthBoardComments({ authBoards }) {
         });
     };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await axios.get("/api/authboard");
-                // console.log(res.data.resultAuthBoards);
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const res = await axios.get("/api/authboard");
+    //             // console.log(res.data.resultAuthBoards);
 
-                const _Data = await res.data.resultAuthBoards.map(
-                    (rowData) => ({
-                        comment: rowData.comments,
-                        // _id: rowData._id,
-                        // authBody: rowData.authBody,
-                        // photo: rowData.photo,
-                        // postedBy: rowData.postedBy.nickname,
-                        // likes: rowData.likes,
-                        // dislikes: rowData.dislikes,
-                    })
-                );
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        fetchData();
-    }, []);
+    //             const _Data = await res.data.resultAuthBoards.map(
+    //                 (rowData) => ({
+    //                     comment: rowData.comments,
+    //                     // _id: rowData._id,
+    //                     // authBody: rowData.authBody,
+    //                     // photo: rowData.photo,
+    //                     // postedBy: rowData.postedBy.nickname,
+    //                     // likes: rowData.likes,
+    //                     // dislikes: rowData.dislikes,
+    //                 })
+    //             );
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, []);
 
     return (
-        <>
-            <List
-                sx={{
-                    width: "100%",
-                    maxWidth: 600,
-                    bgcolor: "background.paper",
-                }}
-            >
-                <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                        <Avatar
-                            alt="Remy Sharp"
-                            src="/static/images/avatar/1.jpg"
+        <React.Fragment>
+            {commentsData.map((rowData, index) => (
+                <List
+                    sx={{
+                        width: "100%",
+                        maxWidth: 600,
+                        bgcolor: "background.paper",
+                    }}
+                    key={index}
+                >
+                    <ListItem alignItems="flex-start">
+                        <ListItemAvatar>
+                            <Avatar
+                                alt="Remy Sharp"
+                                src="/static/images/avatar/1.jpg"
+                            />
+                        </ListItemAvatar>
+                        <ListItemText
+                            primary={
+                                <React.Fragment>
+                                    <Typography
+                                        sx={{ display: "inline" }}
+                                        component="span"
+                                        variant="body2"
+                                        color="text.primary"
+                                    >
+                                        {rowData.postedBy.nickname}
+                                    </Typography>
+                                </React.Fragment>
+                            }
+                            secondary={rowData.text}
                         />
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary={
-                            <React.Fragment>
-                                <Typography
-                                    sx={{ display: "inline" }}
-                                    component="span"
-                                    variant="body2"
-                                    color="text.primary"
-                                >
-                                    Ali Connors
-                                </Typography>
-                            </React.Fragment>
-                        }
-                        secondary="Brunch this weekend?"
-                    />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-            </List>
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                </List>
+            ))}
             <div>
                 <form onSubmit={onSubmitHandler} id="authboard_post">
                     <input
@@ -110,6 +113,6 @@ export default function AuthBoardComments({ authBoards }) {
                     <button type="submit">보내기</button>
                 </form>
             </div>
-        </>
+        </React.Fragment>
     );
 }

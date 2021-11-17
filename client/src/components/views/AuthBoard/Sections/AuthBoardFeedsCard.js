@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useSelector } from "react-redux";
 import AuthBoardComments from "./AuthBoardComments";
+import Link from "@mui/material/Link";
 
 export default function AuthBoardFeedsCard() {
     const user = useSelector((state) => state.user.userData);
@@ -21,6 +22,7 @@ export default function AuthBoardFeedsCard() {
             postedBy: "",
             likes: [],
             dislikes: [],
+            comments: [],
         },
     ]);
     const [lastIdx, setLastIdx] = useState(0);
@@ -40,6 +42,7 @@ export default function AuthBoardFeedsCard() {
                             postedBy: rowData.postedBy.nickname,
                             likes: rowData.likes,
                             dislikes: rowData.dislikes,
+                            comments: rowData.comments,
                         }
                     )
                 );
@@ -82,24 +85,32 @@ export default function AuthBoardFeedsCard() {
                     .filter((data) => data.postedBy !== user.nickname)
                     .map((rowData, index) => (
                         <Card sx={{ maxWidth: 600 }} key={index}>
-                            <CardHeader
-                                avatar={
-                                    <Avatar aria-label="user">
-                                        <img
-                                            src="img/authBoard/abc.jpg"
-                                            style={{
-                                                width: "40px",
-                                                height: "40px",
-                                            }}
-                                        />
-                                    </Avatar>
-                                }
-                                title={rowData.postedBy}
-                                titleTypographyProps={{ variant: "h5" }}
-                            />
+                            <Link
+                                href={`/profile/${rowData.postedBy}`}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "black",
+                                }}
+                            >
+                                <CardHeader
+                                    avatar={
+                                        <Avatar aria-label="user">
+                                            <img
+                                                src="img/authBoard/abc.jpg"
+                                                style={{
+                                                    width: "40px",
+                                                    height: "40px",
+                                                }}
+                                            />
+                                        </Avatar>
+                                    }
+                                    title={rowData.postedBy}
+                                    titleTypographyProps={{ variant: "h5" }}
+                                />
+                            </Link>
                             <CardMedia
                                 component="img"
-                                height="500"
+                                height="400"
                                 image={rowData.photo}
                             />
                             <CardContent>
@@ -146,7 +157,10 @@ export default function AuthBoardFeedsCard() {
                                     </Button>
                                 </div>
                             </CardActions>
-                            <AuthBoardComments authBoards={rowData._id} />
+                            <AuthBoardComments
+                                authBoards={rowData._id}
+                                commentsData={rowData.comments}
+                            />
                         </Card>
                     ))
             ) : (

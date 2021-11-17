@@ -16,6 +16,7 @@ const userRouter = require("./routes/users");
 const authBoardRouter = require("./routes/authBoard");
 const BoardRouter = require("./routes/Board");
 const productRoutes = require("./routes/productRoutes");
+const profileRouter = require("./routes/profile");
 const connectDB = require("./config/db");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,12 +28,12 @@ const { auth } = require("./middleware/auth");
 const importDate = require("./routes/seederScript");
 
 const connectAndImport = async () => {
-  try {
-    await connectDB();
-    await importDate();
-  } catch (err) {
-    console.log(err);
-  }
+    try {
+        await connectDB();
+        await importDate();
+    } catch (err) {
+        console.log(err);
+    }
 };
 
 connectAndImport();
@@ -47,6 +48,11 @@ app.use("/api/users", userRouter);
 app.use("/api/authboard", authBoardRouter);
 app.use("/api/Board", BoardRouter);
 
+/////////////////
+//현석
+app.use("/api/profile", profileRouter);
+/////////////////
+
 app.listen(port, () => {
-  console.log(`Example app listening at ${port}`);
+    console.log(`Example app listening at ${port}`);
 });

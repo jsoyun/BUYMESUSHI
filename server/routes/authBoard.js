@@ -6,7 +6,6 @@ const multer = require("multer");
 const path = require("path");
 
 const { auth } = require("../middleware/auth");
-const { findOneAndDelete } = require("../models/AuthBoard");
 const router = express.Router();
 // 추후 다시 변경
 router.use(auth);
@@ -79,8 +78,8 @@ router.get("/", async (req, res) => {
             .populate("likes")
             .populate("comments.postedBy");
 
-        console.log(resultAuthBoards[0].postedBy);
-        res.json({ resultAuthBoards });
+        //console.log(resultAuthBoards[0].comments[0].text);
+        return res.json({ resultAuthBoards });
     } catch (error) {
         console.log(error);
     }

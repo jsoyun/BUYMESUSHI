@@ -19,49 +19,71 @@ import ProductScreen from "./components/views/ShoppingPage/ProductScreen";
 //쇼핑목록 안 components
 import AuthBoard from "./components/views/AuthBoard/AuthBoard";
 import { HomeWorkSharp } from "@material-ui/icons";
+import Profile from "./components/views/ProfilePage/Profile";
 // 추후 삭제
 
 function App() {
-  return (
-    <Router>
-      <NavBar />
-      {/* <BackDrop /> */}
-      <div>
-        <Switch>
-          <Route exact path="/" component={Auth(LandingPage, null)} />
-          <Route exact path="/login" component={Auth(LoginPage, false)} />
-          <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/about" component={Auth(About, null)} />
+    return (
+        <Router>
+            <NavBar />
+            {/* <BackDrop /> */}
+            <div>
+                <Switch>
+                    <Route exact path="/" component={Auth(LandingPage, null)} />
+                    <Route
+                        exact
+                        path="/login"
+                        component={Auth(LoginPage, false)}
+                    />
+                    <Route
+                        exact
+                        path="/register"
+                        component={Auth(RegisterPage, false)}
+                    />
+                    <Route exact path="/about" component={Auth(About, null)} />
 
-          {/* usEarth 페이지 추후 null -> true로 변경 */}
-          <Route exact path="/authboard" component={Auth(AuthBoard, true)} />
-          {/* <Route exact path="/shop" component={Auth(About, null)} /> */}
-          <Route
-            exact
-            // path="/products"
-            path="/product"
-            component={Auth(HomeScreen, true)}
-          />
-          <Route
-            exact
-            // path="/products/:id"
-            path="/product/:id"
-            component={Auth(ProductScreen, true)}
-          />
-          <Route exact path="/MyPage" component={Auth(MyPage, true)} />
+                    {/* usEarth 페이지 추후 null -> true로 변경 */}
+                    <Route
+                        exact
+                        path="/authboard"
+                        component={Auth(AuthBoard, true)}
+                    />
+                    {/* <Route exact path="/shop" component={Auth(About, null)} /> */}
+                    <Route
+                        exact
+                        // path="/products"
+                        path="/product"
+                        component={Auth(HomeScreen, true)}
+                    />
+                    <Route
+                        exact
+                        // path="/products/:id"
+                        path="/product/:id"
+                        component={Auth(ProductScreen, true)}
+                    />
+                    <Route
+                        exact
+                        path="/MyPage"
+                        component={Auth(MyPage, true)}
+                    />
+                    <Route
+                        exact
+                        path="/profile/:id"
+                        component={Auth(Profile, true)}
+                    />
 
-          <Route exact path="/board" component={Auth(Board, null)} />
-          {/* <Route exact path="/write" component={Auth(WriteBoard, null)} /> */}
-          <Route
-            path="/article/:articleId"
-            // render={() => <Article component={Auth(MyPage, null)} />}
-            exact
-          />
-        </Switch>
-      </div>
-      <Footer />
-    </Router>
-  );
+                    <Route exact path="/board" component={Auth(Board, null)} />
+                    {/* <Route exact path="/write" component={Auth(WriteBoard, null)} /> */}
+                    <Route
+                        path="/article/:articleId"
+                        // render={() => <Article component={Auth(MyPage, null)} />}
+                        exact
+                    />
+                </Switch>
+            </div>
+            <Footer />
+        </Router>
+    );
 }
 
 export default observer(App);
