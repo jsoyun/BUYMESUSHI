@@ -27,7 +27,7 @@ const ProductScreen = ({ match, history }) => {
     }
   }, [dispatch, match, product]);
 
-  //
+  //유저값도 같이 보내면 되나 해서 해본거
   const user = useSelector((state) => state.user);
   console.log(user);
 
@@ -35,8 +35,8 @@ const ProductScreen = ({ match, history }) => {
     // dispatch(addToCart(product._id, qty, user.userData._id));
     dispatch(addToCart(product._id, qty));
     history.push(`/MyPage`);
-    //유저에 프로덕트값넣기도 하기
-    //
+
+    //장바구니 저장할때 db저장도 되게 하면 좋을텐데
   };
 
   return (

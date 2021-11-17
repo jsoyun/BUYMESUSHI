@@ -22,6 +22,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  //이거 안됨?
+  qty: {
+    type: Number,
+  },
   //유저 연결
   // createdBy: { type: ObjectId, ref: "User" },
 });

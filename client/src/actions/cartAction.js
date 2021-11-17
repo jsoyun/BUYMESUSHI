@@ -1,13 +1,13 @@
 import * as actionTypes from "../redux/constants/cartConstants";
 import axios from "axios";
+//추가함
+
+import { useSelector } from "react-redux";
 
 // export const addToCart = (id, qty, user) => async (dispatch, getState) => {
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/products/${id}`);
-
-  //post보내는거 어떻게 하지..보냈을때 res 응답으로 받아야함
-  // const response = await axios.post(`/api/products/${id}`, { id, qty });
-  // console.log(response, "이게 맞나....");
+  const qty1 = qty;
 
   dispatch({
     type: actionTypes.ADD_TO_CART,
@@ -24,8 +24,42 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
     },
   });
 
+  //기존 data에 수량까지 추가해주기
+  const addQty = { ...data, qty1 };
+
+  //post로 서버로 전송. 입력할 데이터 addQty
+  const inserCartData = () => {
+    axios.post(`/api/products/${id}`, addQty);
+  };
+  inserCartData();
+
+  // const User = useSelector((state) => state.user);
+  // console.log(User);
+
+  // const inserCartData = () => {
+  //   // axios.post("/api/product/:id", { data }).then((response) => {
+  //   //   console.log(data, "여기 들어올까??");
+
+  //   //   // User.insertMany(data);
+  //   //   // console.log(User.insertMany(data), "확인이될까유...");
+  //   // });
+  //   axios.post(`/api/MyPage`, { data });
+
+  //   //{
+  //   console.log(data, "여기 들어올까??");
+
+  //   // User.insertMany(data);
+  //   // console.log(User.insertMany(data), "확인이될까유...");
+  //   // });
+  // };
+
+  // inserCartData();
+
+  ///
+
   localStorage.setItem("cart", JSON.stringify(getState().cart.cartItems));
   console.log(localStorage.getItem("cart"));
+  // console.log(data, "넌 뭘까 카트액션에서!!!!!!");
   // //이게 맞나..
 
   // // await axios.post({ data });
