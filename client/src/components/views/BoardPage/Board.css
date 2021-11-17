@@ -1,41 +1,182 @@
-.article-table {
+body *,
+body *:before,
+body *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body .wrapper {
+  width: 1340px;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 15px;
+}
+
+body .clearfix:after {
+  content: " ";
+  clear: both;
+  display: table;
+}
+.board {
+  margin-bottom: 30px;
+}
+
+.board .header {
+  margin-bottom: 30px;
   text-align: center;
+}
+
+.board .header .title {
+  margin-top: 25px;
+  font-size: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  color: #1259a7;
+}
+
+.board .header .desc {
+  margin-top: 10px;
+}
+
+.board .article table {
   width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
 }
-th {
-  font-size: 1.2rem;
-  background-color: rgb(238, 236, 236);
-  padding: 4px;
+
+.board .article table th,
+.board .article table td {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  overflow: hidden;
 }
-tbody tr {
-  border-bottom: 1px solid rgb(185, 185, 185);
+
+.board .article table th {
+  background: #f7f7f7;
 }
-td {
-  padding: 4px;
+
+.board .article table td.title {
+  text-align: left;
 }
-.h-article-id {
-  width: 10%;
+
+.board .article table td a {
+  cursor: pointer;
 }
-.h-article-title {
-  width: 50%;
+
+.board .article table td.title span {
+  display: inline-block;
+  padding: 3px 5px;
+  color: #fff;
+  font-size: 10px;
+  margin-left: 3px;
 }
-.h-article-views {
-  width: 10%;
+
+.board .article table td a:hover {
+  text-decoration: underline;
 }
-.article-title {
-  text-align: left !important;
+
+.board .article .search {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: right;
 }
-@media only screen and (max-width: 768px) {
-  thead {
-    border-bottom: 3px solid rgb(185, 185, 185);
-  }
-  thead th,
-  .article-id {
+
+.board .article .search .count {
+  float: left;
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+.board .article .search .bundle {
+  width: 370px;
+  margin-left: auto;
+}
+
+.board .article .search .bundle select {
+  height: 42px;
+  border: 1px solid #ddd;
+  vertical-align: middle;
+  border-radius: 0;
+  padding: 0 5px;
+  float: left;
+  width: 35%;
+}
+
+.board .article .search .bundle input {
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  border-left: 0;
+  border-radius: 0;
+  height: 42px;
+  padding: 0 10px;
+  float: left;
+  width: 53.5%;
+}
+
+.board .article .search button {
+  border: 1px solid #1259a7;
+  background: #1259a7;
+  vertical-align: middle;
+  color: #fff;
+  height: 42px;
+  cursor: pointer;
+  padding: 0 13px;
+  float: left;
+  width: 11.5%;
+}
+
+.board .article .pages {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.board .article .pages ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.board .article .pages ul > li {
+  display: inline-block;
+}
+
+.board .article .pages ul > li > a {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 13px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+}
+
+.board .article .pages ul > li > a:hover {
+  background: #eee;
+}
+
+.board .article .pages ul > li.active > a {
+  background: #1259a7;
+  border-color: #1259a7;
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .board .article table .check,
+  .board .article table .num,
+  .board .article table .date,
+  .board .article table .views {
     display: none;
   }
-  .article-title,
-  .article-writer,
-  .article-views {
-    display: flex;
+
+  .board .article .search .count {
+    display: none;
+  }
+
+  .board .article .search .bundle {
+    width: 100%;
   }
 }
