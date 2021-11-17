@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
+//
 
 //Actions
 // import { getProductDetails } from "../../../actions/productActions";
 import { getProductDetails } from "../../../actions/productActions";
 import { addToCart } from "../../../actions/cartAction";
-// import { useParams } from "react-router";
 
 const ProductScreen = ({ match, history }) => {
   // const params = useParams();
@@ -21,27 +21,22 @@ const ProductScreen = ({ match, history }) => {
   const productDetails = useSelector((state) => state.getProductDetails);
   const { loading, error, product } = productDetails;
 
-  // useEffect(() => {
-  //   //이부분이 뭔지 알고 문제 찾기
-  //   if (product && params.id !== product._id) {
-  //     console.log(product.id);
-
-  //     dispatch(getProductDetails(params.id), "ooooooooo");
-  //   }
-  // }, [dispatch, product]);
-
-  // const productDetails = useSelector((state) => state.getProductDetails);
-  // const { loading, error, products } = productDetails;
-
   useEffect(() => {
     if (product && match.params.id !== product._id) {
       dispatch(getProductDetails(match.params.id));
     }
   }, [dispatch, match, product]);
 
+  //
+  const user = useSelector((state) => state.user);
+  console.log(user);
+
   const addToCartHandler = () => {
+    // dispatch(addToCart(product._id, qty, user.userData._id));
     dispatch(addToCart(product._id, qty));
     history.push(`/MyPage`);
+    //유저에 프로덕트값넣기도 하기
+    //
   };
 
   return (
@@ -78,10 +73,6 @@ const ProductScreen = ({ match, history }) => {
             <p>
               수량
               <select value={qty} onChange={(e) => setQty(e.target.value)}>
-                {/* <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option> */}
                 {[...Array(product.countInStock).keys()].map((x) => (
                   <option key={x + 1} value={x + 1}>
                     {x + 1}

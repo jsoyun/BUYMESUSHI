@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+// const { ObjectId } = mongoose.Schema.Types;
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -21,6 +22,8 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  //유저 연결
+  // createdBy: { type: ObjectId, ref: "User" },
 });
 
 const Product = mongoose.model("product", productSchema);
