@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Aboutme from "./Aboutme";
-import Aboutpoint from "./Aboutpoint";
-import Aboutget from "./Aboutget";
-import Aboutuse from "./Aboutuse";
-import Aboutcoin from "./Aboutcoin";
 import { Carousel } from "react-scroll-slider";
 import { makeStyles } from "@material-ui/core/styles";
 import { CssBaseline } from "@material-ui/core";
@@ -64,10 +60,6 @@ export default function About() {
         </Collapse>
 
         <Aboutme />
-        {/* <Aboutpoint />
-        <Aboutget />
-        <Aboutuse />
-        <Aboutcoin /> */}
       </div>
     </Carousel>
   );

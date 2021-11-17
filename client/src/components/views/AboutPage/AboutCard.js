@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImageCard({ place, checked }) {
+export default function AboutCard({ place, checked }) {
   const classes = useStyles();
 
   return (

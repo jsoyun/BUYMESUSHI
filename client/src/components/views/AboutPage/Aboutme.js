@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import ImageCard from "./Aboutpoint";
+import AboutCard from "./AboutCard";
 import datas from "../../views/AboutPage/data";
 import useWindowPosition from "../hook/useWindowPosition";
 
@@ -21,8 +21,8 @@ export default function () {
   const checked = useWindowPosition("header");
   return (
     <div className={classes.root} id="place-to-visit">
-      <ImageCard data={datas[1]} checked={checked} />
-      <ImageCard data={datas[0]} checked={checked} />
+      <AboutCard data={datas[1]} checked={checked} />
+      <AboutCard data={datas[0]} checked={checked} />
     </div>
   );
 }
