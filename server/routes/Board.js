@@ -21,29 +21,37 @@ router.get('/', async (req, res, next) => {
     const posts = await Board.find({
       include: {
         model: User,
-        attributes: ['id', 'nick'],
+        attributes: ['id', 'nickname'],
       },
       order: [['id', 'DESC']],
     });
-    // res.render('board', {
-    //   title: 'board',
-    //   comments: posts,
-    // });
-
+    res.render('board');
   } catch (error) {
     console.error(error);
     next(error);
   }
 });
 
+// router.get("/", async (req, res) => {
+//   try {
+//     const user = res.locals.user;
+//     const Boards = await Board.find({})
+//       .populate("createdAt");
+//     console.log(Boards);
+//     res.json({ Boards });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+
 // 누른 그 해당글을 불러와야 함(BoardView)
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', async (req, res) => {
   try {
     const posts = await Board.findOne({
       //해당 게시글을 id값(unique)을 통해 불러오는 방법
       include: {
         model: User,
-        attributes: ['id', 'nick'],
+        attributes: ['id', 'nickname'],
       },
       where: { id: req.params.id },
     });
@@ -60,7 +68,7 @@ router.get('/:id', async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    next(error);
+    // next(error);
   }
 });
 
@@ -72,25 +80,23 @@ try {
 }
 
 // 
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
   try {
     const posts = await Board.find({
       include: {
         model: User,
-        attributes: ['id', 'email'],
+        attributes: ['id', 'nickname'],
       },
       order: [['createdAt', 'DESC']],
     });
-    // res.render('boardwrite', {
-    //   title: 'board',
-    //   comments: posts,
-    // });
+    res.render('boardwrite');
   } catch (error) {
     console.error(error);
-    next(error);
+    // next(error);
   }
 });
-// 이미지 업로드 
+
+// 이미지 업로드를 위한 upload라는 상수에 multer 메서드 할당
 const upload = multer({
   storage: multer.diskStorage({
     destination(req, file, cb) {
@@ -105,22 +111,22 @@ const upload = multer({
 });
 
 // 게시글값 업로드
-router.post('/boardwrite', async (req, res, next) => {
+router.post('/write', async (req, res) => {
   try {
     const identity = res.locals.user;
     console.log(req.user);
     const comment = await Board.create({
       title: req.body.title,
-      comment: req.body.comment,
+      body: req.body.body,
       img: req.body.url,
-      viewcount: req.body.viewcount,
-      UserId: identity.id,
+      // viewcount: req.body.viewcount,
+      // UserId: identity.id,
 
     });
     res.redirect('/board');
   } catch (err) {
     console.error(err);
-    next(err);
+    // next(err);
   }
 });
 

@@ -86,7 +86,9 @@ function BoardWrite() {
 
   return (
     <div>
-      <form id="comment-form" onSubmit={onSubmitHandler}
+      <form id="comment-form"
+        // action="/board/write" method="POST"
+        onSubmit={onSubmitHandler}
       // encType="multipart/form-data"
       >
         <div className="form">
