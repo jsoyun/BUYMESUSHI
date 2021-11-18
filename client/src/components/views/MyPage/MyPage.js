@@ -13,6 +13,11 @@ import CartItem from '../ShoppingPage/ShopComponents/CartItem';
 import { addToCart, removeFromCart } from '../../../actions/cartAction';
 import axios from 'axios';
 
+//////////////////
+//현석
+import MyPageAuth from './Sections/MyPageAuth';
+////////////////
+
 const MyPage = () => {
     //   console.log("로컬 ", localStorage.getItem("cart"));
     const dispatch = useDispatch();
@@ -66,7 +71,12 @@ const MyPage = () => {
     return (
         <div className="MyPage">
             마이페이지야
-            <div className="AuthBoard">인증페이지 부분</div>
+            <div className="AuthBoard">
+                {/* /////////////////////////////// */}
+                {/* 현석 */}
+                <MyPageAuth />
+                {/* /////////////////////////////// */}
+            </div>
             <div className="cartscreen">
                 <div className="cartscreen_left">
                     <div className="cartscreen_right">

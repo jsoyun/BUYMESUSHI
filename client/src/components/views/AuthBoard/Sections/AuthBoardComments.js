@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+import { useSelector } from 'react-redux';
+import Link from '@mui/material/Link';
 
 export default function AuthBoardComments({ authBoards, commentsData }) {
     const user = useSelector((state) => state.user.userData);
@@ -18,9 +19,9 @@ export default function AuthBoardComments({ authBoards, commentsData }) {
     };
 
     const onSubmitHandler = (event) => {
-        if (comments == "") {
+        if (comments == '') {
             event.preventDefault();
-            return alert("댓글을 입력해 주세요!");
+            return alert('댓글을 입력해 주세요!');
         }
 
         let body = {
@@ -28,9 +29,9 @@ export default function AuthBoardComments({ authBoards, commentsData }) {
             authBoardId: authBoards,
         };
 
-        axios.post("/api/authBoard/comments", body).then((response) => {
+        axios.post('/api/authBoard/comments', body).then((response) => {
             console.log(response.data);
-            console.log("댓글 등록 완료");
+            console.log('댓글 등록 완료');
         });
     };
 
@@ -63,9 +64,9 @@ export default function AuthBoardComments({ authBoards, commentsData }) {
             {commentsData.map((rowData, index) => (
                 <List
                     sx={{
-                        width: "100%",
+                        width: '100%',
                         maxWidth: 600,
-                        bgcolor: "background.paper",
+                        bgcolor: 'background.paper',
                     }}
                     key={index}
                 >
@@ -80,12 +81,20 @@ export default function AuthBoardComments({ authBoards, commentsData }) {
                             primary={
                                 <React.Fragment>
                                     <Typography
-                                        sx={{ display: "inline" }}
+                                        sx={{ display: 'inline' }}
                                         component="span"
                                         variant="body2"
                                         color="text.primary"
                                     >
-                                        {rowData.postedBy.nickname}
+                                        <a
+                                            href={`/profile/${rowData.postedBy.nickname}`}
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: 'black',
+                                            }}
+                                        >
+                                            {rowData.postedBy.nickname}
+                                        </a>
                                     </Typography>
                                 </React.Fragment>
                             }

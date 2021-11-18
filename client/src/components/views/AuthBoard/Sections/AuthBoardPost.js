@@ -1,18 +1,18 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import axios from 'axios';
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
-import { styled } from "@mui/material/styles";
-import Button from "@mui/material/Button";
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
 
 const AuthBoardPost = () => {
-    const [Body, setBody] = useState("");
-    const [Photo, setPhoto] = useState("");
+    const [Body, setBody] = useState('');
+    const [Photo, setPhoto] = useState('');
     const [fileUrl, setFileUrl] = useState(null);
 
     const onBodyHandler = (event) => {
@@ -32,19 +32,19 @@ const AuthBoardPost = () => {
     // };
 
     const onSubmitHandler = (event) => {
-        if (Body == "") {
+        if (Body == '') {
             event.preventDefault();
-            return alert("본문을 입력해 주세요!");
-        } else if (Photo == "") {
+            return alert('본문을 입력해 주세요!');
+        } else if (Photo == '') {
             event.preventDefault();
-            return alert("사진을 업로드 해주세요!");
+            return alert('사진을 업로드 해주세요!');
         }
-        let form = document.getElementById("authboard_post");
+        let form = document.getElementById('authboard_post');
         let formData = new FormData(form);
 
-        axios.post("/api/authBoard/post", formData).then((response) => {
+        axios.post('/api/authBoard/post', formData).then((response) => {
             console.log(response.data);
-            console.log("포스트 완료");
+            console.log('포스트 완료');
         });
     };
 
