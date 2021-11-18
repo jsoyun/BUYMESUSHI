@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 //
 
 //컴포넌트
-import CartItem from "./ShopComponents/CartItem";
+import CartItem from "../ShoppingPage/ShopComponents/CartItem";
 //액션
 import { addToCart, removeFromCart } from "../../../actions/cartAction";
 import axios from "axios";
@@ -65,26 +65,27 @@ const MyPage = () => {
         <div className="cartscreen_left">
           <div className="cartscreen_right">
             <div className="cartscreen_info">
-              <p>
+              <div>
                 남은 포인트:
                 {getCartSubTotasl() >= 10000 ? (
-                  <div>
-                    <h2>포인트가 부족해요!!!!</h2>
+                  <div className="point">
+                    <h3>포인트가 부족해요!!!!</h3>
                     <ul>
-                      <li>
+                      <li className="authboardLink">
                         {" "}
                         <a href="/authboard">지키미 포인트 획득</a>
                       </li>
+
                       <li>
                         {" "}
-                        <a href="/">게임 포인트 획득</a>
+                        <a href="/"> 게임 포인트 획득</a>
                       </li>
                     </ul>
                   </div>
                 ) : (
                   <h2>{10000 - myPoint()}</h2>
                 )}
-              </p>
+              </div>
 
               <p>subtotal ({getCartCount()}) items</p>
               {/* <p>결제예정금액 ${getCartSubTotasl().toFixed(2)}</p> */}
