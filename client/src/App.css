@@ -1,3 +1,7 @@
+* {
+  margin: 0 auto;
+}
+
 .switch {
   background-color: #3b5998;
 }

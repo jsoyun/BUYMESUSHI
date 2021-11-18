@@ -96,7 +96,7 @@ const Desc = styled.p`
   letter-spacing: 3px;
 `;
 
-const Button = styled.button`
+const Button = styled.a`
   padding: 10px;
   font-size: 20px;
   background-color: transparent;
@@ -154,7 +154,7 @@ const SliderPage = () => {
               >
                 <Title>{item.title}</Title>
                 <Desc>{item.desc}</Desc>
-                <Button>더보기</Button>
+                <Button href="/about">더보기</Button>
               </InfoContainer>
             </Slide>
           ))}

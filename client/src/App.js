@@ -10,6 +10,7 @@ import NavBar from "./components/views/NavBar/NavBar";
 import About from "./components/views/AboutPage/About";
 import Board from "./components/views/BoardPage/Board";
 // import WriteBoard from "./components/views/BoardPage/WriteBoard";
+import Play from "./components/views/MinigamePage/Hangman";
 import Footer from "./components/views/Footer/Footer";
 //page
 
@@ -26,7 +27,7 @@ function App() {
     <Router>
       <NavBar />
       {/* <BackDrop /> */}
-      <div>
+      <div style={{ marginTop: "8.9vh" }}>
         <Switch>
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
@@ -49,7 +50,7 @@ function App() {
             component={Auth(ProductScreen, true)}
           />
           <Route exact path="/MyPage" component={Auth(MyPage, true)} />
-
+          <Route exact path="/play" component={Auth(Play, null)} />
           <Route exact path="/board" component={Auth(Board, null)} />
           {/* <Route exact path="/write" component={Auth(WriteBoard, null)} /> */}
           <Route

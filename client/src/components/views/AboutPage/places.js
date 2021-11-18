@@ -21,7 +21,7 @@ const places = [
     time: 1500,
   },
   {
-    title: "안전한 블록체인 플랫폼과 함께하는 usEarth",
+    title: "안전한 블록체인 플랫폼 usEarth",
     description:
       "Earth 가상화폐를 활용해서 친환경 기술을 이용/개발하는 기업에 크라우드 펀딩이 가능할 수 있도록 준비중이며, 크라우드 펀딩 뿐 아니라 UsEarth와 제휴한 생활서비스, 관광, 호텔, 병원 등의 업체에서도 결제할 수 있게 한걸음 먼저 환경보호를 위한 준비를 하고 있습니다.",
     imageUrl: process.env.PUBLIC_URL + "img/about/aboutcoin.gif",
