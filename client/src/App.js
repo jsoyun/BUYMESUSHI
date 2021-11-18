@@ -64,7 +64,7 @@ function App() {
                     />
                     <Route
                         exact
-                        path="/MyPage"
+                        path="/mypage"
                         component={Auth(MyPage, true)}
                     />
                     <Route

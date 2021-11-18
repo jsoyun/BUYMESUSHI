@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import styled from "styled-components";
-import axios from "axios";
-import { withRouter } from "react-router";
-import { useSelector } from "react-redux";
+import React, { useState } from 'react';
+import Button from '@mui/material/Button';
+import styled from 'styled-components';
+import axios from 'axios';
+import { withRouter } from 'react-router';
+import { useSelector } from 'react-redux';
 
 const BtnBox = styled.div`
     display: flex;
@@ -27,11 +27,11 @@ const RightMenu = (props) => {
     const user = useSelector((state) => state.user);
 
     const onClickHandler = () => {
-        axios.get("/api/users/logout").then((response) => {
+        axios.get('/api/users/logout').then((response) => {
             if (response.data.success) {
-                props.history.push("/login");
+                props.history.push('/login');
             } else {
-                alert("로그아웃 하는데 실패 했습니다.");
+                alert('로그아웃 하는데 실패 했습니다.');
             }
         });
     };
@@ -57,7 +57,7 @@ const RightMenu = (props) => {
                 >
                     Logout
                 </Button>
-                <Button sx={{ ml: 1, mr: 1 }} color="inherit" href="/MyPage">
+                <Button sx={{ ml: 1, mr: 1 }} color="inherit" href="/mypage">
                     마이페이지
                     <i className="fas fa-shopping-cart"></i>
                     <span className="cartlogo_badge">{getCartCount()}</span>
