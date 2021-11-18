@@ -65,3 +65,21 @@ body {
 .css-1jgmn5n-MuiTypography-root {
     color: rgba(0, 0, 0);
 }
+.css-185gdzj-MuiCardHeader-root {
+    padding: 10px !important;
+}
+.css-46bh2p-MuiCardContent-root {
+    padding: 10px 10px 10px 20px !important;
+}
+.css-d97ly5-MuiList-root {
+    height: 76px;
+}
+#authboard_commentPost {
+    height: 55px;
+}
+.authboard-commentPost-container {
+    border-top: 1px solid #cccccc;
+    display: flex;
+    padding: 8px 16px;
+    align-items: center;
+}

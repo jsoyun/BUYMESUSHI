@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import AuthBoardPost from "./Sections/AuthBoardPost";
-import AuthBoardFeedsCard from "./Sections/AuthBoardFeedsCard";
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import AuthBoardPost from './Sections/AuthBoardPost';
+import AuthBoardFeedsCard from './Sections/AuthBoardFeedsCard';
 
-import "./AuthBoard.css";
-import AuthBoardComments from "./Sections/AuthBoardComments";
+import './AuthBoard.css';
+import AuthBoardComments from './Sections/AuthBoardComments';
 
 const AuthBoard = (props) => {
     const dispatch = useDispatch();

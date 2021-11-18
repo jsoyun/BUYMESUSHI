@@ -101,11 +101,11 @@ export default function AuthBoardComments({ authBoards, commentsData }) {
                             secondary={rowData.text}
                         />
                     </ListItem>
-                    <Divider variant="inset" component="li" />
                 </List>
             ))}
-            <div>
-                <form onSubmit={onSubmitHandler} id="authboard_post">
+            <div className="authboard-commentPost-container">
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                <form onSubmit={onSubmitHandler} id="authboard_commentPost">
                     <input
                         type="text"
                         name="authComment"

@@ -1,10 +1,10 @@
-const express = require("express");
-const Board = require("../models/Board");
-const User = require("../models/User");
-const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
-const { auth } = require("../middleware/auth");
+const express = require('express');
+const Board = require('../models/Board');
+const User = require('../models/User');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const { auth } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -15,17 +15,17 @@ router.use((req, res, next) => {
 });
 
 //게시글 전체 데이터 가져와서 불러오기
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
         const posts = await Comment.findAll({
             include: {
                 model: User,
-                attributes: ["id", "nick"],
+                attributes: ['id', 'nick'],
             },
-            order: [["id", "DESC"]],
+            order: [['id', 'DESC']],
         });
-        res.render("board", {
-            title: "3e",
+        res.render('board', {
+            title: '3e',
             comments: posts,
         });
     } catch (error) {
@@ -35,13 +35,13 @@ router.get("/", async (req, res, next) => {
 });
 
 // 누른 그 해당글을 불러와야 함
-router.get("/:id", async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
     try {
         const posts = await Comment.findOne({
             //해당 게시글을 id값(unique)을 통해 불러오는 방법
             include: {
                 model: User,
-                attributes: ["id", "nick"],
+                attributes: ['id', 'nick'],
             },
             where: { id: req.params.id },
         });
@@ -52,8 +52,8 @@ router.get("/:id", async (req, res, next) => {
         // },
         // {where:{id : req.params.id}}
         // )
-        res.render("boarddetail", {
-            title: "게시글 상세페이지 | 3e",
+        res.render('boarddetail', {
+            title: '게시글 상세페이지 | 3e',
             comments: posts,
         });
     } catch (error) {
@@ -63,24 +63,24 @@ router.get("/:id", async (req, res, next) => {
 });
 
 try {
-    fs.readdirSync("boarduploads");
+    fs.readdirSync('boarduploads');
 } catch (error) {
-    console.error("boarduploads 폴더가 없어 boarduploads 폴더를 생성합니다.");
-    fs.mkdirSync("boarduploads");
+    console.error('boarduploads 폴더가 없어 boarduploads 폴더를 생성합니다.');
+    fs.mkdirSync('boarduploads');
 }
 
 //
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
         const posts = await Comment.findAll({
             include: {
                 model: User,
-                attributes: ["id", "email"],
+                attributes: ['id', 'email'],
             },
-            order: [["createdAt", "DESC"]],
+            order: [['createdAt', 'DESC']],
         });
-        res.render("boardwrite", {
-            title: "3e",
+        res.render('boardwrite', {
+            title: '3e',
             comments: posts,
         });
     } catch (error) {
@@ -93,7 +93,7 @@ router.get("/", async (req, res, next) => {
 const upload = multer({
     storage: multer.diskStorage({
         destination(req, file, cb) {
-            cb(null, "boarduploads/");
+            cb(null, 'boarduploads/');
         },
         filename(req, file, cb) {
             const ext = path.extname(file.originalname);
@@ -104,7 +104,7 @@ const upload = multer({
 });
 
 // 게시글값 업로드
-router.post("/", async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     try {
         const identity = res.locals.user;
         console.log(req.user);
@@ -115,7 +115,7 @@ router.post("/", async (req, res, next) => {
             viewcount: req.body.viewcount,
             UserId: identity.id,
         });
-        res.redirect("/board");
+        res.redirect('/board');
     } catch (err) {
         console.error(err);
         next(err);
@@ -123,13 +123,13 @@ router.post("/", async (req, res, next) => {
 });
 
 //img 저장
-router.post("/img", upload.single("img"), (req, res) => {
+router.post('/img', upload.single('img'), (req, res) => {
     console.log(req.file);
     res.json({ url: `/img/${req.file.filename}` });
 });
 
 const upload2 = multer();
-router.post("/", upload2.none(), async (req, res, next) => {
+router.post('/', upload2.none(), async (req, res, next) => {
     try {
         const identity = res.locals.user;
         console.log(req.user);
@@ -152,7 +152,7 @@ router.post("/", upload2.none(), async (req, res, next) => {
         //   );
         //   await post.addHashtags(result.map(r => r[0]));
         // }
-        res.redirect("/");
+        res.redirect('/');
     } catch (error) {
         console.error(error);
         next(error);
@@ -161,17 +161,17 @@ router.post("/", upload2.none(), async (req, res, next) => {
 
 // 본인 게시글 수정
 router
-    .route("/:id/boardedit")
+    .route('/:id/boardedit')
     .get(async (req, res, next) => {
         try {
             const comment = await Comment.findOne({
                 include: {
                     model: User,
-                    attributes: ["id", "nick"],
+                    attributes: ['id', 'nick'],
                 },
                 where: { id: req.params.id },
             });
-            res.render("boardedit", { comment });
+            res.render('boardedit', { comment });
         } catch (err) {
             console.error(err);
             next(err);
@@ -189,7 +189,7 @@ router
                     where: { id: req.params.id },
                 }
             );
-            res.redirect("/boarddetail/" + req.params.id);
+            res.redirect('/boarddetail/' + req.params.id);
         } catch (err) {
             console.error(err);
             next(err);
@@ -197,12 +197,12 @@ router
     });
 
 // 본인 게시글 삭제
-router.route("/:id/delete").get(async (req, res, next) => {
+router.route('/:id/delete').get(async (req, res, next) => {
     try {
         await Comment.destroy({
             where: { id: req.params.id },
         });
-        res.redirect("/board");
+        res.redirect('/board');
     } catch (err) {
         console.error(err);
         next(err);
