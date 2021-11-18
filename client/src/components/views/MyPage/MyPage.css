@@ -22,13 +22,14 @@ a {
 
   color: #2c2c2c;
 }
-a:hover {
+/* a:hover {
   text-decoration-line: none;
 
   color: #ffffff;
   background: #111111;
   border-radius: 5px;
-}
+} */
+
 /* .authboardLink {
   margin: 0 3px 0 0;
   background-color: blue;

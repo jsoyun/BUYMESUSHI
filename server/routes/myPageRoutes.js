@@ -52,13 +52,14 @@ router.post("/", async (req, res) => {
   try {
     const user = res.locals.user;
     console.log(user, "삭제할려고 현재유저확인");
-    await User.updateOne(
+    await User.updateMany(
       { _id: user._id },
       {
         $pull: {
           products: { $in: [{ productId: req.body._id, qty: req.body.qty1 }] },
         },
-      }
+      },
+      { multi: true }
     );
   } catch (error) {
     console.log(error);

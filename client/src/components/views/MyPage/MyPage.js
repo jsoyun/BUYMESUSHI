@@ -121,15 +121,6 @@ const MyPage = () => {
             ))
           )}
         </div>
-        {/* <div className="cartscreen_right">
-          <div className="cartscreen_info">
-            <p>subtotal ({getCartCount()}) items</p>
-            <p>${getCartSubTotasl().toFixed(2)}</p>
-          </div>
-          <div>
-            <button>Proceed To Checkout</button>
-          </div>
-        </div> */}
       </div>
     </div>
   );
