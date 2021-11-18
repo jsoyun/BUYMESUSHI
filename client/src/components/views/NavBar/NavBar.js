@@ -85,6 +85,7 @@ const NavBar = (props) => {
         <ThemeProvider theme={darkTheme}> */}
       <AppBar
         position="fixed"
+        display="felx"
         className={classes[navRef.current]}
         style={{ background: "#000000" }}
       >
