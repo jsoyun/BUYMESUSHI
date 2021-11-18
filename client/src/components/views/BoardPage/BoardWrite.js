@@ -56,6 +56,7 @@ function BoardWrite() {
     setFileUrl(imageUrl);
     setImg(event.currentTarget.value);
   };
+  console.log(Title);
 
   const onSubmitHandler = (event) => {
     if (Title === "") {
@@ -65,10 +66,12 @@ function BoardWrite() {
       event.preventDefault();
       return alert("제목이나 내용이 빈 채로 게시할 수 없습니다.");
     }
+    event.preventDefault();
     let form = document.getElementById("comment-form");
     let formData = new FormData(form);
+    console.log(formData);
 
-    axios.post("/api/board/write", formData).then((response) => {
+    axios.post("/api/board", formData).then((response) => {
       console.log(response.data);
       console.log("글쓰기 성공");
     });
