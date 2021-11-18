@@ -67,11 +67,11 @@ function BoardWrite() {
             event.preventDefault();
             return alert('제목이나 내용이 빈 채로 게시할 수 없습니다.');
         }
-        event.preventDefault();
-        let form = document.getElementById('comment-form');
-        console.log(form, 'form');
-        let formData = new FormData(form);
-        console.log(formData, 'formData');
+        // event.preventDefault();
+        // let form = document.getElementById('comment-form');
+        // console.log(form, 'form');
+        // let formData = new FormData(form);
+        // console.log(formData, 'formData');
 
         axios.post('/api/board/write', { Body, Title }).then((response) => {
             console.log(response.data);

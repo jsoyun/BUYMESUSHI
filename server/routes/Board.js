@@ -117,9 +117,10 @@ try {
 router.post('/write', async (req, res) => {
     try {
         const identity = res.locals.user;
-        console.log(req.body, '바디값');
+
         const title = req.body.Title;
         const body = req.body.Body;
+
         // const board = await Board.create({
         //   title: req.body.title,
         //   body: req.body.body,
