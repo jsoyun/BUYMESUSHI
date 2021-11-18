@@ -39,8 +39,10 @@ const AuthBoardPost = () => {
             event.preventDefault();
             return alert('사진을 업로드 해주세요!');
         }
+
         let form = document.getElementById('authboard_post');
         let formData = new FormData(form);
+        console.log(formData);
 
         axios.post('/api/authBoard/post', formData).then((response) => {
             console.log(response.data);
