@@ -1,19 +1,27 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@mui/material/AppBar";
+import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
 
 import "./NavBar.css";
-import { createTheme, Link } from "@mui/material";
+// import Stack from "@mui/material/Stack";
+import { createTheme, Link, ThemeProvider } from "@mui/material";
 import axios from "axios";
 import { withRouter } from "react-router";
 import RightMenu from "./Sections/RightMenu";
 import MiddleMenu from "./Sections/MiddleMenu";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
   icon: {
     color: "#fff",
     fontSize: "1.1rem",
@@ -25,7 +33,22 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: "1",
     fontSize: "23px",
   },
+  appBarTransparent: {
+    backgroundColor: "rgba(67, 129, 168, 0.5)",
+  },
+  appBarSolid: {
+    backgroundColor: "rgba(67, 129, 168)",
+  },
 }));
+
+// const darkTheme = createTheme({
+//   palette: {
+//     mode: "dark",
+//     primary: {
+//       main: "#1976d2",
+//     },
+//   },
+// });
 
 const NavBar = (props) => {
   const onClickHandler = () => {
@@ -38,9 +61,33 @@ const NavBar = (props) => {
     });
   };
   const classes = useStyles();
+  const [navBackground, setNavBackground] = useState("appBarTransparent");
+  const navRef = React.useRef();
+  navRef.current = navBackground;
+  useEffect(() => {
+    const handleScroll = () => {
+      const show = window.scrollY > 310;
+      if (show) {
+        setNavBackground("appBarsolid");
+      } else {
+        setNavBackground("appBarTransparent");
+      }
+    };
+    document.addEventListener("scroll", handleScroll);
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" style={{ background: "#000000" }}>
+    <Box className={classes.root}>
+      {/* <Stack spacing={2} sx={{ flexGrow: 1 }}>
+        <ThemeProvider theme={darkTheme}> */}
+      <AppBar
+        position="fixed"
+        className={classes[navRef.current]}
+        // color="transparent"
+      >
         <Toolbar>
           <Link href="/" sx={{ ml: 15, mr: 2 }}>
             <img className="navbar-logo" src="img/usEarth.png" />
@@ -54,6 +101,8 @@ const NavBar = (props) => {
           <RightMenu />
         </Toolbar>
       </AppBar>
+      {/* </ThemeProvider>
+      </Stack> */}
     </Box>
   );
 };

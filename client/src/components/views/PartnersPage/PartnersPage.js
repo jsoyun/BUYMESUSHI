@@ -3,6 +3,10 @@ import styled from "styled-components";
 import { PartnersItem, Partners } from "../../../data";
 // import { useSpring, animated, config } from "react-spring";
 
+const Box = styled.div`
+  box-sizing: border-box;
+`;
+
 const PartnersHead = styled.h1`
   font-size: 36px;
   color: #555;
@@ -25,7 +29,7 @@ const Container = styled.div`
   position: relative;
   flex-direction: row;
   justify-content: space-between;
-  width: 100vw;
+  width: 95vw;
   height: 24vh;
   margin-bottom: 50px;
   background-image: url(./img/main_logobox.JPG);
@@ -86,7 +90,7 @@ const Image2 = styled.img`
 
 const PartnersPage = () => {
   return (
-    <>
+    <Box>
       <PartnersHead>UsEarth Partners</PartnersHead>
       <Hr />
       <Container>
@@ -102,7 +106,7 @@ const PartnersPage = () => {
           </Organization>
         ))}
       </Container>
-    </>
+    </Box>
   );
 };
 

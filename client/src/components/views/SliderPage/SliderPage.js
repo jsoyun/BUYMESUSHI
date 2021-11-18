@@ -16,8 +16,7 @@ import { useSpring, animated, config } from "react-spring";
 const Container = styled.div`
   width: 100%;
   display: flex;
-  position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 `;
 
 const Arrow = styled.div`
@@ -40,6 +39,7 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
+  width: fit-content;
   height: 80%;
   display: flex;
   transition: all 1.5s ease;
@@ -63,7 +63,7 @@ const ImgContainer = styled.div`
 `;
 
 const Image = styled.img`
-  width: 100%;
+  width: 100vw;
   height: 100%;
   size: "cover";
   z-index: -1;
@@ -79,9 +79,9 @@ const InfoContainer = styled.div`
   border-radius: 10px;
   z-index: 5;
   position: relative;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
   border: 2px solid transparent;
-  background-clip: border-box;
+  /* background-clip: border-box; */
   cursor: pointer;
 `;
 
