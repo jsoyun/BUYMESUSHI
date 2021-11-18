@@ -1,25 +1,26 @@
-import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { observer } from "mobx-react";
+import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { observer } from 'mobx-react';
 //import NavBar from "./components/views/NavBar/NavBar";
-import LandingPage from "./components/views/LandingPage/LandingPage";
-import LoginPage from "./components/views/LoginPage/LoginPage";
-import RegisterPage from "./components/views/RegisterPage/RegisterPage";
-import Auth from "./hoc/auth";
-import NavBar from "./components/views/NavBar/NavBar";
-import About from "./components/views/AboutPage/About";
-import Board from "./components/views/BoardPage/Board";
+import LandingPage from './components/views/LandingPage/LandingPage';
+import LoginPage from './components/views/LoginPage/LoginPage';
+import RegisterPage from './components/views/RegisterPage/RegisterPage';
+import Auth from './hoc/auth';
+import NavBar from './components/views/NavBar/NavBar';
+import About from './components/views/AboutPage/About';
+import Board from './components/views/BoardPage/Board';
 // import WriteBoard from "./components/views/BoardPage/WriteBoard";
-import Footer from "./components/views/Footer/Footer";
+import Footer from './components/views/Footer/Footer';
 //page
 
-import HomeScreen from "./components/views/ShoppingPage/HomeScreen";
-import MyPage from "./components/views/ShoppingPage/MyPage";
-import ProductScreen from "./components/views/ShoppingPage/ProductScreen";
+import HomeScreen from './components/views/ShoppingPage/HomeScreen';
+import ProductScreen from './components/views/ShoppingPage/ProductScreen';
+// import MyPage from "./components/views/ShoppingPage/MyPage";
+import MyPage from './components/views/MyPage/MyPage';
 //쇼핑목록 안 components
-import AuthBoard from "./components/views/AuthBoard/AuthBoard";
-import { HomeWorkSharp } from "@material-ui/icons";
-import Profile from "./components/views/ProfilePage/Profile";
+import AuthBoard from './components/views/AuthBoard/AuthBoard';
+import { HomeWorkSharp } from '@material-ui/icons';
+import Profile from './components/views/ProfilePage/Profile';
 // 추후 삭제
 
 function App() {
