@@ -38,7 +38,6 @@
 
 .displayweather .weather-icon {
   width: 80px;
-
   position: absolute;
   top: 50px;
 }
@@ -46,16 +45,16 @@
 .displayweather .weather-main {
   position: absolute;
   top: 120px;
-  left: 250px;
+  left: 280px;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .displayweather .weather-description {
   position: absolute;
   left: 10px;
-  font-size: 1.4rem;
-  margin-left: 120px;
+  font-size: 1.15rem;
+  margin-left: 100px;
 }
 .displayweather .weatherdetails {
   margin-left: 10px;
@@ -63,14 +62,15 @@
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto;
-  grid-gap: 20px;
+  font-size: 15px;
+  grid-gap: 40px;
 }
 .displayweather .weatherdetails .section1 {
   justify-self: right;
-  width: 300px;
+  width: 100px;
 }
 
-h4 {
+span {
   text-align: left;
   margin-right: 30px;
   font-size: 1.2rem;
@@ -82,4 +82,8 @@ td {
 
 .displayweather .weatherdetails span {
   font-size: 1.2rem;
+}
+
+.h3 {
+  font-size: 15px;
 }
