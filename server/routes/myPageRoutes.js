@@ -43,41 +43,26 @@ router.put("/", async (req, res) => {
         },
       }
     );
-    // const findProductUpdate = await User.findOne({ _id: user._id }).populate(
-    //   "products.productId"
-    // );
-    // console.log(findProductUpdate.products, "find");
-    // return res.status(200).json({ findProductUpdate });
   } catch (error) {
     console.log(error);
   }
+});
 
-  //   //update
-  //   populate
-  //   productId:Id
-  //   qty:qty1
-  // $push
-
-  // const user = res.locals.user;
-  // console.log(user);
-
-  // const userID = await User.populate("products");
-  // console.log(userID, "유ㅠㅠㅠ");
-
-  ////
-  // const product = await new Product(req.body);
-
-  // product.save((err) => {
-  //   if (err) return res.status(400).json({ success: false, err });
-
-  //   return res.status(200).json({ success: true });
-  // });
-
-  // await User.updateOne({ _id: userID._id }, { productID: req.body.product });
-
-  // res.redirect("/");
-  // res.render("/", mypageData);
-  // console.log(mypageData, "????????????????????");
+router.post("/", async (req, res) => {
+  try {
+    const user = res.locals.user;
+    console.log(user, "삭제할려고 현재유저확인");
+    await User.updateOne(
+      { _id: user._id },
+      {
+        $pull: {
+          products: { $in: [{ productId: req.body._id, qty: req.body.qty1 }] },
+        },
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;
