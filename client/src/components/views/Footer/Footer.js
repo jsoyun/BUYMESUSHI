@@ -48,6 +48,7 @@ const Footer = () => {
         </div>
         <hr />
         <div className="row">
+          <br />
           <p className="col-sm">
             &copy;{new Date().getFullYear()} by usEarth, Inc. All rights
             reserved. | Terms Of Service | Privacy

@@ -5,10 +5,10 @@
 }
 
 .displayweather .maincard {
-  width: 500px;
+  width: 450px;
   margin-top: 20px;
   align-self: center;
-  padding: 50px;
+  padding: 50px 120px;
   border-radius: 20px;
   position: relative;
   background: rgb(245, 242, 242);
@@ -19,24 +19,25 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 1.5rem;
+  margin-left: 70px;
+  font-size: 1.1rem;
 }
 
 .displayweather .maincard .cardsubtitle {
   position: absolute;
   left: 10px;
-
+  margin-left: 80px;
   color: grey;
   margin-top: -8px;
 }
-.displayweather h1 {
-  font-size: 5rem;
-  margin: -10px;
-  margin-left: -150px;
+.displayweather h3 {
+  font-size: 2rem;
+  margin: 10px;
+  margin-left: 100px;
 }
 
 .displayweather .weather-icon {
-  width: 100px;
+  width: 80px;
 
   position: absolute;
   top: 50px;
@@ -44,9 +45,8 @@
 
 .displayweather .weather-main {
   position: absolute;
-
   top: 120px;
-  left: 310px;
+  left: 250px;
   font-weight: 500;
   font-size: 1.2rem;
 }
@@ -55,11 +55,11 @@
   position: absolute;
   left: 10px;
   font-size: 1.4rem;
+  margin-left: 120px;
 }
 .displayweather .weatherdetails {
-  margin-left: 50px;
+  margin-left: 10px;
   margin-right: 50px;
-
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto;
@@ -77,7 +77,7 @@ h4 {
 }
 
 td {
-  border-bottom: 2px dashed grey;
+  border-bottom: none;
 }
 
 .displayweather .weatherdetails span {

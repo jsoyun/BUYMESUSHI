@@ -12,19 +12,19 @@ function WeatherApiModalItemSearch(props) {
         <>
           <div className="maincard">
             <span className="cardtitle">
-              도시 : {data.name} 국가 : {data.sys.country} 의 날씨
+              도시 : {data.name} / 국가 : {data.sys.country} 의 날씨
             </span>
             <span className="cardsubtitle">
               해당 국가 시간 ▶ {new Date().toLocaleTimeString()}
             </span>
 
-            <h1>
-              {" "}
-              {Math.floor(data.main.temp - 273.15)}
-              <sup>도</sup>
-            </h1>
             <span className="weather-main">{data.weather[0].main}</span>
             <img className="weather-icon" src={iconurl} alt="" srcSet="" />
+            <h3>
+              {" "}
+              {Math.floor(data.main.temp - 273.15)}
+              <sup>°</sup>
+            </h3>
             <span className="weather-description">
               {" "}
               {data.weather[0].description}
@@ -35,7 +35,7 @@ function WeatherApiModalItemSearch(props) {
               <table>
                 <tr>
                   <td>
-                    <h4>최고/최저</h4>
+                    <p>최고/최저</p>
                   </td>
                   <td>
                     <span>
@@ -46,7 +46,7 @@ function WeatherApiModalItemSearch(props) {
                 </tr>
                 <tr>
                   <td>
-                    <h4>습도</h4>
+                    <p>습도</p>
                   </td>
                   <td>
                     <span>{data.main.humidity} %</span>
@@ -54,7 +54,7 @@ function WeatherApiModalItemSearch(props) {
                 </tr>
                 <tr>
                   <td>
-                    <h4>기압</h4>
+                    <p>기압</p>
                   </td>
                   <td>
                     <span>{data.main.pressure} hPa</span>
@@ -62,7 +62,7 @@ function WeatherApiModalItemSearch(props) {
                 </tr>
                 <tr>
                   <td>
-                    <h4>가시성</h4>
+                    <p>가시성</p>
                   </td>
                   <td>
                     <span>{data.visibility / 1000} Km</span>
@@ -75,7 +75,7 @@ function WeatherApiModalItemSearch(props) {
               <table>
                 <tr>
                   <td>
-                    <h4>바람</h4>
+                    <p>바람</p>
                   </td>
                   <td>
                     <span>{Math.floor((data.wind.speed * 18) / 5)} km/hr</span>
@@ -83,7 +83,7 @@ function WeatherApiModalItemSearch(props) {
                 </tr>
                 <tr>
                   <td>
-                    <h4>풍향</h4>
+                    <p>풍향</p>
                   </td>
                   <td>
                     <span>
@@ -94,7 +94,7 @@ function WeatherApiModalItemSearch(props) {
                 </tr>
                 <tr>
                   <td>
-                    <h4>일출</h4>
+                    <p>일출</p>
                   </td>
                   <td>
                     <span>
@@ -104,7 +104,7 @@ function WeatherApiModalItemSearch(props) {
                 </tr>
                 <tr>
                   <td>
-                    <h4>일몰</h4>
+                    <p>일몰</p>
                   </td>
                   <td>
                     <span>

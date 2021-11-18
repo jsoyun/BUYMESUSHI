@@ -9,48 +9,17 @@ import Button from "@mui/material/Button";
 import CloseIcon from "@mui/icons-material/Close";
 
 const Container = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-grow: row;
   flex-wrap: nowrap;
   float: left;
 `;
 
-Modal.PropTypes = {
-  visible: PropTypes.bool,
-};
-
-const ModalWrapper = styled.div`
-  box-sizing: border-box;
-  display: ${(props) => (props.visible ? "block" : "none")};
-  position: fixed;
-  /* top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1000; */
-  overflow: auto;
-  outline: 0;
-`;
-
-const ModalInner = styled.div`
-  box-sizing: border-box;
-  position: relative;
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
-  background-color: #fff;
-  border-radius: 10px;
-  width: 360px;
-  max-width: 700px;
-  top: 50%;
-  transform: translateY(-50%);
-  margin: 0 auto;
-  padding: 40px 20px;
-`;
-
 const customStyles = {
   content: {
-    width: "50vw",
-    height: "40vh",
+    width: "60vw",
+    height: "70vh",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -64,7 +33,7 @@ const customStyles = {
     // left: "0",
     // right: "0",
     // bottom: "0",
-    backgroundColor: "rgba(750, 112, 698, 0.75)",
+    backgroundColor: "rgba(118, 135, 163, 0.75)",
   },
 };
 
@@ -90,6 +59,7 @@ export default function SeaTempApiModal(className, visible, children) {
           onClick={() => setModalIsOpen(false)}
           color="action"
           fontSize="large"
+          cursor="pointer"
         ></CloseIcon>
         <Container>
           <GreenHouseApiModalItem />

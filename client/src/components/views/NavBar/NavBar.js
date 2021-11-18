@@ -41,14 +41,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const darkTheme = createTheme({
-//   palette: {
-//     mode: "dark",
-//     primary: {
-//       main: "#1976d2",
-//     },
-//   },
-// });
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#1976d2",
+    },
+  },
+});
 
 const NavBar = (props) => {
   const onClickHandler = () => {
@@ -86,7 +86,7 @@ const NavBar = (props) => {
       <AppBar
         position="fixed"
         className={classes[navRef.current]}
-        // color="transparent"
+        style={{ background: "#000000" }}
       >
         <Toolbar>
           <Link href="/" sx={{ ml: 15, mr: 2 }}>
