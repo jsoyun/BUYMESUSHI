@@ -64,6 +64,16 @@ const Organization = styled.div`
   margin: 20px 32px;
 `;
 
+const Con = styled.div`
+  width: 180px;
+  height: 50px;
+  justify-content: center;
+  position: absolute;
+  &:hover {
+    display: none;
+  }
+`;
+
 const Image = styled.img`
   width: 110px;
   height: 34px;
@@ -71,6 +81,15 @@ const Image = styled.img`
   margin-top: 10px;
   justify-content: center;
   position: absolute;
+`;
+
+const Row = styled.div`
+  width: 180px;
+  height: 50px;
+  justify-content: center;
+  position: absolute;
+  transform: translateY(0);
+  transition: 1s;
   &:hover {
     display: none;
   }
@@ -81,11 +100,8 @@ const Image2 = styled.img`
   height: 34px;
   margin-left: 10px;
   margin-top: 10px;
-  transform: translateY(0);
-  transition: 1s;
-  &:hover {
-    display: none;
-  }
+  justify-content: center;
+  position: absolute;
 `;
 
 const PartnersPage = () => {
@@ -96,8 +112,12 @@ const PartnersPage = () => {
       <Container>
         {PartnersItem.map((item) => (
           <Partner key={item.id}>
-            <Image src={item.image} />
-            <Image2 src={item.image2} />
+            <Con>
+              <Image src={item.image} />
+            </Con>
+            <Row>
+              <Image2 src={item.image2} />
+            </Row>
           </Partner>
         ))}
         {Partners.map((item) => (
