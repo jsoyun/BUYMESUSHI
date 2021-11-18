@@ -71,7 +71,7 @@ const Image = styled.img`
 
 const InfoContainer = styled.div`
   width: 40vw;
-  height: 62vh;
+  height: 60vh;
   margin-left: 52%;
   display: inline-block;
   padding: 3em;

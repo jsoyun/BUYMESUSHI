@@ -21,6 +21,10 @@ import MiddleMenu from "./Sections/MiddleMenu";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    padding: theme.spacing(1),
+    [theme.breakpoints.down("sm")]: {
+      backgroundColor: theme.palette.secondary.main,
+    },
   },
   icon: {
     color: "#fff",
@@ -41,14 +45,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: {
-      main: "#1976d2",
-    },
-  },
-});
+// const darkTheme = createTheme({
+//   palette: {
+//     mode: "dark",
+//     primary: {
+//       main: "#1976d2",
+//     },
+//   },
+// });
 
 const NavBar = (props) => {
   const onClickHandler = () => {
@@ -85,12 +89,11 @@ const NavBar = (props) => {
         <ThemeProvider theme={darkTheme}> */}
       <AppBar
         position="fixed"
-        display="felx"
         className={classes[navRef.current]}
         style={{ background: "#000000" }}
       >
         <Toolbar>
-          <Link href="/" sx={{ ml: 15, mr: 2 }}>
+          <Link href="/" sx={{ ml: 3, mr: 2 }}>
             <img className="navbar-logo" src="img/usEarth.png" />
           </Link>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, mr: 25 }}>
