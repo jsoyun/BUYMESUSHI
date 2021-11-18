@@ -40,7 +40,7 @@ function Board() {
       <div className="article">
         <div className="wrapper">
           <table>
-            <thead><h1>자유게시판</h1></thead>
+            {/* <thead><h1>자유게시판</h1></thead> */}
             {/* <form action="/board" method="POST"> */}
             <tbody>
               <tr>

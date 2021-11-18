@@ -15,37 +15,38 @@ router.use((req, res, next) => {
   next();
 });
 
-//게시글 전체 데이터 가져와서 불러오기(Board)
-router.get('/', async (req, res) => {
+// // 게시글 전체 데이터 가져와서 불러오기(Board)
+// router.get('/', async (req, res) => {
+//   try {
+//     // console.log(res.locals.user);
+//     const boards = await Board.find({
+//       // include: {
+//       //   model: User,
+//       //   attributes: ['id', 'nickname'],
+//       // },
+//       // order: [['id', 'DESC']],
+//     });
+//     // .populate("")
+//     console.log(boards);
+//     res.json({ boards });
+//   } catch (error) {
+//     console.error(error);
+//     // next(error);
+//   }
+// });
+
+// // 게시글 전체 데이터 가져와서 불러오기(Board)..현석이 버전
+router.get("/", async (req, res) => {
   try {
-    // console.log(res.locals.user);
-    const boards = await Board.find({
-      // include: {
-      //   model: User,
-      //   attributes: ['id', 'nickname'],
-      // },
-      // order: [['id', 'DESC']],
-    });
-    // .populate("")
-    console.log(boards);
-    res.json({ boards });
+    const user = res.locals.user;
+    const Boards = await Board.find({})
+      .populate("createdAt");
+    console.log(Boards);
+    res.json({ Boards });
   } catch (error) {
-    console.error(error);
-    // next(error);
+    console.log(error);
   }
 });
-
-// // router.get("/", async (req, res) => {
-// //   try {
-// //     const user = res.locals.user;
-// //     const Boards = await Board.find({})
-// //       .populate("createdAt");
-// //     console.log(Boards);
-// //     res.json({ Boards });
-// //   } catch (error) {
-// //     console.log(error);
-// //   }
-// // });
 
 // // 누른 그 해당글을 불러와야 함(BoardView)
 // router.get('/:id', async (req, res) => {
@@ -75,12 +76,12 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
-// try {
-//   fs.readdirSync('boarduploads');
-// } catch (error) {
-//   console.error('boarduploads 폴더가 없어 boarduploads 폴더를 생성합니다.');
-//   fs.mkdirSync('boarduploads');
-// }
+try {
+  fs.readdirSync('boarduploads');
+} catch (error) {
+  console.error('boarduploads 폴더가 없어 boarduploads 폴더를 생성합니다.');
+  fs.mkdirSync('boarduploads');
+}
 
 // // 
 // router.get('/', async (req, res) => {
@@ -113,25 +114,35 @@ router.get('/', async (req, res) => {
 // //   limits: { fileSize: 5 * 1024 * 1024 },
 // // });
 
-// // 게시글값 업로드
-// router.post('/write', async (req, res) => {
-//   try {
-//     const identity = res.locals.user;
-//     //console.log(req.user);
-//     const comment = await Board.create({
-//       title: req.body.title,
-//       body: req.body.body,
-//       img: req.body.url,
-//       // viewcount: req.body.viewcount,
-//       // UserId: identity.id,
+// 게시글값 업로드
+router.post('/write', async (req, res) => {
+  try {
+    const identity = res.locals.user;
+    const title = req.body.title;
+    const body = req.body.body;
+    // const board = await Board.create({
+    //   title: req.body.title,
+    //   body: req.body.body,
+    //   img: req.body.url,
+    //   viewcount: req.body.viewcount,
+    //   UserId: identity.id,
+    // });
+    const insertMongo = {
+      t: title,
+      b: body,
+      postedBy: req.user._id,
+    };
+    await Board.insertMany(insertMongo);
 
-//     });
-//     res.redirect('/board');
-//   } catch (err) {
-//     console.error(err);
-//     // next(err);
-//   }
-// });
+    const findBoard = await Board.find({});
+    return res.status(200).json({ findBoard });
+
+
+  } catch (err) {
+    console.error(err);
+    // next(err);
+  }
+});
 
 // // //img 저장
 // // router.post('/img', upload.single('img'), (req, res) => {
@@ -180,14 +191,14 @@ router.get('/', async (req, res) => {
 // router.route("/:id/boardedit")
 //   .get(async (req, res, next) => {
 //     try {
-//       const comment = await Board.findOne({
+//       const board = await Board.findOne({
 //         include: {
 //           model: User,
 //           attributes: ['id', 'nick'],
 //         },
 //         where: { id: req.params.id },
 //       });
-//       res.render({ comment });
+//       res.render({ board });
 //     } catch (err) {
 //       console.error(err);
 //       next(err);
@@ -195,10 +206,10 @@ router.get('/', async (req, res) => {
 //   })
 //   .post(async (req, res, next) => {
 //     try {
-//       const comment = await Board.update(
+//       const board = await Board.update(
 //         {
 //           title: req.body.title,
-//           comment: req.body.comment,
+//           board: req.body.board,
 //           img: req.body.url,
 //         },
 //         {

@@ -1,6 +1,6 @@
 import * as actionTypes from "../redux/constants/productConstants";
 export const getProductsReducer = (state = { products: [] }, action) => {
-  console.log("여기 productReducer의 getProductsReducer");
+  // console.log("여기 productReducer의 getProductsReducer");
   switch (action.type) {
     case actionTypes.GET_PRODUCTS_REQUEST:
       return {
@@ -23,7 +23,7 @@ export const getProductsReducer = (state = { products: [] }, action) => {
 };
 
 export const getProductDetailsReducer = (state = { product: {} }, action) => {
-  console.log("여기 productReducer의 getProductDetailsReducer");
+  // console.log("여기 productReducer의 getProductDetailsReducer");
   switch (action.type) {
     case actionTypes.GET_PRODUCT_DETAILS_REQUEST:
       return {

@@ -71,7 +71,7 @@ function BoardWrite() {
     let formData = new FormData(form);
     console.log(formData);
 
-    axios.post("/api/board", formData).then((response) => {
+    axios.post("/api/board/write", formData).then((response) => {
       console.log(response.data);
       console.log("글쓰기 성공");
     });
@@ -92,7 +92,7 @@ function BoardWrite() {
       <form id="comment-form"
         // action="/board/write" method="POST"
         onSubmit={onSubmitHandler}
-      // encType="multipart/form-data"
+        encType="multipart/form-data"
       >
         <div className="form">
           <div className="wrapper">
