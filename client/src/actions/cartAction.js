@@ -28,8 +28,14 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
   const addQty = { ...data, qty1 };
 
   //post로 서버로 전송. 입력할 데이터 addQty
+  // const inserCartData = () => {
+  //   axios.post(`/api/products/${id}`, addQty);
+  // };
+  // inserCartData();
+
+  //mypage라우터로,,post로 서버로 전송. 입력할 데이터 addQty
   const inserCartData = () => {
-    axios.post(`/api/products/${id}`, addQty);
+    axios.put(`/api/mypage`, addQty);
   };
   inserCartData();
 
