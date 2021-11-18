@@ -5,6 +5,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import Link from "react-router";
 
 const Footer = () => {
   return (
@@ -40,7 +41,12 @@ const Footer = () => {
               <GitHubIcon
                 fontSize="large"
                 color="secondary"
-                link="https://github.com/buymesushi/BUYMESUSHI.git"
+                onClick={() =>
+                  window.open(
+                    "https://github.com/buymesushi/BUYMESUSHI.git",
+                    "_blank"
+                  )
+                }
               />
               <YouTubeIcon fontSize="large" />
             </ul>

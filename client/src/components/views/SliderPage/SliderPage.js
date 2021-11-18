@@ -97,16 +97,20 @@ const Desc = styled.p`
 `;
 
 const Button = styled.a`
+  text-decoration: none;
   padding: 10px;
   font-size: 20px;
-  background-color: transparent;
+  color: #00fffb;
+  text-decoration: none;
+  box-shadow: 0 -6px rgba(0, 255, 72, 0.3) inset;
+  /* background-color: transparent;
   background: linear-gradient(to left, raba(255, 255, 255, 0.15), transparent);
   cursor: pointer;
   border-radius: 30%;
   overflow: hidden;
   &:hover {
     letter-spacing: 3px;
-  }
+  } */
 `;
 
 const calc = (x, y) => [
