@@ -3,5 +3,5 @@ export default function ({ value, isShown }) {
   if (isShown) {
     output = value;
   }
-  return <span className="letter">{output}</span>;
+  return <span>{output}</span>;
 }

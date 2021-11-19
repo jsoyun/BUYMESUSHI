@@ -9,5 +9,5 @@ export default function LetterGrid({ secreteWord, guessedLetters }) {
       return <Letter value={letter} isShown={isShown} key={index} />;
     });
 
-  return <div className="flex">{letters}</div>;
+  return <div>{letters}</div>;
 }

@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-export default function ButtonGrid() {
+export default function () {
   let letters = [
     "A",
     "B",
@@ -29,8 +29,12 @@ export default function ButtonGrid() {
     "Y",
     "Z",
   ];
-  let buttons = letters.map((letter, index) => (
-    <Button value={letter} key={index} />
-  ));
-  return <div className="flex flex-wrap mt-10">{buttons}</div>;
+  //   let buttons = letters.map(letter, index) => (
+  //       <button/>
+  //   )
+  //   return (
+  //       <div>
+  //           {letters}
+  //       </div>
+  //   )
 }
