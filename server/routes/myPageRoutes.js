@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Product = require("../models/Product");
-const path = require("path");
 
 const { auth } = require("../middleware/auth");
 
@@ -47,20 +46,30 @@ router.put("/", async (req, res) => {
     console.log(error);
   }
 });
-
+//지우기
 router.post("/", async (req, res) => {
+  // try {
+  //   const user = res.locals.user;
+  //   console.log(user, "삭제할려고 현재유저확인");
+  //   await User.updateMany(
+  //     { _id: user._id },
+  //     {
+  //       $pull: {
+  //         products: { $in: [{ productId: req.body._id, qty: req.body.qty1 }] },
+  //       },
+  //     },
+  //     { multi: true }
+  //   );
+  // } catch (error) {
+  //   console.log(error);
+  // }
   try {
     const user = res.locals.user;
     console.log(user, "삭제할려고 현재유저확인");
-    await User.updateMany(
-      { _id: user._id },
-      {
-        $pull: {
-          products: { $in: [{ productId: req.body._id, qty: req.body.qty1 }] },
-        },
-      },
-      { multi: true }
-    );
+    await User
+      .destroy
+      // where:{products: req.body.products}
+      ();
   } catch (error) {
     console.log(error);
   }
