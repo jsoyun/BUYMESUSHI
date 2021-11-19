@@ -29,14 +29,12 @@ export default function () {
     "Y",
     "Z",
   ];
-  let buttons = letters.map(letter, index) => (
-      <button>
-          
-          </button>
-  )
-  return (
-      <div>
-          {letters}
-      </div>
-  )
+  //   let buttons = letters.map(letter, index) => (
+  //       <button/>
+  //   )
+  //   return (
+  //       <div>
+  //           {letters}
+  //       </div>
+  //   )
 }
