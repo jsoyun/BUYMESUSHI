@@ -121,17 +121,34 @@ import BoardWrite from './BoardWrite';
 
 function Board() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [lastIdx, setLastIdx] = useState(0);
+  const [Data, setData] = useState([]);
   const [boardId, setboardId] = useState('');
   const boardIdHandler = (e) => {
     setboardId(e.data._id);
   };
   const [boards, setBoards] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       let res = await axios.get('api/board');
       console.log(res.data.Boards);
-      let boardData = res.data.Boards;
 
+      const _Data = await res.data.Boards.map(
+        (Data) => (
+          setLastIdx(lastIdx + 1),
+          {
+            _id: Data._id,
+            title: Data.title,
+            boardBody: Data.boardBody,
+          }
+        )
+      );
+      setData(Data.concat(_Data));
+
+
+
+      // setBoards = res.data.Boards;
       // .then(res => setBoards(res.data))
       // .catch(err => console.log(err));
     }
