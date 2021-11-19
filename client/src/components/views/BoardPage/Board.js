@@ -39,6 +39,11 @@ const BoardButton = styled(Button)({
   backgroundColor: "#3b5998",
   left: '79.3vw',
 });
+// styled component 4
+const BoardWriteButton = styled(Button)({
+  backgroundColor: "#3b5998",
+  left: '79.3vw',
+});
 // // styled component 4
 // const SpecialA = styled.a`
 //   width: 100%;
@@ -73,7 +78,7 @@ function Board() {
               title: rowData.title,
               boardBody: rowData.boardBody,
               viewcount: rowData.viewcount,
-              postedBy: rowData.postedBy.nickname,
+              // postedBy: rowData.postedBy.nickname,
             }
           )
         );
@@ -123,7 +128,7 @@ function Board() {
                     {/* 해당 타이틀을 가진 글의 세부내용을 볼 수 있는 모달 띄우기, 그리고 띄울 때 조회수 1 플러스 */}
                     <td className="board-list-content">
                       <div>
-                        <a onClick={() => setModalIsOpen(true)} id="{{comment.id}}" href>
+                        <a onClick={() => setModalIsOpen(true)} id="rowData._id" href>
                           {rowData.title}
                         </a>
                         <Modal
@@ -141,18 +146,12 @@ function Board() {
                             <BoardDetail />
                           </Container>
                         </Modal>
-                        {/* <a className="board-list-content-link"
-                        // id="{{rowData.id}}"
-                        // href="/BoardDetail/{{rowData._id}}"
-                        >
-                          {rowData.title}
-                        </a> */}
                       </div>
                     </td>
                     {/* user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 */}
                     <td className="board-list-name">
                       <div>
-                        {rowData.postedBy}
+                        {/* {rowData.postedBy} */}
                       </div>
                     </td>
                     {/* 조회수 count 필요 */}
@@ -183,11 +182,10 @@ function Board() {
           <br />
           {/* boardwrite 모달을 띄워주는 버튼 */}
           <div>
-            <BoardButton variant="contained" size="large" onClick={() => setModalIsOpen(true)}>글쓰기</BoardButton>
+            <Button variant="contained" size="large" onClick={() => setModalIsOpen(true)}>글쓰기</Button>
             <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
               <div>
                 <BoardWrite />
-                {/* <BoardDetail /> */}
               </div>
               <button onClick={() => setModalIsOpen(false)}>창 닫기</button>
             </Modal>
