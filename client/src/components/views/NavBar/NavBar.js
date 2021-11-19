@@ -21,6 +21,7 @@ import MiddleMenu from "./Sections/MiddleMenu";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    height: 50,
     padding: theme.spacing(1),
     [theme.breakpoints.down("sm")]: {
       backgroundColor: theme.palette.secondary.main,
