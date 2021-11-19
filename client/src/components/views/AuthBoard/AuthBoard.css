@@ -1,87 +1,87 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-    background-color: #f5f5ff;
+  background-color: #f5f5ff;
 }
 .authBoard-container {
-    margin: auto 240px;
-    min-width: 800px;
+  margin: auto 240px;
+  min-width: 800px;
 }
 
 .AuthBoardPost-container {
-    margin: 0 auto;
-    /* border: 1px solid black; */
+  margin: 0 auto;
+  /* border: 1px solid black; */
 }
 .AuthBoardPost-photoPlace {
-    margin: 0 auto;
-    background-color: #efefef;
-    width: 300px;
-    height: 400px;
+  margin: 0 auto;
+  background-color: #efefef;
+  width: 300px;
+  height: 400px;
 }
 .AuthBoardPost-photoPlace > img {
-    width: 300px;
-    height: 400px;
+  width: 300px;
+  height: 400px;
 }
 .AuthBoardPost-Body-area {
-    width: 568px;
-    height: 100px;
-    margin: 10px auto;
+  width: 568px;
+  height: 100px;
+  margin: 10px auto;
 }
 .AuthBoardPost-Body {
-    margin: 10px auto;
-    display: block;
-    width: 546px;
-    height: 100px;
-    border-radius: 5px;
-    border: 1px solid black;
-    padding: 10px;
+  margin: 10px auto;
+  display: block;
+  width: 546px;
+  height: 80px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  padding: 10px;
 }
 .AuthBoardPost-Photo {
-    float: left;
+  float: left;
 }
 .AuthBoardPost-submit-area {
-    box-sizing: border-box;
-    width: 600px;
-    height: 50px;
-    margin: 0 auto;
+  box-sizing: border-box;
+  width: 600px;
+  height: 50px;
+  margin: 0 auto;
 }
 
 .css-14tjg8b-MuiPaper-root-MuiCard-root {
-    margin: 15px auto;
+  margin: 15px auto;
 }
 .css-et1ao3-MuiTypography-root {
-    font-size: 1rem;
-    font-weight: bold;
+  font-size: 1rem;
+  font-weight: bold;
 }
 .css-1t6e9jv-MuiCardActions-root {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .css-1rwjz6-MuiCardActions-root {
-    justify-content: space-evenly;
-    border: solid 1px #eeeeee;
+  justify-content: space-evenly;
+  border: solid 1px #eeeeee;
 }
 .css-1jgmn5n-MuiTypography-root {
-    color: rgba(0, 0, 0);
+  color: rgba(0, 0, 0);
 }
 .css-185gdzj-MuiCardHeader-root {
-    padding: 10px !important;
+  padding: 10px !important;
 }
 .css-46bh2p-MuiCardContent-root {
-    padding: 10px 10px 10px 20px !important;
+  padding: 10px 10px 10px 20px !important;
 }
 .css-d97ly5-MuiList-root {
-    height: 76px;
+  height: 76px;
 }
 #authboard_commentPost {
-    height: 55px;
+  height: 55px;
 }
 .authboard-commentPost-container {
-    border-top: 1px solid #cccccc;
-    display: flex;
-    padding: 8px 16px;
-    align-items: center;
+  border-top: 1px solid #cccccc;
+  display: flex;
+  padding: 8px 16px;
+  align-items: center;
 }
