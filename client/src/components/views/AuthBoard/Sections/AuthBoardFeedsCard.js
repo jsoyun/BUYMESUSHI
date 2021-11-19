@@ -61,7 +61,7 @@ export default function AuthBoardFeedsCard() {
                 postId: id,
             })
             // .then((res) => res.json())
-            .then((result) => {})
+            .then((result) => { })
             .catch((err) => {
                 console.log(err);
             });
@@ -72,7 +72,7 @@ export default function AuthBoardFeedsCard() {
                 postId: id,
             })
             // .then((res) => res.json())
-            .then((result) => {})
+            .then((result) => { })
             .catch((err) => {
                 console.log(err);
             });

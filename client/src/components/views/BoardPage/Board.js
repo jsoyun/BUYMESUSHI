@@ -130,31 +130,30 @@ function Board() {
   const [boards, setBoards] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      let res = await axios.get('api/board');
-      console.log(res.data.Boards);
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("/api/board");
+        console.log(res.data.Boards);
 
-      const _Data = await res.data.Boards.map(
-        (Data) => (
-          setLastIdx(lastIdx + 1),
-          {
-            _id: Data._id,
-            title: Data.title,
-            boardBody: Data.boardBody,
-          }
-        )
-      );
-      setData(Data.concat(_Data));
-
-
-
-      // setBoards = res.data.Boards;
-      // .then(res => setBoards(res.data))
-      // .catch(err => console.log(err));
-    }
+        const _Data = await res.data.Boards.map(
+          (rowData) => (
+            setLastIdx(lastIdx + 1),
+            {
+              _id: rowData._id,
+              index: lastIdx,
+              title: rowData.title,
+              boardBody: rowData.boardBody,
+              viewCount: rowData.viewCount,
+            }
+          )
+        );
+        setData(Data.concat(_Data));
+      } catch (error) {
+        console.error(error);
+      }
+    };
     fetchData();
   }, []);
-
   return (
     <div className="board">
       <div className="header">
@@ -175,32 +174,46 @@ function Board() {
                 <th>작성자</th>
                 <th className="views">조회수</th>
               </tr>
+
+
+
+
               {/* 이 아래에 map 함수로 보여주기 */}
               {/* {% for comment in comments %} */}
-              <tr>
-                <td className="board-list-num">
-                  <div>
-                    {/* {{ boardData.title }} */}
+              {Data.map((rowData, index) => (
+                <tr>
+                  <td className="board-list-num">
+                    <div>
+                      {rowData.index}
+                    </div>
+                  </td>
+                  {/* 해당 타이틀을 가진 글의 세부내용으로 가기 */}
+                  <td className="board-list-content">
+                    <div>
+                      <a className="board-list-content-link"
+                      // id="{{rowData.id}}"
+                      // href="/BoardDetail/{{rowData._id}}"
+                      >
+                        {rowData.title}
+                      </a>
+                    </div>
+                  </td>
+                  {/* user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 */}
+                  <td className="board-list-name">
+                    <div>
+                      {/* {{User.nickname}} */}
+                    </div>
+                  </td>
+                  {/* 조회수 count 필요 */}
+                  <td className="viewcount">
+                    <div className="board-list-viewcount">{rowData.viewcount}</div>
+                  </td>
+                </tr>
+              ))}
 
-                  </div>
-                </td>
-                {/* 해당 타이틀을 가진 글의 세부내용으로 가기 */}
-                <td className="board-list-content">
-                  <div>
-                    {/* <a className="board-list-content-link" id="{{comment.id}}" href="/boarddetail/{{comment.id}}">{{ comment.title }}</a> */}
-                  </div>
-                </td>
-                {/* user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 */}
-                <td className="board-list-name">
-                  <div>
-                    {/* {{comment.User.nick}} */}
-                  </div>
-                </td>
-                {/* 조회수로 수정 요망 */}
-                <td className="viewcount">
-                  {/* <div className="board-list-viewcount">{{ comment.viewcount }}</div> */}
-                </td>
-              </tr>
+
+
+
 
               <tr>
                 <td className="num">0</td>
@@ -235,7 +248,7 @@ function Board() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
