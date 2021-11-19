@@ -5,10 +5,10 @@
 }
 
 .displayweather .maincard {
-  width: 500px;
+  width: 450px;
   margin-top: 20px;
   align-self: center;
-  padding: 50px;
+  padding: 50px 120px;
   border-radius: 20px;
   position: relative;
   background: rgb(245, 242, 242);
@@ -19,67 +19,66 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 1.5rem;
+  margin-left: 70px;
+  font-size: 1.1rem;
 }
 
 .displayweather .maincard .cardsubtitle {
   position: absolute;
   left: 10px;
-
+  margin-left: 80px;
   color: grey;
   margin-top: -8px;
 }
-.displayweather h1 {
-  font-size: 5rem;
-  margin: -10px;
-  margin-left: -150px;
+.displayweather h3 {
+  font-size: 2rem;
+  margin: 10px;
+  margin-left: 100px;
 }
 
 .displayweather .weather-icon {
-  width: 100px;
-
+  width: 80px;
   position: absolute;
   top: 50px;
 }
 
 .displayweather .weather-main {
   position: absolute;
-
   top: 120px;
-  left: 310px;
+  left: 280px;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .displayweather .weather-description {
   position: absolute;
   left: 10px;
-  font-size: 1.4rem;
+  font-size: 1.15rem;
+  margin-left: 100px;
 }
 .displayweather .weatherdetails {
-  margin-left: 50px;
+  margin-left: 10px;
   margin-right: 50px;
-
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto;
-  grid-gap: 20px;
+  font-size: 15px;
 }
 .displayweather .weatherdetails .section1 {
   justify-self: right;
-  width: 300px;
+  width: 100px;
+  font-size: 1rem;
 }
 
-h4 {
-  text-align: left;
-  margin-right: 30px;
-  font-size: 1.2rem;
+.displayweather .weatherdetails .section2 {
+  width: 100px;
+  font-size: 1rem;
 }
 
 td {
-  border-bottom: 2px dashed grey;
+  border-bottom: none;
 }
 
 .displayweather .weatherdetails span {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }

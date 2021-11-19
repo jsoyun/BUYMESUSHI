@@ -1,7 +1,14 @@
+* {
+  margin: 0 auto;
+  /* overflow-x: hidden; */
+}
+
 .switch {
-    background-color: #3b5998;
+  background-color: #3b5998;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .router {
-    margin: 0 120px;
+  margin: 0 120px;
 }

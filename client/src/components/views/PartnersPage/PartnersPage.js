@@ -3,6 +3,10 @@ import styled from "styled-components";
 import { PartnersItem, Partners } from "../../../data";
 // import { useSpring, animated, config } from "react-spring";
 
+const Box = styled.div`
+  box-sizing: border-box;
+`;
+
 const PartnersHead = styled.h1`
   font-size: 36px;
   color: #555;
@@ -25,7 +29,7 @@ const Container = styled.div`
   position: relative;
   flex-direction: row;
   justify-content: space-between;
-  width: 100vw;
+  width: 95vw;
   height: 24vh;
   margin-bottom: 50px;
   background-image: url(./img/main_logobox.JPG);
@@ -60,6 +64,16 @@ const Organization = styled.div`
   margin: 20px 32px;
 `;
 
+const Con = styled.div`
+  width: 180px;
+  height: 50px;
+  justify-content: center;
+  position: absolute;
+  &:hover {
+    display: none;
+  }
+`;
+
 const Image = styled.img`
   width: 110px;
   height: 34px;
@@ -67,6 +81,15 @@ const Image = styled.img`
   margin-top: 10px;
   justify-content: center;
   position: absolute;
+`;
+
+const Row = styled.div`
+  width: 180px;
+  height: 50px;
+  justify-content: center;
+  position: absolute;
+  transform: translateY(0);
+  transition: 1s;
   &:hover {
     display: none;
   }
@@ -77,23 +100,24 @@ const Image2 = styled.img`
   height: 34px;
   margin-left: 10px;
   margin-top: 10px;
-  transform: translateY(0);
-  transition: 1s;
-  &:hover {
-    display: none;
-  }
+  justify-content: center;
+  position: absolute;
 `;
 
 const PartnersPage = () => {
   return (
-    <>
+    <Box>
       <PartnersHead>UsEarth Partners</PartnersHead>
       <Hr />
       <Container>
         {PartnersItem.map((item) => (
           <Partner key={item.id}>
-            <Image src={item.image} />
-            <Image2 src={item.image2} />
+            <Con>
+              <Image src={item.image} />
+            </Con>
+            <Row>
+              <Image2 src={item.image2} />
+            </Row>
           </Partner>
         ))}
         {Partners.map((item) => (
@@ -102,7 +126,7 @@ const PartnersPage = () => {
           </Organization>
         ))}
       </Container>
-    </>
+    </Box>
   );
 };
 

@@ -5,6 +5,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import Link from "react-router";
 
 const Footer = () => {
   return (
@@ -25,9 +26,9 @@ const Footer = () => {
             <h4>Members</h4>
             <ul className="list-unstyled">
               <li>Site Editor: Kim Hyerin</li>
+              <li>Site Editor: Choi Hyunseok</li>
               <li>Site Editor: Lee Seongjae</li>
               <li>Site Editor: Lee Soyun</li>
-              <li>Site Editor: Choi hyunseok</li>
             </ul>
           </div>
           {/* column 3*/}
@@ -40,7 +41,12 @@ const Footer = () => {
               <GitHubIcon
                 fontSize="large"
                 color="secondary"
-                link="https://github.com/buymesushi/BUYMESUSHI.git"
+                onClick={() =>
+                  window.open(
+                    "https://github.com/buymesushi/BUYMESUSHI.git",
+                    "_blank"
+                  )
+                }
               />
               <YouTubeIcon fontSize="large" />
             </ul>
@@ -48,6 +54,7 @@ const Footer = () => {
         </div>
         <hr />
         <div className="row">
+          <br />
           <p className="col-sm">
             &copy;{new Date().getFullYear()} by usEarth, Inc. All rights
             reserved. | Terms Of Service | Privacy

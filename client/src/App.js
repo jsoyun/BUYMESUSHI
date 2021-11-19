@@ -2,15 +2,15 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { observer } from 'mobx-react';
 //import NavBar from "./components/views/NavBar/NavBar";
-import LandingPage from './components/views/LandingPage/LandingPage';
-import LoginPage from './components/views/LoginPage/LoginPage';
-import RegisterPage from './components/views/RegisterPage/RegisterPage';
-import Auth from './hoc/auth';
-import NavBar from './components/views/NavBar/NavBar';
-import About from './components/views/AboutPage/About';
-import Board from './components/views/BoardPage/Board';
-// import WriteBoard from "./components/views/BoardPage/WriteBoard";
-import Footer from './components/views/Footer/Footer';
+import LandingPage from "./components/views/LandingPage/LandingPage";
+import LoginPage from "./components/views/LoginPage/LoginPage";
+import RegisterPage from "./components/views/RegisterPage/RegisterPage";
+import Auth from "./hoc/auth";
+import NavBar from "./components/views/NavBar/NavBar";
+import About from "./components/views/AboutPage/About";
+import Board from "./components/views/BoardPage/Board";
+import BoardWrite from "./components/views/BoardPage/BoardWrite";
+import Footer from "./components/views/Footer/Footer";
 //page
 
 import HomeScreen from './components/views/ShoppingPage/HomeScreen';
@@ -22,6 +22,15 @@ import AuthBoard from './components/views/AuthBoard/AuthBoard';
 import { HomeWorkSharp } from '@material-ui/icons';
 import Profile from './components/views/ProfilePage/Profile';
 // 추후 삭제
+
+import { createGlobalStyle } from "styled-components";
+
+// const GlobalStyle = createGlobalStyle`
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }`;
 
 function App() {
     return (

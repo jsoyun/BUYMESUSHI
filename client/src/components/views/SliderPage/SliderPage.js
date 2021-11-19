@@ -16,8 +16,7 @@ import { useSpring, animated, config } from "react-spring";
 const Container = styled.div`
   width: 100%;
   display: flex;
-  position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 `;
 
 const Arrow = styled.div`
@@ -40,6 +39,7 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
+  width: fit-content;
   height: 80%;
   display: flex;
   transition: all 1.5s ease;
@@ -48,7 +48,7 @@ const Wrapper = styled.div`
 
 const Slide = styled.div`
   width: 100vw;
-  height: 78vh;
+  height: 76vh;
   display: flex;
   align-items: center;
   /* background-color: #${(props) => props.bg}; */
@@ -63,15 +63,15 @@ const ImgContainer = styled.div`
 `;
 
 const Image = styled.img`
-  width: 100%;
+  width: 100vw;
   height: 100%;
   size: "cover";
   z-index: -1;
 `;
 
 const InfoContainer = styled.div`
-  width: 40vw;
-  height: 62vh;
+  width: 42vw;
+  height: 60vh;
   margin-left: 52%;
   display: inline-block;
   padding: 3em;
@@ -79,9 +79,9 @@ const InfoContainer = styled.div`
   border-radius: 10px;
   z-index: 5;
   position: relative;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
   border: 2px solid transparent;
-  background-clip: border-box;
+  /* background-clip: border-box; */
   cursor: pointer;
 `;
 
@@ -90,23 +90,27 @@ const Title = styled.h1`
 `;
 
 const Desc = styled.p`
-  margin: 50px 0px;
-  font-size: 25px;
+  margin: 30px 0px;
+  font-size: 20px;
   font-weight: 500;
   letter-spacing: 3px;
 `;
 
-const Button = styled.button`
+const Button = styled.a`
+  text-decoration: none;
   padding: 10px;
   font-size: 20px;
-  background-color: transparent;
+  color: #00fffb;
+  text-decoration: none;
+  box-shadow: 0 -6px rgba(0, 255, 72, 0.3) inset;
+  /* background-color: transparent;
   background: linear-gradient(to left, raba(255, 255, 255, 0.15), transparent);
   cursor: pointer;
   border-radius: 30%;
   overflow: hidden;
   &:hover {
     letter-spacing: 3px;
-  }
+  } */
 `;
 
 const calc = (x, y) => [
@@ -154,7 +158,7 @@ const SliderPage = () => {
               >
                 <Title>{item.title}</Title>
                 <Desc>{item.desc}</Desc>
-                <Button>더보기</Button>
+                <Button href="/about">더보기</Button>
               </InfoContainer>
             </Slide>
           ))}

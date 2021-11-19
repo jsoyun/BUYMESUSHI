@@ -1,6 +1,6 @@
 .main-footer {
   color: white;
-  background-color: #3b5998;
+  background-color: #000000;
   padding: 1em;
   position: relative;
   bottom: 0;
@@ -9,11 +9,12 @@
 
 .row {
   display: flex;
+  margin: 1vw;
   flex-direction: row;
 }
 
 .col {
   /* margin: 5px 120px 5px 120px; */
-  margin: 0.1vw 8vw 0.1vw 8vw;
+  margin: 0.1vw 8vw 1vw 8vw;
   align-items: center;
 }

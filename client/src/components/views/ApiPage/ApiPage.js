@@ -14,13 +14,13 @@ function ApiPage({ sliders }) {
     // 마지막꺼 다음에 첫번째꺼 오게 해서 무한 슬라이드 가능
     infinite: true,
     // 슬라이드 끝이 안 짤릴 수 있게
-    centerPadding: "0px",
+    // centerPadding: "0px",
     // 한번에 보여줄 개수
-    slidesToShow: 2,
+    slidesToShow: 3,
     // 드래그해서 슬라이드 가능
-    swipeToSlide: true,
-    arrow: true,
-    centerMode: true,
+    // swipeToSlide: true,
+    // arrow: true,
+    // centerMode: true,
 
     afterChange: function (index) {
       console.log(
@@ -63,8 +63,8 @@ function ApiPage({ sliders }) {
     <Container>
       <div
         style={{
-          paddingLeft: "35px",
-          paddingRight: "35px",
+          // paddingLeft: "35px",
+          // paddingRight: "35px",
           paddingTop: "18px",
           paddingBottom: "18px",
         }}
