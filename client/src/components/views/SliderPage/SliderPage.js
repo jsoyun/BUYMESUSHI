@@ -100,9 +100,10 @@ const Button = styled.a`
   text-decoration: none;
   padding: 10px;
   font-size: 20px;
-  color: #00fffb;
-  text-decoration: none;
-  box-shadow: 0 -6px rgba(0, 255, 72, 0.3) inset;
+  color: #3b5998;
+  font-weight: bold;
+  text-shadow: #999999 1px 1px 2px;
+  /* box-shadow: 0 -6px rgba(0, 255, 72, 0.3) inset; */
   /* background-color: transparent;
   background: linear-gradient(to left, raba(255, 255, 255, 0.15), transparent);
   cursor: pointer;
