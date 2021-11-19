@@ -44,6 +44,7 @@ const AuthBoardPost = () => {
         }
         let form = document.getElementById('authboard_post');
         let formData = new FormData(form);
+        event.preventDefault();
 
         axios.post('/api/authBoard/post', formData).then((response) => {
             console.log(response.data);

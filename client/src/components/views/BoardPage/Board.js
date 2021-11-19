@@ -1,28 +1,160 @@
+// import React, { useEffect, useState } from "react";
+// import "./Board.css";
+// import axios from "axios";
+// import { withRouter, Router, Route, Switch } from "react-router-dom";
+// import { Link } from "react-router-dom";
+// import { errorHandler } from "../../../services/error-handler";
+// import Button from '@mui/material/Button';
+// import Modal from "react-modal";
+// import BoardDetail from './BoardDetail';
+// import BoardWrite from './BoardWrite';
+// import { styled } from '@mui/material/styles';
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
+// import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+// import TableContainer from '@mui/material/TableContainer';
+// import TableHead from '@mui/material/TableHead';
+// import TableRow from '@mui/material/TableRow';
+// import Paper from '@mui/material/Paper';
+
+// const StyledTableCell = styled(TableCell)(({ theme }) => ({
+//   [`&.${tableCellClasses.head}`]: {
+//     backgroundColor: theme.palette.common.black,
+//     color: theme.palette.common.white,
+//   },
+//   [`&.${tableCellClasses.body}`]: {
+//     fontSize: 14,
+//   },
+// }));
+
+// const StyledTableRow = styled(TableRow)(({ theme }) => ({
+//   '&:nth-of-type(odd)': {
+//     backgroundColor: theme.palette.action.hover,
+//   },
+//   // hide last border
+//   '&:last-child td, &:last-child th': {
+//     border: 0,
+//   },
+// }));
+
+
+// function Board() {
+//   const [modalIsOpen, setModalIsOpen] = useState(false);
+//   const [Data, setData] = useState([
+//     {
+//       boardBody:
+//         "자유롭게 적어주세요",
+//       title: "제목은 짧게 해주세요",
+//     },
+//   ]);
+
+//   useEffect(() => {
+//     try {
+//       const res = axios.get("/api/board");
+//       console.log(res.data.Boards);
+
+//       const _Data = res.data.Boards.map(
+//         (rowData) => (
+//           {
+//             title: rowData.title,
+//             boardBody: rowData.boardBody,
+//             _id: rowData.user
+//           }
+//         )
+//       );
+//       setData(Data.concat(_Data));
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   }, []);
+//   return (
+
+
+//     <>
+//       <TableContainer component={Paper}>
+//         <Table sx={{ minWidth: 700 }} aria-label="customized table">
+//           <TableHead>
+//             <TableRow>
+//               <StyledTableCell>제 목 </StyledTableCell>
+//               <StyledTableCell align="right">내 용</StyledTableCell>
+
+//             </TableRow>
+//           </TableHead>
+//           <TableBody>
+//             {Data.map((data) => (
+//               <StyledTableRow key={data._id}>
+//                 <StyledTableCell component="th" scope="row">
+//                   {data.title}
+//                 </StyledTableCell>
+//                 <StyledTableCell align="right">{data.boardBody}</StyledTableCell>
+
+//               </StyledTableRow>
+//             ))}
+//           </TableBody>
+//         </Table>
+//       </TableContainer>
+//     </>
+//   );
+// }
+
+// export default Board;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 import React, { useEffect, useState } from "react";
 import "./Board.css";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
+import { withRouter, Router, Route, Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { dateFormat } from "../../../services/date-format";
-import { BoardError } from "../../../redux/constants/BoardError";
 import { errorHandler } from "../../../services/error-handler";
-import BoardBtn from "../BoardPage/BoardBtn";
+import Button from '@mui/material/Button';
+import Modal from "react-modal";
+import BoardDetail from './BoardDetail';
+import BoardWrite from './BoardWrite';
+// import BoardWrite from './BoardWrite';
 
-function ArticleList() {
-  // const [articleList, setArticleList] = useState([]);
-  const toBoardWrite = () => {
-    console.log('글 작성 클릭');
+
+
+function Board() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [lastIdx, setLastIdx] = useState(0);
+  const [Data, setData] = useState([]);
+  const [boardId, setboardId] = useState('');
+  const boardIdHandler = (e) => {
+    setboardId(e.data._id);
   };
+  const [boards, setBoards] = useState([]);
+
   useEffect(() => {
-    axios
-      .get(
-        `${process.env.REACT_APP_REQUEST_URL}/api/article/getlist?start=1&end=100`
-      )
-      .then((response) => {
-        errorHandler(response.data.data);
-        // setArticleList(response.data.data);
-      });
+    async function fetchData() {
+      let res = await axios.get('api/board');
+      console.log(res.data.Boards);
+
+      const _Data = await res.data.Boards.map(
+        (Data) => (
+          setLastIdx(lastIdx + 1),
+          {
+            _id: Data._id,
+            title: Data.title,
+            boardBody: Data.boardBody,
+          }
+        )
+      );
+      setData(Data.concat(_Data));
+
+
+
+      // setBoards = res.data.Boards;
+      // .then(res => setBoards(res.data))
+      // .catch(err => console.log(err));
+    }
+    fetchData();
   }, []);
+
   return (
     <div className="board">
       <div className="header">
@@ -34,7 +166,7 @@ function ArticleList() {
       <div className="article">
         <div className="wrapper">
           <table>
-            <thead><h1>자유게시판</h1></thead>
+            {/* <thead><h1>자유게시판</h1></thead> */}
             {/* <form action="/board" method="POST"> */}
             <tbody>
               <tr>
@@ -48,7 +180,8 @@ function ArticleList() {
               <tr>
                 <td className="board-list-num">
                   <div>
-                    {/* {{comment.id}} */}
+                    {/* {{ boardData.title }} */}
+
                   </div>
                 </td>
                 {/* 해당 타이틀을 가진 글의 세부내용으로 가기 */}
@@ -75,29 +208,35 @@ function ArticleList() {
                   <p>건전한 대화 부탁드립니다.</p>
                 </td>
                 <td>관리자 일동</td>
-                <td className="views">33</td>
+                <td className="views">33,612</td>
               </tr>
               {/* </form> */}
             </tbody>
 
           </table>
 
-          {/* boardwrite로 페이지를 넘겨주는 버튼 */}
+
+
+
+
+
+
+          <br />
+          {/* boardwrite 모달을 띄워주는 버튼 */}
           <div>
-            <button className="boardwrite" onClick>글 작성</button>
+            <Button variant="contained" size="large" onClick={() => setModalIsOpen(true)}>글쓰기</Button>
+            <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+              <div>
+                <BoardWrite />
+                {/* <BoardDetail /> */}
+              </div>
+              <button onClick={() => setModalIsOpen(false)}>창 닫기</button>
+            </Modal>
           </div>
-          {/* 글 10개당 page 넘어가는 페이징 필요  */}
-          {/* <div className="pages">
-            <ul>
-              <li className="active">
-                <p>1</p>
-              </li>
-            </ul>
-          </div> */}
         </div>
       </div>
     </div>
   );
 }
 
-export default ArticleList;
+export default Board;
