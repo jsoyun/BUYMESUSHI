@@ -1,7 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const ProfileHead = (props) => {
-    console.log(props, '프롭스 데이타!');
+    const [propsData, setPropsData] = useState([
+        { waits: 0, completes: 0, wrongs: 0 },
+    ]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                props.photoData.map((rowData) => {
+                    if (rowData.photo === "") return;
+                    if (rowData.waits === true)
+                        return {
+                            ...propsData,
+                            waits: this + 1,
+                        };
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    console.log(propsData);
+
     return (
         <div>
             <div className="Profile-header">
