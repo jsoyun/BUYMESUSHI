@@ -39,13 +39,13 @@ const NavBar = (props) => {
   };
   const classes = useStyles();
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 5 }}>
       <AppBar position="static" style={{ background: "#000000" }}>
         <Toolbar>
-          <Link href="/" sx={{ ml: 15, mr: 2 }}>
+          <Link href="/" sx={{ flexGrow: 3, ml: 15, mr: 2 }}>
             <img className="navbar-logo" src="/img/usEarth.png" />
           </Link>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 2, mr: 25 }}>
             <h2 className={classes.appbarTitle}>
               us<span className={classes.colorText}>Earth</span>
             </h2>

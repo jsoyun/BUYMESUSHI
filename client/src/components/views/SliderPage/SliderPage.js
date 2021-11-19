@@ -48,7 +48,7 @@ const Wrapper = styled.div`
 
 const Slide = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 76vh;
   display: flex;
   align-items: center;
   /* background-color: #${(props) => props.bg}; */
@@ -90,8 +90,8 @@ const Title = styled.h1`
 `;
 
 const Desc = styled.p`
-  margin: 50px 0px;
-  font-size: 25px;
+  margin: 30px 0px;
+  font-size: 20px;
   font-weight: 500;
   letter-spacing: 3px;
 `;
