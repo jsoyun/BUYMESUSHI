@@ -1,0 +1,38 @@
+.GameContainer {
+  width: 400px;
+}
+.letter {
+  border: 1px solid #ccc;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  width: 34px;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.BtnBtn {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  width: 34px;
+  text-align: center;
+}
+
+.guessed {
+  display: none;
+}
