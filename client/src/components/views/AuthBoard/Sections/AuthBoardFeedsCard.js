@@ -23,6 +23,7 @@ export default function AuthBoardFeedsCard() {
             likes: [],
             dislikes: [],
             comments: [],
+            profileImage: "",
         },
     ]);
     const [lastIdx, setLastIdx] = useState(0);
@@ -43,6 +44,7 @@ export default function AuthBoardFeedsCard() {
                             likes: rowData.likes,
                             dislikes: rowData.dislikes,
                             comments: rowData.comments,
+                            profileImage: rowData.postedBy.profileImage,
                         }
                     )
                 );
@@ -96,7 +98,7 @@ export default function AuthBoardFeedsCard() {
                                     avatar={
                                         <Avatar aria-label="user">
                                             <img
-                                                src="img/authBoard/abc.jpg"
+                                                src={rowData.profileImage}
                                                 style={{
                                                     width: "40px",
                                                     height: "40px",
