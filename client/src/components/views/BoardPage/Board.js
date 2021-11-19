@@ -54,7 +54,16 @@ const BoardWriteButton = styled(Button)({
 function Board() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [lastIdx, setLastIdx] = useState(0);
-  const [Data, setData] = useState([]);
+  const [Data, setData] = useState([
+    {
+      _id: '',
+      index: '',
+      title: '',
+      boardBody: '',
+      viewcount: '',
+      postedBy: '',
+    }
+  ]);
   const user = useSelector((state) => state.user.userData);
   const [viewCount, setViewCount] = useState('');
   // const [boardId, setboardId] = useState('');
@@ -78,7 +87,7 @@ function Board() {
               title: rowData.title,
               boardBody: rowData.boardBody,
               viewcount: rowData.viewcount,
-              // postedBy: rowData.postedBy.nickname,
+              postedBy: rowData.postedBy.nickname,
             }
           )
         );
@@ -119,7 +128,7 @@ function Board() {
               {Data.filter((data) => data.boardBody !== "")
                 // .filter((data) => data.postedBy !== user.nickname)
                 .map((rowData, index) => (
-                  <tr key="">
+                  <tr key={rowData.title}>
                     <td className="board-list-num">
                       <div>
                         {rowData.index}
@@ -128,10 +137,11 @@ function Board() {
                     {/* 해당 타이틀을 가진 글의 세부내용을 볼 수 있는 모달 띄우기, 그리고 띄울 때 조회수 1 플러스 */}
                     <td className="board-list-content">
                       <div>
-                        <a onClick={() => setModalIsOpen(true)} id="rowData._id" href>
+                        <a id="read" onClick={() => setModalIsOpen(true)} id="rowData._id">
                           {rowData.title}
                         </a>
                         <Modal
+                          id="readit"
                           style={customStyles}
                           isOpen={modalIsOpen}
                           onRequestClose={() => setModalIsOpen(false)}
@@ -142,16 +152,18 @@ function Board() {
                             fontSize="large"
                             cursor="pointer"
                           ></CloseIcon>
+
                           <Container>
                             <BoardDetail />
                           </Container>
+
                         </Modal>
                       </div>
                     </td>
                     {/* user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 */}
                     <td className="board-list-name">
                       <div>
-                        {/* {rowData.postedBy} */}
+                        {rowData.postedBy}
                       </div>
                     </td>
                     {/* 조회수 count 필요 */}
@@ -182,8 +194,8 @@ function Board() {
           <br />
           {/* boardwrite 모달을 띄워주는 버튼 */}
           <div>
-            <Button variant="contained" size="large" onClick={() => setModalIsOpen(true)}>글쓰기</Button>
-            <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            <BoardWriteButton id="write" variant="contained" size="large" onClick={() => setModalIsOpen(true)}>글쓰기</BoardWriteButton>
+            <Modal id="writeit" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
               <div>
                 <BoardWrite />
               </div>

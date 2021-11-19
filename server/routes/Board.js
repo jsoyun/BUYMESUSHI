@@ -48,23 +48,23 @@ router.get('/', async (req, res) => {
     }
 });
 
-// 누른 그 해당글을 불러와야 함(BoardView)
-router.get('/title', async (req, res) => {
-    try {
-        const posts = await Board.find({}).populate('createdAt').populate('postedBy');
-        // //렌더링 되기 전 조회수 1 추가
-        // const update = await Board.update(
-        //   {
-        //   viewcount : ++posts.viewcount,
-        // },
-        // {where:{id : req.params.id}}
-        // )
-        res.json({ Boards });
-    } catch (error) {
-        console.error(error);
-        // next(error);
-    }
-});
+// // 누른 그 해당글을 불러와야 함(BoardView)
+// router.get('/title', async (req, res) => {
+//     try {
+//         const posts = await Board.find({}).populate('createdAt').populate('postedBy');
+//         // //렌더링 되기 전 조회수 1 추가
+//         // const update = await Board.update(
+//         //   {
+//         //   viewcount : ++posts.viewcount,
+//         // },
+//         // {where:{id : req.params.id}}
+//         // )
+//         res.json({ Boards });
+//     } catch (error) {
+//         console.error(error);
+//         // next(error);
+//     }
+// });
 
 try {
     fs.readdirSync('boarduploads');

@@ -45,16 +45,17 @@ function BoardDetail() {
 
 
   return (
-    <div class="board">
-      <div class="header">
-        <div class="wrapper1">
-          <div class="title">UsEarth</div>
-          <div class="desc">게시판 상세 페이지</div>
+
+    <div className="board">
+      <div className="header">
+        <div className="wrapper1">
+          <div className="title">UsEarth</div>
+          <div className="desc">게시판 상세 페이지</div>
         </div>
       </div>
 
-      <div class="article">
-        <div class="wrapper">
+      <div className="article">
+        <div className="wrapper">
           <br />
           <br />
           <br />
