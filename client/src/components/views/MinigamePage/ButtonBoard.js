@@ -5,8 +5,8 @@ import ButtonGrid from "./ButtonGrid";
 export default function GameBoard({ secreteWord }) {
   return (
     <div className="GameContainer">
-      <LetterGrid secreteWord={secreteWord} guessedLetters={("R", "t")} />
-      <ButtonGrid letterGuessed />
+      <LetterGrid secreteWord={secreteWord} guessedLetters={("a", "r")} />
+      <ButtonGrid />
     </div>
   );
 }

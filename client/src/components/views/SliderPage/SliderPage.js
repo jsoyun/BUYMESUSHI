@@ -48,7 +48,7 @@ const Wrapper = styled.div`
 
 const Slide = styled.div`
   width: 100vw;
-  height: 76vh;
+  height: 79vh;
   display: flex;
   align-items: center;
   /* background-color: #${(props) => props.bg}; */
@@ -70,8 +70,8 @@ const Image = styled.img`
 `;
 
 const InfoContainer = styled.div`
-  width: 42vw;
-  height: 60vh;
+  width: 40vw;
+  height: 56vh;
   margin-left: 52%;
   display: inline-block;
   padding: 3em;
@@ -86,12 +86,12 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 46px;
+  font-size: 42px;
 `;
 
 const Desc = styled.p`
   margin: 30px 0px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
   letter-spacing: 3px;
 `;
