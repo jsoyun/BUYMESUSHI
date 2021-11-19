@@ -126,8 +126,19 @@
 .MyPageAuth-header-container {
     width: 100%;
     padding: 20px;
-    height: 263px;
+    height: 184px;
     display: flex;
     border-bottom: 1px solid #cccccc;
+}
+.MyPageAuth-profileImg {
+    width: 144px;
+    height: 144px;
+    border-radius: 100%;
+}
+.MyPageAuth-header-column {
+    width: 70%;
+}
+.MyPageAuth-header-column:first-child {
+    width: 30%;
 }
 /* ////////////////////////////////////////////////////// */

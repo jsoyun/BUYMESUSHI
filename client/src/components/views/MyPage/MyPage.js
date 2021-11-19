@@ -1,7 +1,7 @@
 //cart
 import "./MyPage.css";
 import React from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -23,24 +23,35 @@ const MyPage = () => {
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
-    //
-    //   console.log(cart, "카트///////////////");
-    //   db.user.insert(cart);
 
-    //  const insertCartData= async(e) => {
-    //      e.preventDefault();
-    //    const res= await axios.get(`/api/product`);
-    //    if(res.data[0]===undefined){
-    //        let tmp= [];
-    //        tmp.push(res.data);
-    //        return setList(cover);
-    //        setList(res.data);
-    //    }
-    //  }
-    //  User.insertMany(insertCart);
-    //
+    const [Data, setData] = useState([{}]);
+    const [PostStates, setPostStates] = useState({});
+    const [lastIdx, setLastIdx] = useState(0);
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        const fetchData = async (e) => {
+            try {
+                const res = await axios.get("/api/mypage");
+
+                const _Data = await res.data.userPosts.map(
+                    (rowData) => (
+                        setLastIdx(lastIdx + 1),
+                        {
+                            nickname: rowData.postedBy.nickname,
+                            photo: rowData.photo,
+                            compliteAuth: rowData.compliteAuth,
+                            wrongAuth: rowData.wrongAuth,
+                            comments: rowData.comments,
+                        }
+                    )
+                );
+                setPostStates(res.data.postsState);
+                return setData(Data.concat(_Data));
+            } catch (error) {}
+        };
+        fetchData();
+    }, []);
+    console.log(Data);
 
     const qtyChangeHandler = (id, qty) => {
         dispatch(addToCart(id, qty));
@@ -74,7 +85,7 @@ const MyPage = () => {
             <div className="AuthBoard">
                 {/* /////////////////////////////// */}
                 {/* 현석 */}
-                <MyPageAuth />
+                <MyPageAuth photoData={Data} postState={PostStates} />
                 {/* /////////////////////////////// */}
             </div>
             <div className="cartscreen">

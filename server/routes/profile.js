@@ -34,7 +34,7 @@ router.get("/:id", async (req, res) => {
         }
 
         const postsState = { waits, completes, wrongs };
-
+        console.log(userPosts);
         return res.status(200).json({ userPosts, postsState });
     } catch (err) {
         console.error(err);
