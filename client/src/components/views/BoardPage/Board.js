@@ -1,116 +1,7 @@
-// import React, { useEffect, useState } from "react";
-// import "./Board.css";
-// import axios from "axios";
-// import { withRouter, Router, Route, Switch } from "react-router-dom";
-// import { Link } from "react-router-dom";
-// import { errorHandler } from "../../../services/error-handler";
-// import Button from '@mui/material/Button';
-// import Modal from "react-modal";
-// import BoardDetail from './BoardDetail';
-// import BoardWrite from './BoardWrite';
-// import { styled } from '@mui/material/styles';
-// import Table from '@mui/material/Table';
-// import TableBody from '@mui/material/TableBody';
-// import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-// import TableContainer from '@mui/material/TableContainer';
-// import TableHead from '@mui/material/TableHead';
-// import TableRow from '@mui/material/TableRow';
-// import Paper from '@mui/material/Paper';
-
-// const StyledTableCell = styled(TableCell)(({ theme }) => ({
-//   [`&.${tableCellClasses.head}`]: {
-//     backgroundColor: theme.palette.common.black,
-//     color: theme.palette.common.white,
-//   },
-//   [`&.${tableCellClasses.body}`]: {
-//     fontSize: 14,
-//   },
-// }));
-
-// const StyledTableRow = styled(TableRow)(({ theme }) => ({
-//   '&:nth-of-type(odd)': {
-//     backgroundColor: theme.palette.action.hover,
-//   },
-//   // hide last border
-//   '&:last-child td, &:last-child th': {
-//     border: 0,
-//   },
-// }));
-
-
-// function Board() {
-//   const [modalIsOpen, setModalIsOpen] = useState(false);
-//   const [Data, setData] = useState([
-//     {
-//       boardBody:
-//         "자유롭게 적어주세요",
-//       title: "제목은 짧게 해주세요",
-//     },
-//   ]);
-
-//   useEffect(() => {
-//     try {
-//       const res = axios.get("/api/board");
-//       console.log(res.data.Boards);
-
-//       const _Data = res.data.Boards.map(
-//         (rowData) => (
-//           {
-//             title: rowData.title,
-//             boardBody: rowData.boardBody,
-//             _id: rowData.user
-//           }
-//         )
-//       );
-//       setData(Data.concat(_Data));
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   }, []);
-//   return (
-
-
-//     <>
-//       <TableContainer component={Paper}>
-//         <Table sx={{ minWidth: 700 }} aria-label="customized table">
-//           <TableHead>
-//             <TableRow>
-//               <StyledTableCell>제 목 </StyledTableCell>
-//               <StyledTableCell align="right">내 용</StyledTableCell>
-
-//             </TableRow>
-//           </TableHead>
-//           <TableBody>
-//             {Data.map((data) => (
-//               <StyledTableRow key={data._id}>
-//                 <StyledTableCell component="th" scope="row">
-//                   {data.title}
-//                 </StyledTableCell>
-//                 <StyledTableCell align="right">{data.boardBody}</StyledTableCell>
-
-//               </StyledTableRow>
-//             ))}
-//           </TableBody>
-//         </Table>
-//       </TableContainer>
-//     </>
-//   );
-// }
-
-// export default Board;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 import React, { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
 import "./Board.css";
 import axios from "axios";
-import { withRouter, Router, Route, Switch } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { errorHandler } from "../../../services/error-handler";
 import Button from '@mui/material/Button';
 import Modal from "react-modal";
 import BoardDetail from './BoardDetail';
@@ -123,11 +14,13 @@ function Board() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [lastIdx, setLastIdx] = useState(0);
   const [Data, setData] = useState([]);
-  const [boardId, setboardId] = useState('');
-  const boardIdHandler = (e) => {
-    setboardId(e.data._id);
-  };
-  const [boards, setBoards] = useState([]);
+  const user = useSelector((state) => state.user.userData);
+  const [viewCount, setViewCount] = useState('');
+  // const [boardId, setboardId] = useState('');
+  // const boardIdHandler = (e) => {
+  //   setboardId(e.data._id);
+  // };
+  // const [boards, setBoards] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -143,7 +36,8 @@ function Board() {
               index: lastIdx,
               title: rowData.title,
               boardBody: rowData.boardBody,
-              viewCount: rowData.viewCount,
+              viewcount: rowData.viewcount,
+              postedBy: rowData.postedBy.nickname,
             }
           )
         );
@@ -179,37 +73,38 @@ function Board() {
 
 
               {/* 이 아래에 map 함수로 보여주기 */}
-              {/* {% for comment in comments %} */}
-              {Data.map((rowData, index) => (
-                <tr>
-                  <td className="board-list-num">
-                    <div>
-                      {rowData.index}
-                    </div>
-                  </td>
-                  {/* 해당 타이틀을 가진 글의 세부내용으로 가기 */}
-                  <td className="board-list-content">
-                    <div>
-                      <a className="board-list-content-link"
-                      // id="{{rowData.id}}"
-                      // href="/BoardDetail/{{rowData._id}}"
-                      >
-                        {rowData.title}
-                      </a>
-                    </div>
-                  </td>
-                  {/* user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 */}
-                  <td className="board-list-name">
-                    <div>
-                      {/* {{User.nickname}} */}
-                    </div>
-                  </td>
-                  {/* 조회수 count 필요 */}
-                  <td className="viewcount">
-                    <div className="board-list-viewcount">{rowData.viewcount}</div>
-                  </td>
-                </tr>
-              ))}
+              {Data.filter((data) => data.boardBody !== "")
+                // .filter((data) => data.postedBy !== user.nickname)
+                .map((rowData, index) => (
+                  <tr key="">
+                    <td className="board-list-num">
+                      <div>
+                        {rowData.index}
+                      </div>
+                    </td>
+                    {/* 해당 타이틀을 가진 글의 세부내용으로 가기.. 모달로 띄우기, 그리고 띄울 때 조회수 1 플러스 */}
+                    <td className="board-list-content">
+                      <div>
+                        <a className="board-list-content-link"
+                        // id="{{rowData.id}}"
+                        // href="/BoardDetail/{{rowData._id}}"
+                        >
+                          {rowData.title}
+                        </a>
+                      </div>
+                    </td>
+                    {/* user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 */}
+                    <td className="board-list-name">
+                      <div>
+                        {rowData.postedBy}
+                      </div>
+                    </td>
+                    {/* 조회수 count 필요 */}
+                    <td className="viewcount">
+                      <div className="board-list-viewcount">{rowData.viewcount}</div>
+                    </td>
+                  </tr>
+                ))}
 
 
 
