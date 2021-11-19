@@ -1,3 +1,110 @@
+// import React, { useEffect, useState } from "react";
+// import "./Board.css";
+// import axios from "axios";
+// import { withRouter, Router, Route, Switch } from "react-router-dom";
+// import { Link } from "react-router-dom";
+// import { errorHandler } from "../../../services/error-handler";
+// import Button from '@mui/material/Button';
+// import Modal from "react-modal";
+// import BoardDetail from './BoardDetail';
+// import BoardWrite from './BoardWrite';
+// import { styled } from '@mui/material/styles';
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
+// import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+// import TableContainer from '@mui/material/TableContainer';
+// import TableHead from '@mui/material/TableHead';
+// import TableRow from '@mui/material/TableRow';
+// import Paper from '@mui/material/Paper';
+
+// const StyledTableCell = styled(TableCell)(({ theme }) => ({
+//   [`&.${tableCellClasses.head}`]: {
+//     backgroundColor: theme.palette.common.black,
+//     color: theme.palette.common.white,
+//   },
+//   [`&.${tableCellClasses.body}`]: {
+//     fontSize: 14,
+//   },
+// }));
+
+// const StyledTableRow = styled(TableRow)(({ theme }) => ({
+//   '&:nth-of-type(odd)': {
+//     backgroundColor: theme.palette.action.hover,
+//   },
+//   // hide last border
+//   '&:last-child td, &:last-child th': {
+//     border: 0,
+//   },
+// }));
+
+
+// function Board() {
+//   const [modalIsOpen, setModalIsOpen] = useState(false);
+//   const [Data, setData] = useState([
+//     {
+//       boardBody:
+//         "자유롭게 적어주세요",
+//       title: "제목은 짧게 해주세요",
+//     },
+//   ]);
+
+//   useEffect(() => {
+//     try {
+//       const res = axios.get("/api/board");
+//       console.log(res.data.Boards);
+
+//       const _Data = res.data.Boards.map(
+//         (rowData) => (
+//           {
+//             title: rowData.title,
+//             boardBody: rowData.boardBody,
+//             _id: rowData.user
+//           }
+//         )
+//       );
+//       setData(Data.concat(_Data));
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   }, []);
+//   return (
+
+
+//     <>
+//       <TableContainer component={Paper}>
+//         <Table sx={{ minWidth: 700 }} aria-label="customized table">
+//           <TableHead>
+//             <TableRow>
+//               <StyledTableCell>제 목 </StyledTableCell>
+//               <StyledTableCell align="right">내 용</StyledTableCell>
+
+//             </TableRow>
+//           </TableHead>
+//           <TableBody>
+//             {Data.map((data) => (
+//               <StyledTableRow key={data._id}>
+//                 <StyledTableCell component="th" scope="row">
+//                   {data.title}
+//                 </StyledTableCell>
+//                 <StyledTableCell align="right">{data.boardBody}</StyledTableCell>
+
+//               </StyledTableRow>
+//             ))}
+//           </TableBody>
+//         </Table>
+//       </TableContainer>
+//     </>
+//   );
+// }
+
+// export default Board;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 import React, { useEffect, useState } from "react";
 import "./Board.css";
 import axios from "axios";
@@ -10,26 +117,28 @@ import BoardDetail from './BoardDetail';
 import BoardWrite from './BoardWrite';
 // import BoardWrite from './BoardWrite';
 
+
+
 function Board() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const toBoardWrite = () => {
-    console.log('제출 클릭');
-    window.location.href = '/boardwrite';
+  const [boardId, setboardId] = useState('');
+  const boardIdHandler = (e) => {
+    setboardId(e.data._id);
   };
+  const [boards, setBoards] = useState([]);
   useEffect(() => {
-    axios
-      .get(
-        ("/api/board")
-      )
-      .then((response) => {
-        errorHandler(response.data.data);
-        // setArticleList(response.data.data);
-      });
+    async function fetchData() {
+      let res = await axios.get('api/board');
+      console.log(res.data.Boards);
+      let boardData = res.data.Boards;
+
+      // .then(res => setBoards(res.data))
+      // .catch(err => console.log(err));
+    }
+    fetchData();
   }, []);
+
   return (
-    // <Router>
-    //   <Switch>
-    //     <Route path="/Board">
     <div className="board">
       <div className="header">
         <div className="wrapper">
@@ -54,7 +163,8 @@ function Board() {
               <tr>
                 <td className="board-list-num">
                   <div>
-                    {/* {{comment.id}} */}
+                    {/* {{ boardData.title }} */}
+
                   </div>
                 </td>
                 {/* 해당 타이틀을 가진 글의 세부내용으로 가기 */}
@@ -88,6 +198,12 @@ function Board() {
 
           </table>
 
+
+
+
+
+
+
           <br />
           {/* boardwrite 모달을 띄워주는 버튼 */}
           <div>
@@ -100,23 +216,9 @@ function Board() {
               <button onClick={() => setModalIsOpen(false)}>창 닫기</button>
             </Modal>
           </div>
-          {/* 글 10개당 page 넘어가는 페이징 필요  */}
-          {/* <div className="pages">
-            <ul>
-              <li className="active">
-                <p>1</p>
-              </li>
-            </ul>
-          </div> */}
         </div>
       </div>
     </div>
-    //     </Route>
-    //   </Switch>
-    //   <Route path="/BoardWrtie">
-    //     <BoardWrite />
-    //   </Route>
-    // </Router>
   );
 }
 
