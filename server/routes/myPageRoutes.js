@@ -63,13 +63,28 @@ router.post("/", async (req, res) => {
   // } catch (error) {
   //   console.log(error);
   // }
+
+  // try {
+  //   const user = res.locals.user;
+  //   console.log(user, "삭제할려고 현재유저확인");
+  //   await User.updateMany({
+
+  //     products: { productId: req.body._id, qty: req.body.qty1 },
+  //   });
+  //   // where:{products: req.body.products}
+  //   // ();
+  // } catch (error) {
+  //   console.log(error);
+  // }
   try {
     const user = res.locals.user;
     console.log(user, "삭제할려고 현재유저확인");
-    await User
-      .destroy
-      // where:{products: req.body.products}
-      ();
+    await User.updateOne(
+      { _id: products._id },
+      { products: { productId: req.body._id, qty: req.body.qty1 } }
+    );
+    // where:{products: req.body.products}
+    // ();
   } catch (error) {
     console.log(error);
   }
