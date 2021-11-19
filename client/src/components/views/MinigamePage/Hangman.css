@@ -9,19 +9,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 89vh;
   margin: 0;
   overflow: hidden;
 }
 
 .gameHeader h3 {
   margin: 20px 0 0;
+  text-align: center;
+}
+
+.gameHeader p {
+  margin: 15px 0 0;
+  text-align: center;
+}
+
+.gameHeader img {
+  margin: 15px 0 0 100px;
 }
 
 .hangman .game-container {
   padding: 10px 20px;
   position: relative;
-  margin: 0;
+  margin: 5px;
   width: 500px;
   height: 310px;
 }
@@ -39,7 +49,7 @@
 
 .wrong-letters-container {
   position: absolute;
-  top: 0px;
+  top: 25px;
   right: 0px;
   display: flex;
   flex-direction: column;
@@ -115,7 +125,7 @@
 .notification-container {
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 10px 10px 0 0;
-  padding: 15px 20px;
+  padding: 15px 15px;
   position: absolute;
   bottom: -50px;
   transition: transform 0.3s ease-in-out;
