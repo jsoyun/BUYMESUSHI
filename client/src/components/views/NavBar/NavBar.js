@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.secondary.main,
     },
   },
+
   icon: {
     color: "#fff",
     fontSize: "1.1rem",
@@ -93,7 +94,7 @@ const NavBar = (props) => {
           // style={{ background: "#000000" }}
           style={{
             boxShadow: "none",
-            backgroundColor: "black",
+            color: "transparent",
           }}
         >
           <Toolbar>
