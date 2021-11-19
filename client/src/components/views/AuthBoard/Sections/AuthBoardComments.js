@@ -15,7 +15,6 @@ const ariaLabel = { "aria-label": "description" };
 export default function AuthBoardComments({ authBoards, commentsData }) {
     const user = useSelector((state) => state.user.userData);
     const [comments, setComments] = useState([]);
-    console.log(commentsData, "코멘트 데이터");
 
     const onCommentsHandler = (e) => {
         setComments(e.currentTarget.value);
@@ -33,7 +32,6 @@ export default function AuthBoardComments({ authBoards, commentsData }) {
         };
 
         axios.post("/api/authBoard/comments", body).then((response) => {
-            console.log(response.data);
             console.log("댓글 등록 완료");
         });
     };
