@@ -15,6 +15,9 @@ const AuthBoardPost = () => {
   const [Photo, setPhoto] = useState("");
   const [fileUrl, setFileUrl] = useState(null);
 
+  //
+  const [modal, setModal] = useState("");
+
   const onBodyHandler = (event) => {
     setBody(event.currentTarget.value);
   };
@@ -53,64 +56,100 @@ const AuthBoardPost = () => {
   //     display: "none",
   // });
 
+  //모달시도
+  const onModalHandler = (event) => {
+    setModal(event.currentTarget.value);
+
+    function onClick() {
+      document.querySelector(".modal_wrap").style.display = "block";
+      document.querySelector(".black_bg").style.display = "block";
+    }
+    function offClick() {
+      document.querySelector(".modal_wrap").style.display = "none";
+      document.querySelector(".black_bg").style.display = "none";
+    }
+
+    document.getElementById("modal_btn").addEventListener("click", onClick);
+    document.querySelector(".modal_close").addEventListener("click", offClick);
+
+    console.log("찍히나?");
+  };
+
   return (
-    <div className="AuthBoardPost-container">
-      <form
-        onSubmit={onSubmitHandler}
-        encType="multipart/form-data"
-        id="authboard_post"
-      >
-        <Card sx={{ maxWidth: 600 }}>
-          <CardMedia
-            className="AuthBoardPost-photoPlace"
-            component="img"
-            height="400"
-            image={fileUrl}
-          />
-          <CardContent>
-            <div className="AuthBoardPost-Body-area">
-              <input
-                className="AuthBoardPost-Body"
-                type="text"
-                name="authBody"
-                value={Body}
-                onChange={onBodyHandler}
-                placeholder="내용을 입력하세요"
+    //모달 시도
+    <div className="M_body">
+      <button onClick={onModalHandler} type="button" id="modal_btn">
+        모달띄우기
+      </button>
+      <div className="black_bg"></div>
+
+      {/*  */}
+      <div className="AuthBoardPost-container">
+        <div className="modal_wrap">
+          <div className="modal_close">
+            <a href="#">close</a>
+          </div>
+          {/*  */}
+          <form
+            onSubmit={onSubmitHandler}
+            encType="multipart/form-data"
+            id="authboard_post"
+          >
+            <Card sx={{ maxWidth: 600 }}>
+              <CardMedia
+                className="AuthBoardPost-photoPlace"
+                component="img"
+                height="400"
+                image={fileUrl}
               />
-            </div>
-          </CardContent>
-          <CardActions>
-            <Button
-              variant="contained"
-              component="label"
-              className="AuthBoardPost-Photo"
-              style={{
-                background: "#3b5998",
-              }}
-            >
-              Upload Image
-              <input
-                id="input-image"
-                type="file"
-                name="authBoardPhoto"
-                value={Photo}
-                onChange={onPhotoHandler}
-                hidden
-              />
-            </Button>
-            <Button
-              variant="contained"
-              type="submit"
-              className="AuthBoardPost-submit-btn"
-              style={{
-                background: "#3b5998",
-              }}
-            >
-              제출
-            </Button>
-          </CardActions>
-        </Card>
-      </form>
+              <CardContent>
+                <div className="AuthBoardPost-Body-area">
+                  <input
+                    className="AuthBoardPost-Body"
+                    type="text"
+                    name="authBody"
+                    value={Body}
+                    onChange={onBodyHandler}
+                    placeholder="내용을 입력하세요"
+                  />
+                </div>
+              </CardContent>
+              <CardActions>
+                <Button
+                  variant="contained"
+                  component="label"
+                  className="AuthBoardPost-Photo"
+                  style={{
+                    background: "#3b5998",
+                  }}
+                >
+                  Upload Image
+                  <input
+                    id="input-image"
+                    type="file"
+                    name="authBoardPhoto"
+                    value={Photo}
+                    onChange={onPhotoHandler}
+                    hidden
+                  />
+                </Button>
+                <Button
+                  variant="contained"
+                  type="submit"
+                  className="AuthBoardPost-submit-btn"
+                  style={{
+                    background: "#3b5998",
+                  }}
+                >
+                  제출
+                </Button>
+              </CardActions>
+            </Card>
+          </form>
+        </div>
+
+        {/*  */}
+      </div>
     </div>
   );
 };
