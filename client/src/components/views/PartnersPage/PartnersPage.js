@@ -38,13 +38,13 @@ const Container = styled.div`
 
 const Partner = styled.div`
   --border-radius: 0.7rem;
-  width: 140px;
+  width: 135px;
   height: 50px;
   /* position: absolute; */
   border: 2px solid transparent;
   backdrop-filter: blur(1px);
   cursor: pointer;
-  margin: 20px 32px;
+  margin: 20px 27px;
   box-shadow: 0px 7px 7px -5px #7a7a7a;
   transition: all var(--transition-time);
   border-radius: var(--border-radius);
@@ -104,6 +104,11 @@ const Image2 = styled.img`
   position: absolute;
 `;
 
+const Image3 = styled.img`
+  width: 110px;
+  height: 42px;
+`;
+
 const PartnersPage = () => {
   return (
     <Box>
@@ -122,7 +127,7 @@ const PartnersPage = () => {
         ))}
         {Partners.map((item) => (
           <Organization key={item.id}>
-            <Image src={item.img} />
+            <Image3 src={item.img} />
           </Organization>
         ))}
       </Container>

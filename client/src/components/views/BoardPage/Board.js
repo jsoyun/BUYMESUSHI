@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import "./Board.css";
 import axios from "axios";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import Modal from "react-modal";
-import BoardDetail from './BoardDetail';
-import BoardWrite from './BoardWrite';
+import BoardDetail from "./BoardDetail";
+import BoardWrite from "./BoardWrite";
 import CloseIcon from "@mui/icons-material/Close";
 import styled from "styled-components";
 
@@ -37,12 +37,12 @@ const Container = styled.div`
 // styled component 3
 const BoardButton = styled(Button)({
   backgroundColor: "#3b5998",
-  left: '79.3vw',
+  left: "79.3vw",
 });
 // styled component 4
 const BoardWriteButton = styled(Button)({
   backgroundColor: "#3b5998",
-  left: '79.3vw',
+  left: "79.3vw",
 });
 // // styled component 4
 // const SpecialA = styled.a`
@@ -53,19 +53,20 @@ const BoardWriteButton = styled(Button)({
 // Board 시작
 function Board() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpenWrite, setModalIsOpenWrite] = useState(false);
   const [lastIdx, setLastIdx] = useState(0);
   const [Data, setData] = useState([
     {
-      _id: '',
-      index: '',
-      title: '',
-      boardBody: '',
-      viewcount: '',
-      postedBy: '',
-    }
+      _id: "",
+      index: "",
+      title: "",
+      boardBody: "",
+      viewcount: "",
+      postedBy: "",
+    },
   ]);
   const user = useSelector((state) => state.user.userData);
-  const [viewCount, setViewCount] = useState('');
+  const [viewCount, setViewCount] = useState("");
   // const [boardId, setboardId] = useState('');
   // const boardIdHandler = (e) => {
   //   setboardId(e.data._id);
@@ -99,7 +100,6 @@ function Board() {
     fetchData();
   }, []);
 
-
   return (
     <div className="board">
       <div className="header">
@@ -121,23 +121,22 @@ function Board() {
                 <th className="views">조회수</th>
               </tr>
 
-
-
-
               {/* 이 아래에 map 함수로 보여주기 */}
               {Data.filter((data) => data.boardBody !== "")
                 // .filter((data) => data.postedBy !== user.nickname)
                 .map((rowData, index) => (
                   <tr key={rowData.title}>
                     <td className="board-list-num">
-                      <div>
-                        {rowData.index}
-                      </div>
+                      <div>{rowData.index}</div>
                     </td>
                     {/* 해당 타이틀을 가진 글의 세부내용을 볼 수 있는 모달 띄우기, 그리고 띄울 때 조회수 1 플러스 */}
                     <td className="board-list-content">
                       <div>
-                        <a id="read" onClick={() => setModalIsOpen(true)} id="rowData._id">
+                        <a
+                          id="read"
+                          onClick={() => setModalIsOpen(true)}
+                          id="rowData._id"
+                        >
                           {rowData.title}
                         </a>
                         <Modal
@@ -156,26 +155,21 @@ function Board() {
                           <Container>
                             <BoardDetail />
                           </Container>
-
                         </Modal>
                       </div>
                     </td>
                     {/* user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 */}
                     <td className="board-list-name">
-                      <div>
-                        {rowData.postedBy}
-                      </div>
+                      <div>{rowData.postedBy}</div>
                     </td>
                     {/* 조회수 count 필요 */}
                     <td className="viewcount">
-                      <div className="board-list-viewcount">{rowData.viewcount}</div>
+                      <div className="board-list-viewcount">
+                        {rowData.viewcount}
+                      </div>
                     </td>
                   </tr>
                 ))}
-
-
-
-
 
               <tr>
                 <td className="num">0</td>
@@ -187,24 +181,34 @@ function Board() {
               </tr>
               {/* </form> */}
             </tbody>
-
           </table>
-
 
           <br />
           {/* boardwrite 모달을 띄워주는 버튼 */}
           <div>
-            <BoardWriteButton id="write" variant="contained" size="large" onClick={() => setModalIsOpen(true)}>글쓰기</BoardWriteButton>
-            <Modal id="writeit" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            <BoardWriteButton
+              variant="contained"
+              size="large"
+              onClick={() => setModalIsOpenWrite(true)}
+            >
+              글쓰기
+            </BoardWriteButton>
+            <Modal
+              id="writeit"
+              isOpen={modalIsOpenWrite}
+              onRequestClose={() => setModalIsOpenWrite(false)}
+            >
               <div>
                 <BoardWrite />
               </div>
-              <button onClick={() => setModalIsOpen(false)}>창 닫기</button>
+              <button onClick={() => setModalIsOpenWrite(false)}>
+                창 닫기
+              </button>
             </Modal>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 
