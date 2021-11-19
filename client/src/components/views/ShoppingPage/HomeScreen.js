@@ -18,7 +18,7 @@ const HomeScreen = () => {
   }, [dispatch]);
   return (
     <div className="homescreen">
-      <h2 className="homescreen_title">최신상품</h2>
+      <h2 className="homescreen_title"></h2>
       <div className="homescreen_products">
         {loading ? (
           <h2>로딩중...</h2>

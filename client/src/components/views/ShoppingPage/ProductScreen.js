@@ -52,15 +52,18 @@ const ProductScreen = ({ match, history }) => {
           </div>
           <div className="left_info">
             <p className="left_name">{product.name}</p>
-            <p>가격:${product.price}</p>
-            <p>상품 설명: {product.description}</p>
+            <p>가격: {product.price}</p>
+            <p>
+              상품 설명:
+              <p className="product_description"> {product.description}</p>
+            </p>
           </div>
           <div className="productscreen_right">
             <div></div>
           </div>
           <div className="right_info">
             <p>
-              가격:<span>${product.price}</span>
+              가격:<span>{product.price}</span>
             </p>
             <p>
               상태:
@@ -80,7 +83,7 @@ const ProductScreen = ({ match, history }) => {
             </p>
             <p>
               <button type="button" onClick={addToCartHandler}>
-                Add to cart
+                장바구니 넣기
               </button>
             </p>
           </div>

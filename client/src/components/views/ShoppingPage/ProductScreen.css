@@ -13,13 +13,19 @@
   flex: 0.6;
 }
 
+.left_image > img {
+  height: 300px;
+}
+
 .left_info {
   margin: 1rem;
   flex: 0.4;
   background: #fff;
-  height: fit-content;
+  /* height: fit-content; */
+  width: fit-content;
+
   font-size: 0.9rem;
-  min-width: 10vw;
+  min-width: 15vw;
 }
 
 .left_name {
@@ -31,10 +37,15 @@
   font-size: 1.3rem;
 }
 
+.product_description {
+  margin-top: 5px;
+}
+
 .left_info > p,
 .right_info > p {
   padding: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .left_info > p:last-child,
@@ -64,6 +75,14 @@
   background: #171717;
   color: #f4f4f4;
   border: 1px solid #171717;
+  cursor: pointer;
+}
+.right_info p > button:hover {
+  grid-column: 1/-1;
+  padding: 10px 16px;
+  background: #3b5998;
+  color: #f4f4f4;
+
   cursor: pointer;
 }
 
