@@ -89,7 +89,7 @@ const Row = styled.div`
   justify-content: center;
   position: absolute;
   transform: translateY(0);
-  transition: 1s;
+  transition: 5s;
   &:hover {
     display: none;
   }

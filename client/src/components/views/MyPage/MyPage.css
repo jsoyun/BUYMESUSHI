@@ -16,11 +16,20 @@
 .point h3 {
   text-align: center;
 }
-a {
+.authboardLink > a {
   text-decoration-line: none;
   /* border: solid blue; */
 
   color: #2c2c2c;
+  margin: 5px;
+}
+
+.gameLink > a {
+  text-decoration-line: none;
+  /* border: solid blue; */
+
+  color: #2c2c2c;
+  margin: 5px;
 }
 /* a:hover {
   text-decoration-line: none;
@@ -35,11 +44,12 @@ a {
   background-color: blue;
 } */
 
-li {
+.authboardLink,
+.gameLink {
   list-style: none;
   display: inline-block;
 }
-ul {
+.point > ul {
   margin: 0;
 }
 
