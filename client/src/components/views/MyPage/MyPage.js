@@ -82,13 +82,11 @@ const MyPage = () => {
                     <h3>포인트가 부족해요!!!!</h3>
                     <ul>
                       <li className="authboardLink">
-                        {" "}
-                        <a href="/authboard">지키미 포인트 획득</a>
+                        <a href="/authboard">지키미 포인트획득</a>
                       </li>
 
-                      <li>
-                        {" "}
-                        <a href="/"> 게임 포인트 획득</a>
+                      <li className="gameLink">
+                        <a href="/">게임 포인트획득</a>
                       </li>
                     </ul>
                   </div>
