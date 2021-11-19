@@ -70,7 +70,7 @@ const Image = styled.img`
 `;
 
 const InfoContainer = styled.div`
-  width: 40vw;
+  width: 42vw;
   height: 60vh;
   margin-left: 52%;
   display: inline-block;
