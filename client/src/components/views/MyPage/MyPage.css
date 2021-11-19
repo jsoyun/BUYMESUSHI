@@ -1,11 +1,11 @@
 .MyPage {
-    border: solid saddlebrown;
+    padding-top: 30px;
     display: grid;
     grid-template-columns: 2fr 1fr;
     /* grid-template-columns: 800px 200px; */
 }
+
 .AuthBoard {
-    border: solid red;
     grid-column-start: 1;
     grid-column-end: 2;
 }
@@ -57,7 +57,7 @@
     display: flex;
     max-width: 1000px;
     /* margin: 2rem auto; */
-    border: solid blue;
+
     /* grid-column-start: 2; */
     /* grid-column-start: 2;
   grid-column-end: 3; */
@@ -112,8 +112,7 @@
     border: 1px solid #171717;
     cursor: pointer;
 }
-
-.cartscreen_right div button:hover {
+B .cartscreen_right div button:hover {
     opacity: 0.9;
 }
 
@@ -136,9 +135,49 @@
     border-radius: 100%;
 }
 .MyPageAuth-header-column {
+    box-sizing: border-box;
     width: 70%;
 }
 .MyPageAuth-header-column:first-child {
+    box-sizing: border-box;
     width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.MyPageAuth-header-column .MyPageAuth-header-title,
+.MyPageAuth-header-column .MyPageAuth-header-states {
+    display: flex;
+    align-items: center;
+}
+.MyPageAuth-header-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.MyPageAuth-header-state {
+    font-size: 1em;
+    margin-right: 20px;
+}
+.MyPageAuth-header-states-qty {
+    font-weight: 500;
+}
+.MyPageAuth-body-container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 960px;
+    min-width: 960px;
+    max-width: 960px;
+}
+.MyPageUserImg {
+    border-radius: 100%;
+    width: 550px;
+    height: 432px;
+}
+.css-o69gx8-MuiCardMedia-root {
+    width: 100%;
+    margin-bottom: 20px;
 }
 /* ////////////////////////////////////////////////////// */

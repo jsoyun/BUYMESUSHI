@@ -27,6 +27,7 @@ const MyPage = () => {
     const [Data, setData] = useState([{}]);
     const [PostStates, setPostStates] = useState({});
     const [lastIdx, setLastIdx] = useState(0);
+    const [userData1, setUserData1] = useState({ nickname: "", userImage: "" });
 
     useEffect(() => {
         const fetchData = async (e) => {
@@ -45,14 +46,16 @@ const MyPage = () => {
                         }
                     )
                 );
+                setUserData1({
+                    nickname: res.data.user.nickname,
+                    userImage: res.data.user.profileImage,
+                });
                 setPostStates(res.data.postsState);
                 return setData(Data.concat(_Data));
             } catch (error) {}
         };
         fetchData();
     }, []);
-    console.log(Data);
-
     const qtyChangeHandler = (id, qty) => {
         dispatch(addToCart(id, qty));
     };
@@ -81,11 +84,14 @@ const MyPage = () => {
 
     return (
         <div className="MyPage">
-            마이페이지야
             <div className="AuthBoard">
                 {/* /////////////////////////////// */}
                 {/* 현석 */}
-                <MyPageAuth photoData={Data} postState={PostStates} />
+                <MyPageAuth
+                    photoData={Data}
+                    postState={PostStates}
+                    userData={userData1}
+                />
                 {/* /////////////////////////////// */}
             </div>
             <div className="cartscreen">

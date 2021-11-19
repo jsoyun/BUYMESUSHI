@@ -4,6 +4,9 @@ const User = require("../models/User");
 const Product = require("../models/Product");
 const AuthBoard = require("../models/AuthBoard");
 
+const multer = require("multer");
+const path = require("path");
+
 const { auth } = require("../middleware/auth");
 
 // 추후 다시 변경
@@ -11,6 +14,29 @@ router.use(auth);
 router.use((req, res, next) => {
     res.locals.user = req.user;
     next();
+});
+
+const storageEngine = multer.diskStorage({
+    destination: "client/public/img/profile",
+    filename: function (req, file, callback) {
+        callback(
+            null,
+            file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+        );
+    },
+});
+const fileFilter = (req, file, callback) => {
+    let pattern = /jpg|png|svg/; // reqex
+
+    if (pattern.test(path.extname(file.originalname))) {
+        callback(null, true);
+    } else {
+        callback("Error: not a valid file");
+    }
+};
+const upload = multer({
+    storage: storageEngine,
+    fileFilter,
 });
 
 router.get("/", async (req, res) => {
@@ -38,8 +64,8 @@ router.get("/", async (req, res) => {
         }
 
         const postsState = { waits, completes, wrongs };
-        console.log(userPosts);
-        return res.status(200).json({ userPosts, postsState });
+
+        return res.status(200).json({ userPosts, postsState, user });
     } catch (error) {
         console.error(error);
     }
@@ -74,16 +100,31 @@ router.put("/", async (req, res) => {
 router.post("/", async (req, res) => {
     try {
         const user = res.locals.user;
-        console.log(user, "유저임 수량값같이 보내줬던데");
+
         //req 요청의 내가 이름지은 productId
         const ProductId = req.body.productId;
         //프로덕트 아이디
-        console.log(ProductId);
+
         //삭제
         await User.updateOne(
             { _id: user._id },
             { $pull: { products: { productId: ProductId } } }
         );
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.put("/userImage", upload.single("profilePhoto"), async (req, res) => {
+    try {
+        const user = res.locals.user;
+        const profileFile = `/img/profile/${req.file.filename}`;
+        await User.updateOne(
+            { _id: user._id },
+            { $set: { profileImage: profileFile } }
+        );
+
+        return res.status(200).json({});
     } catch (error) {
         console.log(error);
     }
