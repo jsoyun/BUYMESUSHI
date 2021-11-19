@@ -36,17 +36,21 @@ const customStyles = {
   },
 };
 
+const ApiButton = styled(Button)({
+  backgroundColor: "#3b5998",
+});
+
 export default function SeaTempApiModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <>
-      <Button
+      <ApiButton
         variant="contained"
         size="large"
         onClick={() => setModalIsOpen(true)}
       >
         지면 온도 변화
-      </Button>
+      </ApiButton>
       <Modal
         style={customStyles}
         isOpen={modalIsOpen}

@@ -16,6 +16,10 @@ const Container = styled.div`
   float: left;
 `;
 
+const ApiButton = styled(Button)({
+  backgroundColor: "#3b5998",
+});
+
 const customStyles = {
   content: {
     width: "60vw",
@@ -41,13 +45,13 @@ export default function SeaTempApiModal(className, visible, children) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <>
-      <Button
+      <ApiButton
         variant="contained"
         size="large"
         onClick={() => setModalIsOpen(true)}
       >
         한국 온실가스 배출 변화
-      </Button>
+      </ApiButton>
       {/* <ModalWrapper className={className} visible={visible}>
         <ModalInner tabIndex="0" className="modal-inner"> */}
       <Modal

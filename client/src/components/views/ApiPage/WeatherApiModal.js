@@ -35,18 +35,22 @@ const customStyles = {
   },
 };
 
+const ApiButton = styled(Button)({
+  backgroundColor: "#3b5998",
+});
+
 export default function WeatherApiModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <>
-      <Button
+      <ApiButton
         variant="contained"
         size="large"
         onClick={() => setModalIsOpen(true)}
       >
         전세계 도시별 날씨
-      </Button>
+      </ApiButton>
       <Modal
         isOpen={modalIsOpen}
         style={customStyles}
