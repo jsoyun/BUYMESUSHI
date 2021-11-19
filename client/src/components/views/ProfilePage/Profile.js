@@ -45,7 +45,6 @@ const Profile = () => {
         fetchData();
     }, []);
 
-    console.log(urlParam, "데이타");
     return (
         <div className="Profile-container">
             <ProfileHead photoData={Data} userData={urlParam.id} />
