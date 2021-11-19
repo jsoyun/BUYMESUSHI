@@ -9,6 +9,39 @@
   grid-column-start: 1;
   grid-column-end: 2;
 }
+.point {
+  margin-top: -20px;
+  padding: 0;
+}
+.point h3 {
+  text-align: center;
+}
+a {
+  text-decoration-line: none;
+  /* border: solid blue; */
+
+  color: #2c2c2c;
+}
+/* a:hover {
+  text-decoration-line: none;
+
+  color: #ffffff;
+  background: #111111;
+  border-radius: 5px;
+} */
+
+/* .authboardLink {
+  margin: 0 3px 0 0;
+  background-color: blue;
+} */
+
+li {
+  list-style: none;
+  display: inline-block;
+}
+ul {
+  margin: 0;
+}
 
 .cartscreen {
   display: flex;
@@ -51,7 +84,7 @@
   border: none;
 }
 .cartscreen_info p {
-  padding: 8px;
+  padding: 0;
 }
 .cartscreen_info p:first-child {
   font-weight: bold;

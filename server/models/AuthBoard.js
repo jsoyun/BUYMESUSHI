@@ -17,9 +17,18 @@ const authBoardschema = new mongoose.Schema({
             postedBy: { type: ObjectId, ref: "User" },
         },
     ],
+
     postedBy: {
         type: ObjectId,
         ref: "User",
+    },
+    compliteAuth: {
+        type: Boolean,
+        default: false,
+    },
+    wrongAuth: {
+        type: Boolean,
+        default: false,
     },
     createdAt: {
         type: Date,

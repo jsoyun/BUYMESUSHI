@@ -6,7 +6,6 @@ const multer = require('multer');
 const path = require('path');
 
 const { auth } = require('../middleware/auth');
-const { findOneAndDelete } = require('../models/AuthBoard');
 const router = express.Router();
 // 추후 다시 변경
 router.use(auth);
@@ -44,22 +43,43 @@ router.get('/', async (req, res) => {
         const user = res.locals.user;
 
         // console.log(user);
-        const authBoards = await AuthBoard.find({})
+        const authBoards = await AuthBoard.find({ compliteAuth: false })
+            .find({ wrongAuth: false })
             .populate('postedBy')
             .populate('likes');
-        // console.log(authBoards);
-        // console.log("find : ", authBoards);
+
         for (let i = 0; i < authBoards.length; i++) {
-            if (authBoards[i].likes.length < 5) {
-                console.log('likes가 5보다 작아요!');
+            if (authBoards[i].likes.length >= 5) {
+                console.log(authBoards[i].authBody, '가 likes가 5보다 커요!');
+                await AuthBoard.updateOne(
+                    { _id: authBoards[i]._id },
+                    { compliteAuth: true }
+                )
+                    .then(
+                        console.log('5보다 커서 compliteAuth true 변경 완료!')
+                    )
+                    .catch((err) => console.error.apply(err));
             }
-            if (authBoards[i].dislikes.length < 5) {
-                console.log('dislikes가 5보다 작아요!');
+            if (authBoards[i].dislikes.length >= 5) {
+                console.log('dislikes가 5보다 커요!');
+                await AuthBoard.updateOne(
+                    { _id: authBoards[i]._id },
+                    { wrongAuth: true }
+                )
+                    .then(console.log('5보다 커서 wrongAuth true 변경 완료!'))
+                    .catch((err) => console.error.apply(err));
             }
         }
         // console.log(authBoards);
+        const resultAuthBoards = await AuthBoard.find({ compliteAuth: false })
+            .find({ wrongAuth: false })
+            .sort([['createdAt', -1]])
+            .populate('postedBy')
+            .populate('likes')
+            .populate('comments.postedBy');
 
-        res.json({ authBoards });
+        //console.log(resultAuthBoards[0].comments[0].text);
+        return res.json({ resultAuthBoards });
     } catch (error) {
         console.log(error);
     }
@@ -79,7 +99,7 @@ router.post('/post', upload.single('authBoardPhoto'), async (req, res) => {
 
         const insertMongo = {
             authBody: authBoardBody,
-            photo: `img/authBoard/${req.file.filename}`,
+            photo: `/img/authBoard/${req.file.filename}`,
             postedBy: req.user._id,
         };
 
@@ -98,9 +118,6 @@ router.post('/post', upload.single('authBoardPhoto'), async (req, res) => {
     }
 });
 
-router.post('/like', (req, res) => {
-    res.send('hi123');
-});
 router.put('/like', async (req, res) => {
     try {
         const user = res.locals.user;
@@ -185,8 +202,24 @@ router.put('/dislike', async (req, res) => {
     res.status(200).json([{}]);
 });
 
-router.get('/:id', (req, res) => {
-    res.send('hi2');
+router.post('/comments', async (req, res) => {
+    try {
+        const user = res.locals.user;
+        await AuthBoard.updateOne(
+            { _id: req.body.authBoardId },
+            {
+                $push: {
+                    comments: { text: req.body.comments, postedBy: user._id },
+                },
+            }
+        )
+            .then(console.log('성공했나..?'))
+            .catch((err) => console.error(err));
+
+        return res.redirect('/authBoard');
+    } catch (error) {
+        console.error(error);
+    }
 });
 
 module.exports = router;
