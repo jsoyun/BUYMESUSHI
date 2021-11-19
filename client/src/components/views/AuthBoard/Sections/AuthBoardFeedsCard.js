@@ -71,7 +71,7 @@ export default function AuthBoardFeedsCard() {
                 postId: id,
             })
             // .then((res) => res.json())
-            .then((result) => {})
+            .then((result) => { })
             .catch((err) => {
                 console.log(err);
             });
@@ -82,7 +82,7 @@ export default function AuthBoardFeedsCard() {
                 postId: id,
             })
             // .then((res) => res.json())
-            .then((result) => {})
+            .then((result) => { })
             .catch((err) => {
                 console.log(err);
             });
@@ -126,7 +126,7 @@ export default function AuthBoardFeedsCard() {
                                 onClick={() => {
                                     likePost(rowData._id);
                                 }}
-                                // onClick={onThumbUpHandler}
+                            // onClick={onThumbUpHandler}
                             >
                                 <IconButton>
                                     <ThumbUpOffAltIcon />
@@ -137,7 +137,7 @@ export default function AuthBoardFeedsCard() {
                                 onClick={() => {
                                     dislikePost(rowData._id);
                                 }}
-                                // onClick={onThumbUpHandler}
+                            // onClick={onThumbUpHandler}
                             >
                                 <IconButton type="submit">
                                     <ThumbDownOffAltIcon />

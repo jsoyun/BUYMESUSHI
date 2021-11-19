@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types;
 
 const BoardSchema = mongoose.Schema({
+    // index: {type:},
     title: { type: String, required: true },
     boardBody: { type: String, required: true },
     img: { type: String },
