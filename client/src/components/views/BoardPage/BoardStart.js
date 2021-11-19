@@ -1,3 +1,5 @@
+// 지워도 될...듯....
+
 // import React, { useEffect, useState } from "react";
 // import "./Board.css";
 // import axios from "axios";

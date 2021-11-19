@@ -52,8 +52,6 @@ export default function SeaTempApiModal(className, visible, children) {
       >
         한국 온실가스 배출 변화
       </ApiButton>
-      {/* <ModalWrapper className={className} visible={visible}>
-        <ModalInner tabIndex="0" className="modal-inner"> */}
       <Modal
         style={customStyles}
         isOpen={modalIsOpen}
@@ -69,8 +67,6 @@ export default function SeaTempApiModal(className, visible, children) {
           <GreenHouseApiModalItem />
         </Container>
       </Modal>
-      {/* </ModalInner>
-      </ModalWrapper> */}
     </>
   );
 }

@@ -16,7 +16,7 @@ label {
 .form .header .title1 {
   font-size: 25px;
   font-weight: bold;
-  color: #1259a7;
+  color: #3b5998;
 }
 
 .form .header .desc {
@@ -48,7 +48,7 @@ label {
 }
 
 .form .content .half label .point {
-  color: #1259a7;
+  color: #3b5998;
 }
 
 .form .content .half .message {
@@ -106,7 +106,7 @@ label {
 }
 
 .form .content .half .satisfaction .icons label.on i {
-  color: #1259a7;
+  color: #3b5998;
 }
 
 .form .content .half .satisfaction .icons label.on i {
@@ -143,7 +143,7 @@ label {
 
 .form .content .half textarea:focus,
 .form .content .half input:focus {
-  border-color: #1259a7;
+  border-color: #3b5998;
   outline: 0;
 }
 
@@ -156,9 +156,9 @@ label {
   height: 50px;
   display: inline-block;
   cursor: pointer;
-  background: #1259a7;
+  background: #3b5998;
   width: 100%;
-  border: 1px solid #1259a7;
+  border: 1px solid #3b5998;
   box-shadow: none;
   color: #fff;
   margin-top: 15px;

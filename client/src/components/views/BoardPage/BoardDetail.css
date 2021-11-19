@@ -1,3 +1,7 @@
+body {
+  font-family: sans-serif;
+}
+
 body *,
 body *:before,
 body *:after {
@@ -6,11 +10,11 @@ body *:after {
   box-sizing: border-box;
 }
 
-body .wrapper {
-  width: 1340px;
+body .wrapper1 {
+  width: 500px;
   margin: 0 auto;
   max-width: 100%;
-  padding: 0 15px;
+  padding: 0 10px;
 }
 
 body .clearfix:after {
@@ -28,9 +32,7 @@ body .clearfix:after {
 }
 
 .board .header .title {
-  margin-top: 25px;
   font-size: 25px;
-  cursor: pointer;
   text-decoration: none;
   font-weight: bold;
   color: #3b5998;
@@ -41,8 +43,7 @@ body .clearfix:after {
 }
 
 .board .article table {
-  width: 100%;
-  max-width: 100%;
+  width: 100vw;
   border-collapse: collapse;
   border: 1px solid #ddd;
 }
@@ -62,7 +63,7 @@ body .clearfix:after {
 }
 
 .board .article table td.title {
-  text-align: left;
+  text-align: center;
 }
 
 .board .article table td a {
@@ -75,6 +76,14 @@ body .clearfix:after {
   color: #fff;
   font-size: 10px;
   margin-left: 3px;
+}
+
+.board .article table td.title span.new {
+  background: #f71d1d;
+}
+
+.board .article table td.title span.update {
+  background: #3b5998;
 }
 
 .board .article table td a:hover {
@@ -94,7 +103,7 @@ body .clearfix:after {
 }
 
 .board .article .search .bundle {
-  width: 370px;
+  width: 70vw;
   margin-left: auto;
 }
 

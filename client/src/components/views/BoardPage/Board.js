@@ -6,10 +6,46 @@ import Button from '@mui/material/Button';
 import Modal from "react-modal";
 import BoardDetail from './BoardDetail';
 import BoardWrite from './BoardWrite';
-// import BoardWrite from './BoardWrite';
+import CloseIcon from "@mui/icons-material/Close";
+import styled from "styled-components";
 
+// styled component 1
+const customStyles = {
+  content: {
+    width: "60vw",
+    height: "70vh",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+  overlay: {
+    position: "fixed",
+    backgroundColor: "rgba(230, 239, 252, 0.75)",
+  },
+};
+// styled component 2
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-grow: row;
+  flex-wrap: nowrap;
+  float: left;
+`;
+// styled component 3
+const BoardButton = styled(Button)({
+  backgroundColor: "#3b5998",
+  left: '79.3vw',
+});
+// // styled component 4
+// const SpecialA = styled.a`
+//   width: 100%;
+//   text-align: "left"
+// `;
 
-
+// Board 시작
 function Board() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [lastIdx, setLastIdx] = useState(0);
@@ -48,6 +84,8 @@ function Board() {
     };
     fetchData();
   }, []);
+
+
   return (
     <div className="board">
       <div className="header">
@@ -82,15 +120,33 @@ function Board() {
                         {rowData.index}
                       </div>
                     </td>
-                    {/* 해당 타이틀을 가진 글의 세부내용으로 가기.. 모달로 띄우기, 그리고 띄울 때 조회수 1 플러스 */}
+                    {/* 해당 타이틀을 가진 글의 세부내용을 볼 수 있는 모달 띄우기, 그리고 띄울 때 조회수 1 플러스 */}
                     <td className="board-list-content">
                       <div>
-                        <a className="board-list-content-link"
+                        <a onClick={() => setModalIsOpen(true)} id="{{comment.id}}" href>
+                          {rowData.title}
+                        </a>
+                        <Modal
+                          style={customStyles}
+                          isOpen={modalIsOpen}
+                          onRequestClose={() => setModalIsOpen(false)}
+                        >
+                          <CloseIcon
+                            onClick={() => setModalIsOpen(false)}
+                            color="action"
+                            fontSize="large"
+                            cursor="pointer"
+                          ></CloseIcon>
+                          <Container>
+                            <BoardDetail />
+                          </Container>
+                        </Modal>
+                        {/* <a className="board-list-content-link"
                         // id="{{rowData.id}}"
                         // href="/BoardDetail/{{rowData._id}}"
                         >
                           {rowData.title}
-                        </a>
+                        </a> */}
                       </div>
                     </td>
                     {/* user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 */}
@@ -124,15 +180,10 @@ function Board() {
           </table>
 
 
-
-
-
-
-
           <br />
           {/* boardwrite 모달을 띄워주는 버튼 */}
           <div>
-            <Button variant="contained" size="large" onClick={() => setModalIsOpen(true)}>글쓰기</Button>
+            <BoardButton variant="contained" size="large" onClick={() => setModalIsOpen(true)}>글쓰기</BoardButton>
             <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
               <div>
                 <BoardWrite />
