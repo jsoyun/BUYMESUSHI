@@ -39,7 +39,8 @@ router.use((req, res, next) => {
 router.get('/', async (req, res) => {
     try {
         const user = res.locals.user;
-        const Boards = await Board.find({}).populate('createdAt');
+        const Boards = await Board.find({}).populate('createdAt')
+            .populate('postedBy');
         console.log(Boards);
         res.json({ Boards });
     } catch (error) {
