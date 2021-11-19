@@ -1,29 +1,48 @@
 import React, { useEffect, useState } from "react";
 
 const ProfileHead = (props) => {
-    const [propsData, setPropsData] = useState([
-        { waits: 0, completes: 0, wrongs: 0 },
-    ]);
+    const [propsData, setPropsData] = useState({
+        waits: 0,
+        completes: 0,
+        wrongs: 0,
+    });
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 props.photoData.map((rowData) => {
-                    if (rowData.photo === "") return;
-                    if (rowData.waits === true)
-                        return {
+                    if (rowData.photo === "") console.log("1번 떠야됨");
+                    if (
+                        rowData.compliteAuth === false &&
+                        rowData.wrongAuth === false
+                    ) {
+                        console.log("wait", propsData);
+                        setPropsData({
                             ...propsData,
-                            waits: this + 1,
-                        };
+                            waits: propsData.waits + 1,
+                        });
+                    }
+                    if (rowData.compliteAuth === true) {
+                        console.log("comAuth");
+                        setPropsData({
+                            ...propsData,
+                            compliteAuth: propsData.compliteAuth + 1,
+                        });
+                    }
+                    if (rowData.wrongAuth === true)
+                        setPropsData({
+                            ...propsData,
+                            wrongAuth: propsData.wrongAuth + 1,
+                        });
                 });
             } catch (error) {
                 console.error(error);
             }
         };
         fetchData();
-    }, []);
+    }, [props.photoData]);
 
-    console.log(propsData);
+    console.log(propsData, "안돼!!");
 
     return (
         <div>
