@@ -23,7 +23,7 @@ const customStyles = {
   },
   overlay: {
     position: "fixed",
-    backgroundColor: "rgba(230, 239, 252, 0.75)",
+    backgroundColor: "rgba(118, 135, 163, 0.2)",
   },
 };
 // styled component 2
@@ -44,11 +44,23 @@ const BoardWriteButton = styled(Button)({
   backgroundColor: "#3b5998",
   left: "79.3vw",
 });
-// // styled component 4
-// const SpecialA = styled.a`
-//   width: 100%;
-//   text-align: "left"
-// `;
+//
+const customStyles2 = {
+  content: {
+    width: "80vw",
+    height: "75vh",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+  overlay: {
+    position: "fixed",
+    backgroundColor: "rgba(118, 135, 163, 0.3)",
+  },
+};
 
 // Board 시작
 function Board() {
@@ -194,16 +206,20 @@ function Board() {
               글쓰기
             </BoardWriteButton>
             <Modal
+              style={customStyles2}
               id="writeit"
               isOpen={modalIsOpenWrite}
               onRequestClose={() => setModalIsOpenWrite(false)}
             >
+              <CloseIcon
+                onClick={() => setModalIsOpenWrite(false)}
+                color="action"
+                fontSize="large"
+                cursor="pointer"
+              ></CloseIcon>
               <div>
                 <BoardWrite />
               </div>
-              <button onClick={() => setModalIsOpenWrite(false)}>
-                창 닫기
-              </button>
             </Modal>
           </div>
         </div>

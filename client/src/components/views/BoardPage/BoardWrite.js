@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import axios from 'axios';
-import './BoardWrite.css';
+import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
+import "./BoardWrite.css";
+import styled from "styled-components";
 // import { errorHandler } from "../../../services/error-handler";
-import Modal from 'react-modal';
+import Modal from "react-modal";
+
+const Textarea = styled.textarea`
+  width: 100%;
+  height: 3em;
+  border: none;
+  resize: none;
+`;
 
 // // 이미지 업로드
 // if (document.getElementById('img')) {
@@ -36,9 +44,9 @@ import Modal from 'react-modal';
 // });
 
 function BoardWrite() {
-  const [Title, setTitle] = useState('');
-  const [Body, setBody] = useState('');
-  const [Img, setImg] = useState('');
+  const [Title, setTitle] = useState("");
+  const [Body, setBody] = useState("");
+  const [Img, setImg] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [fileUrl, setFileUrl] = useState(null);
 
@@ -56,16 +64,16 @@ function BoardWrite() {
     setFileUrl(imageUrl);
     setImg(event.currentTarget.value);
   };
-  console.log(Body, '바디');
-  console.log(Title, '타이틀');
+  console.log(Body, "바디");
+  console.log(Title, "타이틀");
 
   const onSubmitHandler = (event) => {
-    if (Title === '') {
+    if (Title === "") {
       event.preventDefault();
-      return alert('제목이나 내용이 빈 채로 게시할 수 없습니다.');
-    } else if (Body === '') {
+      return alert("제목이나 내용이 빈 채로 게시할 수 없습니다.");
+    } else if (Body === "") {
       event.preventDefault();
-      return alert('제목이나 내용이 빈 채로 게시할 수 없습니다.');
+      return alert("제목이나 내용이 빈 채로 게시할 수 없습니다.");
     }
     // event.preventDefault();
     // let form = document.getElementById('comment-form');
@@ -73,9 +81,9 @@ function BoardWrite() {
     // let formData = new FormData(form);
     // console.log(formData, 'formData');
 
-    axios.post('/api/board/write', { Body, Title }).then((response) => {
+    axios.post("/api/board/write", { Body, Title }).then((response) => {
       console.log(response.data);
-      console.log('글쓰기 성공');
+      console.log("글쓰기 성공");
     });
   };
   // useEffect(() => {
@@ -121,17 +129,13 @@ function BoardWrite() {
                   <input
                     id="img-url"
                     type="hidden"
-                    style={{ display: 'none' }}
+                    style={{ display: "none" }}
                     name="url"
                   />
                   <label id="img-label1" htmlFor="img">
                     사진 업로드
                   </label>
-                  <input
-                    id="img"
-                    type="file"
-                    accept="image/*"
-                  />
+                  <input id="img" type="file" accept="image/*" />
                 </div>
                 <div className="action">
                   <button
@@ -148,13 +152,14 @@ function BoardWrite() {
                   <label htmlFor="comment">
                     <span>내 용</span>
                   </label>
-                  <textarea
+                  <Textarea
+                    rows="5"
                     id="comment"
                     name="comment"
                     onChange={onBodyHandler}
                     value={Body}
                     placeholder="자유롭게 글을 작성해주세요"
-                  ></textarea>
+                  ></Textarea>
                 </div>
               </div>
             </div>
