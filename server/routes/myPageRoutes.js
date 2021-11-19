@@ -48,43 +48,18 @@ router.put("/", async (req, res) => {
 });
 //지우기
 router.post("/", async (req, res) => {
-  // try {
-  //   const user = res.locals.user;
-  //   console.log(user, "삭제할려고 현재유저확인");
-  //   await User.updateMany(
-  //     { _id: user._id },
-  //     {
-  //       $pull: {
-  //         products: { $in: [{ productId: req.body._id, qty: req.body.qty1 }] },
-  //       },
-  //     },
-  //     { multi: true }
-  //   );
-  // } catch (error) {
-  //   console.log(error);
-  // }
-
-  // try {
-  //   const user = res.locals.user;
-  //   console.log(user, "삭제할려고 현재유저확인");
-  //   await User.updateMany({
-
-  //     products: { productId: req.body._id, qty: req.body.qty1 },
-  //   });
-  //   // where:{products: req.body.products}
-  //   // ();
-  // } catch (error) {
-  //   console.log(error);
-  // }
   try {
     const user = res.locals.user;
-    console.log(user, "삭제할려고 현재유저확인");
+    console.log(user, "유저임 수량값같이 보내줬던데");
+    //req 요청의 내가 이름지은 productId
+    const ProductId = req.body.productId;
+    //프로덕트 아이디
+    console.log(ProductId);
+    //삭제
     await User.updateOne(
-      { _id: products._id },
-      { products: { productId: req.body._id, qty: req.body.qty1 } }
+      { _id: user._id },
+      { $pull: { products: { productId: ProductId } } }
     );
-    // where:{products: req.body.products}
-    // ();
   } catch (error) {
     console.log(error);
   }
