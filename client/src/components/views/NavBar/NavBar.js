@@ -1,30 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
 
 import "./NavBar.css";
-// import Stack from "@mui/material/Stack";
-import { createTheme, Link, Stack, ThemeProvider } from "@mui/material";
+import { createTheme, Link } from "@mui/material";
 import axios from "axios";
 import { withRouter } from "react-router";
 import RightMenu from "./Sections/RightMenu";
 import MiddleMenu from "./Sections/MiddleMenu";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    padding: theme.spacing(1),
-    [theme.breakpoints.down("sm")]: {
-      backgroundColor: theme.palette.secondary.main,
-    },
-  },
   icon: {
     color: "#fff",
     fontSize: "1.1rem",
@@ -48,31 +37,24 @@ const NavBar = (props) => {
       }
     });
   };
-
+  const classes = useStyles();
   return (
-    <Stack spacing={2} sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="fixed"
-        // style={{ background: "#000000" }}
-        style={{
-          boxShadow: "none",
-          backgroundColor: "black",
-        }}
-      >
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" style={{ background: "#000000" }}>
         <Toolbar>
-          <Link href="/" sx={{ ml: 3, mr: 2 }}>
-            <img className="navbar-logo" src="img/usEarth.png" />
+          <Link href="/" sx={{ ml: 15, mr: 2 }}>
+            <img className="navbar-logo" src="/img/usEarth.png" />
           </Link>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, mr: 25 }}>
-            <h2>
-              us<span color="#3b5998">Earth</span>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <h2 className={classes.appbarTitle}>
+              us<span className={classes.colorText}>Earth</span>
             </h2>
           </Typography>
           <MiddleMenu />
           <RightMenu />
         </Toolbar>
       </AppBar>
-    </Stack>
+    </Box>
   );
 };
 
