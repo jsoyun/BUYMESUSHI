@@ -5,6 +5,13 @@ import axios from "axios";
 import { withRouter } from "react-router";
 import { useSelector } from "react-redux";
 
+const NavButton = styled(Button)({
+    borderRadius: "5px",
+    '&:hover': {
+        backgroundColor: '#3b5998',
+    },
+});
+
 const BtnBox = styled.div`
     display: flex;
     @media only screen and (max-width: 954px) {
@@ -41,29 +48,29 @@ const RightMenu = (props) => {
     if (user.userData && !user.userData.isAuth) {
         return (
             <BtnBox>
-                <Button sx={{ ml: 10, mr: 1 }} href="/login" color="inherit">
+                <NavButton sx={{ ml: 10, mr: 1 }} href="/login" color="inherit">
                     Login
-                </Button>
-                <Button sx={{ mr: 7 }} href="/register" color="inherit">
+                </NavButton>
+                <NavButton sx={{ mr: 7 }} href="/register" color="inherit">
                     Register
-                </Button>
+                </NavButton>
             </BtnBox>
         );
     } else {
         return (
             <ButtonBox>
-                <Button
+                <NavButton
                     sx={{ ml: 10, mr: 1 }}
                     color="inherit"
                     onClick={onClickHandler}
                 >
                     Logout
-                </Button>
-                <Button sx={{ ml: 1, mr: 1 }} color="inherit" href="/mypage">
+                </NavButton>
+                <NavButton sx={{ ml: 1, mr: 1 }} color="inherit" href="/mypage">
                     마이페이지
                     <i className="fas fa-shopping-cart"></i>
                     <span className="cartlogo_badge">{getCartCount()}</span>
-                </Button>
+                </NavButton>
             </ButtonBox>
         );
     }

@@ -9,12 +9,8 @@ const Navi = styled.div`
   display: flex;
   margin-top: 10px;
 `;
-// 
-// :hover{
-//   backgroundColor: #3b5998;
-// }
 const NavButton = styled(Button)({
-  borderRadius: "8px",
+  borderRadius: "5px",
   '&:hover': {
     backgroundColor: '#3b5998',
   },
