@@ -1,10 +1,10 @@
 .weather {
-  border: 3px dashed grey;
+  border: 3px solid #3b5998;
   border-radius: 20px;
   margin-left: 100px;
   padding-bottom: 30px;
   width: max-content;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px 20px 10px;
 }
 .weather .title {
   margin-top: 50px;
@@ -33,7 +33,7 @@
   border: none;
   border-radius: 20px;
   border: 2px solid black;
-  background: rgb(2, 57, 88, 0.8);
+  background: #3b5998;
   cursor: pointer;
   color: whitesmoke;
 }
