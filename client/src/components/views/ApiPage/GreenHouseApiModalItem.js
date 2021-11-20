@@ -1,9 +1,8 @@
 // npm install axios chart.js react-chartjs-2 --save 로 axios와 차트js 모듈2개까지 총 세개 모듈 설치
 
 import React, { useState, useEffect } from "react";
-import { Line } from "react-chartjs-2";
+import { Line, Doughnut } from "react-chartjs-2";
 import axios from "axios";
-
 import styled from "styled-components";
 
 const Section = styled.div`
@@ -27,12 +26,14 @@ const SeaTempApiModalItem = () => {
       const arr = items.reduce((acc, cur) => {
         const currentDate = new Date(cur.Date);
         const year = currentDate.getFullYear();
+        const code = cur.code;
         const emissions = cur.emissions;
         const findItem = acc.find((a) => a.year === year);
         if (!findItem) {
           acc.push({
             year,
             emissions,
+            code,
           });
         }
         console.log(year);
@@ -40,12 +41,12 @@ const SeaTempApiModalItem = () => {
       }, []);
       console.log(arr);
 
-      const labels = arr?.map((a) => `${a.year + 1}년`);
+      const labels = arr?.map((a) => `${a.code}`);
       setTempData({
         labels,
         datasets: [
           {
-            label: "온실가스 배출량",
+            label: "나라별 온실가스 배출량",
             borderColor: "skyblue",
             fill: false,
             data: arr?.map((a) => a.emissions),
@@ -61,7 +62,7 @@ const SeaTempApiModalItem = () => {
       <h2>한국 온실가스 배출량</h2>
       <div className="contents" style={{ width: "700px" }}>
         <div style={{ width: "700px" }}>
-          <Line
+          <Doughnut
             style={{
               width: "700px",
               height: "300px",
@@ -71,11 +72,11 @@ const SeaTempApiModalItem = () => {
               ({
                 title: {
                   display: true,
-                  text: "한국의 온실가스 배출량",
+                  text: "나라별 온실가스 배출량 비교",
                   fontSize: 16,
                 },
               },
-              { legend: { display: true, position: "bottom" } })
+                { legend: { display: true, position: "bottom" } })
             }
             style={{ size: "60px" }}
           />
