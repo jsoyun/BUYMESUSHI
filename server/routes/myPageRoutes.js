@@ -130,4 +130,11 @@ router.put("/userImage", upload.single("profilePhoto"), async (req, res) => {
     }
 });
 
+router.put("/payment", async (req, res) => {
+    try {
+        const user = res.locals.user;
+        console.log(user);
+    } catch (error) {}
+});
+
 module.exports = router;

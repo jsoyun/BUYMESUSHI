@@ -90,11 +90,12 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding: 1rem;
 }
+
 .cartscreen_right div:last-child {
     border: none;
 }
 .cartscreen_info p {
-    padding: 0;
+    padding: 10px 40px;
 }
 .cartscreen_info p:first-child {
     font-weight: bold;
@@ -181,3 +182,12 @@ B .cartscreen_right div button:hover {
     margin-bottom: 20px;
 }
 /* ////////////////////////////////////////////////////// */
+.MyPage-cartItemQty {
+    font-weight: bold;
+}
+.MyPage-cartscreen-subtitle {
+    display: inline-block;
+    width: 160px;
+
+    border-bottom-width: 0px;
+}

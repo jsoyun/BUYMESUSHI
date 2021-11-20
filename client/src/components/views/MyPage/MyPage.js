@@ -27,7 +27,12 @@ const MyPage = () => {
     const [Data, setData] = useState([{}]);
     const [PostStates, setPostStates] = useState({});
     const [lastIdx, setLastIdx] = useState(0);
-    const [userData1, setUserData1] = useState({ nickname: "", userImage: "" });
+    const [userData1, setUserData1] = useState({
+        nickname: "",
+        userImage: "",
+        points: 0,
+    });
+    //const [userData2, setUserData2] = useState({ points: 0 });
 
     useEffect(() => {
         const fetchData = async (e) => {
@@ -46,9 +51,11 @@ const MyPage = () => {
                         }
                     )
                 );
+
                 setUserData1({
                     nickname: res.data.user.nickname,
                     userImage: res.data.user.profileImage,
+                    points: res.data.user.points,
                 });
                 setPostStates(res.data.postsState);
                 return setData(Data.concat(_Data));
@@ -82,6 +89,16 @@ const MyPage = () => {
         );
     };
 
+    const paymentBtn = () => {
+        axios
+            .put("/api/mypage/payment")
+            // .then((res) => res.json())
+            .then(alert("성공성공~"))
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     return (
         <div className="MyPage">
             <div className="AuthBoard">
@@ -99,33 +116,68 @@ const MyPage = () => {
                     <div className="cartscreen_right">
                         <div className="cartscreen_info">
                             <div>
-                                남은 포인트:
-                                {getCartSubTotasl() >= 10000 ? (
-                                    <div className="point">
-                                        <h3>포인트가 부족해요!!!!</h3>
-                                        <ul>
-                                            <li className="authboardLink">
-                                                <a href="/authboard">
-                                                    지키미 포인트획득
-                                                </a>
-                                            </li>
+                                <div>
+                                    <div
+                                        className="MyPage-cartscreen-subtitle"
+                                        style={{ borderBottomWidth: "0px" }}
+                                    >
+                                        현재 포인트{" "}
+                                    </div>{" "}
+                                    : <h2> {userData1.points}</h2>
+                                </div>
+                                <div>
+                                    <div
+                                        className="MyPage-cartscreen-subtitle"
+                                        style={{ borderBottomWidth: "0px" }}
+                                    >
+                                        결제 예정 금액{" "}
+                                    </div>{" "}
+                                    : <h2>{getCartSubTotasl()}</h2>
+                                </div>
+                                <div>
+                                    <div
+                                        className="MyPage-cartscreen-subtitle"
+                                        style={{ borderBottomWidth: "0px" }}
+                                    >
+                                        남은 포인트{" "}
+                                    </div>{" "}
+                                    :{" "}
+                                    {getCartSubTotasl() >= userData1.points ? (
+                                        <div className="point">
+                                            <h3>포인트가 부족해요!!!!</h3>
+                                            <ul>
+                                                <li className="authboardLink">
+                                                    <a href="/authboard">
+                                                        지키미 포인트획득
+                                                    </a>
+                                                </li>
 
-                                            <li className="gameLink">
-                                                <a href="/">게임 포인트획득</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                ) : (
-                                    <h2>{10000 - myPoint()}</h2>
-                                )}
+                                                <li className="gameLink">
+                                                    <a href="/">
+                                                        게임 포인트획득
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    ) : (
+                                        <h2>{userData1.points - myPoint()}</h2>
+                                    )}
+                                </div>
                             </div>
 
-                            <p>subtotal ({getCartCount()}) items</p>
+                            <p>
+                                subtotal (
+                                <span className="MyPage-cartItemQty">
+                                    {getCartCount()}
+                                </span>
+                                ) items
+                            </p>
                             {/* <p>결제예정금액 ${getCartSubTotasl().toFixed(2)}</p> */}
-                            <p>결제예정금액 ${getCartSubTotasl()}</p>
                         </div>
                         <div>
-                            <button>Proceed To Checkout</button>
+                            <button onClick={paymentBtn}>
+                                Proceed To Checkout
+                            </button>
                         </div>
                     </div>
                     <h2>Shopping Cart</h2>
