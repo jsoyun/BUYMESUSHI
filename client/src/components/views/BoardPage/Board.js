@@ -67,6 +67,7 @@ function Board() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenWrite, setModalIsOpenWrite] = useState(false);
   const [lastIdx, setLastIdx] = useState(0);
+  const [clickData, setClickData] = useState('');
   const [Data, setData] = useState([
     {
       _id: "",
@@ -84,6 +85,7 @@ function Board() {
   //   setboardId(e.data._id);
   // };
   // const [boards, setBoards] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -144,34 +146,22 @@ function Board() {
                     {/* 해당 타이틀을 가진 글의 세부내용을 볼 수 있는 모달 띄우기, 그리고 띄울 때 조회수 1 플러스 */}
                     <td className="board-list-content">
                       <div>
+                        {/* ▼ rowData는 map 함수 안에서 나오니까 위에 따로 handler 함수로 주지 말고 return에 있는 map 함수 안에! */}
                         <a
                           id="read"
-                          onClick={() => setModalIsOpen(true)}
+                          onClick={async () => {
+                            await setClickData(rowData._id);
+                            await setModalIsOpen(true);
+                          }}
                           id="rowData._id"
                         >
                           {rowData.title}
                         </a>
-                        <Modal
-                          id="readit"
-                          style={customStyles}
-                          isOpen={modalIsOpen}
-                          onRequestClose={() => setModalIsOpen(false)}
-                        >
-                          <CloseIcon
-                            onClick={() => setModalIsOpen(false)}
-                            color="action"
-                            fontSize="large"
-                            cursor="pointer"
-                          ></CloseIcon>
 
-                          <Container>
-                            <BoardDetail />
-                          </Container>
-                        </Modal>
                       </div>
                     </td>
                     {/* user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 */}
-                    <td className="board-list-name">
+                    <td className="board-list-name" >
                       <div>{rowData.postedBy}</div>
                     </td>
                     {/* 조회수 count 필요 */}
@@ -182,6 +172,24 @@ function Board() {
                     </td>
                   </tr>
                 ))}
+              <Modal
+                id="readit"
+                style={customStyles}
+                isOpen={modalIsOpen}
+                onRequestClose={() => setModalIsOpen(false)}
+              >
+                <CloseIcon
+                  onClick={() => setModalIsOpen(false)}
+                  color="action"
+                  fontSize="large"
+                  cursor="pointer"
+                  position="fixed"
+                ></CloseIcon>
+
+                <Container>
+                  <BoardDetail boardsData={Data} clickData={clickData} />
+                </Container>
+              </Modal>
 
               <tr>
                 <td className="num">0</td>
@@ -216,6 +224,7 @@ function Board() {
                 color="action"
                 fontSize="large"
                 cursor="pointer"
+                position="fixed"
               ></CloseIcon>
               <div>
                 <BoardWrite />
@@ -223,8 +232,8 @@ function Board() {
             </Modal>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 

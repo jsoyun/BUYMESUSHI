@@ -15,27 +15,7 @@ router.use((req, res, next) => {
     next();
 });
 
-// // 게시글 전체 데이터 가져와서 불러오기(Board)
-// router.get('/', async (req, res) => {
-//   try {
-//     // console.log(res.locals.user);
-//     const boards = await Board.find({
-//       // include: {
-//       //   model: User,
-//       //   attributes: ['id', 'nickname'],
-//       // },
-//       // order: [['id', 'DESC']],
-//     });
-//     // .populate("")
-//     console.log(boards);
-//     res.json({ boards });
-//   } catch (error) {
-//     console.error(error);
-//     // next(error);
-//   }
-// });
-
-// // 게시글 전체 데이터 가져와서 불러오기(Board)..현석이 버전
+// 게시글 전체 데이터 가져와서 불러오기(Board)
 router.get('/', async (req, res) => {
     try {
         const user = res.locals.user;
@@ -48,24 +28,24 @@ router.get('/', async (req, res) => {
     }
 });
 
-// // 누른 그 해당글을 불러와야 함(BoardView)
-// router.get('/title', async (req, res) => {
-//     try {
-//         const posts = await Board.find({}).populate('createdAt').populate('postedBy');
-//         // //렌더링 되기 전 조회수 1 추가
-//         // const update = await Board.update(
-//         //   {
-//         //   viewcount : ++posts.viewcount,
-//         // },
-//         // {where:{id : req.params.id}}
-//         // )
-//         res.json({ Boards });
-//     } catch (error) {
-//         console.error(error);
-//         // next(error);
-//     }
-// });
-
+// 누른 그 해당글 하나를 불러와야 함(BoardDetail)
+router.get('/:id', async (req, res) => {
+    try {
+        const Boards = await Board.findOne({ _id: req.params.id }).populate('createdAt').populate('postedBy');
+        // //렌더링 되기 전 조회수 1 추가
+        // const update = await Board.update(
+        //   {
+        //   viewcount : ++posts.viewcount,
+        // },
+        // {where:{id : req.params.id}}
+        // )
+        console.log({ Boards });
+        res.status(200).json({ Boards });
+    } catch (error) {
+        console.error(error);
+        // next(error);
+    }
+});
 try {
     fs.readdirSync('boarduploads');
 } catch (error) {
