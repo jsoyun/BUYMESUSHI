@@ -133,7 +133,11 @@ router.put("/userImage", upload.single("profilePhoto"), async (req, res) => {
 router.put("/payment", async (req, res) => {
     try {
         const user = res.locals.user;
-        console.log(user);
+        const payPrice = req.body.payPrice;
+        await User.updateOne(
+            { _id: user._id },
+            { $set: { points: user.points - payPrice } }
+        );
     } catch (error) {}
 });
 

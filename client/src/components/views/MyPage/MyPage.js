@@ -89,15 +89,50 @@ const MyPage = () => {
         );
     };
 
-    const paymentBtn = () => {
+    const paymentBtn = (price) => {
         axios
-            .put("/api/mypage/payment")
+            .put("/api/mypage/payment", { payPrice: price })
             // .then((res) => res.json())
             .then(alert("성공성공~"))
             .catch((err) => {
                 console.log(err);
             });
+        localStorage.removeItem("cart");
     };
+
+    // const useConfirm = (message = null, onConfirm, onCancel) => {
+    //     if (!onConfirm || typeof onConfirm !== "function") {
+    //         return;
+    //     }
+    //     if (onCancel && typeof onCancel !== "function") {
+    //         return;
+    //     }
+
+    //     const confirmAction = () => {
+    //         if (window.confirm(message)) {
+    //             onConfirm();
+    //         } else {
+    //             onCancel();
+    //         }
+    //     };
+
+    //     return confirmAction;
+    // };
+    // const deleteConfirm = () => console.log("삭제했습니다.");
+    // const cancelConfirm = () => console.log("취소했습니다.");
+    // const confirmDelete = useConfirm(
+    //     "삭제하시겠습니까?",
+    //     deleteConfirm,
+    //     cancelConfirm
+    // );
+
+    // const onRemove = () => {
+    //     if (window.confirm("정말 결제하시겠습니까?")) {
+    //         alert("결제 완료하였습니다.");
+    //     } else {
+    //         alert("취소합니다.");
+    //     }
+    // };
 
     return (
         <div className="MyPage">
@@ -142,23 +177,8 @@ const MyPage = () => {
                                         남은 포인트{" "}
                                     </div>{" "}
                                     :{" "}
-                                    {getCartSubTotasl() >= userData1.points ? (
-                                        <div className="point">
-                                            <h3>포인트가 부족해요!!!!</h3>
-                                            <ul>
-                                                <li className="authboardLink">
-                                                    <a href="/authboard">
-                                                        지키미 포인트획득
-                                                    </a>
-                                                </li>
-
-                                                <li className="gameLink">
-                                                    <a href="/">
-                                                        게임 포인트획득
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    {getCartSubTotasl() > userData1.points ? (
+                                        <h2>포인트 부족</h2>
                                     ) : (
                                         <h2>{userData1.points - myPoint()}</h2>
                                     )}
@@ -175,9 +195,24 @@ const MyPage = () => {
                             {/* <p>결제예정금액 ${getCartSubTotasl().toFixed(2)}</p> */}
                         </div>
                         <div>
-                            <button onClick={paymentBtn}>
+                            {getCartSubTotasl() > userData1.points ? (
+                                <h2></h2>
+                            ) : (
+                                <button
+                                    onClick={() => {
+                                        paymentBtn(myPoint());
+                                    }}
+                                >
+                                    Proceed To Checkout
+                                </button>
+                            )}
+                            {/* <button
+                                onClick={() => {
+                                    paymentBtn(myPoint());
+                                }}
+                            >
                                 Proceed To Checkout
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                     <h2>Shopping Cart</h2>
