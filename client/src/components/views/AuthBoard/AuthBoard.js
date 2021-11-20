@@ -7,6 +7,20 @@ import AuthBoardFeedsCard from "./Sections/AuthBoardFeedsCard";
 import "./AuthBoard.css";
 import AuthBoardComments from "./Sections/AuthBoardComments";
 
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    // maxWidth: "100vw",
+    height: "100%",
+    backgroundImage: `url(${
+      process.env.PUBLIC_URL + "/img/authBoard/bg5.jpg"
+    })`,
+    backgroundRepeat: "repeat",
+    // backgroundSize: "cover",
+  },
+}));
+
 const AuthBoard = (props) => {
   const dispatch = useDispatch();
   return (

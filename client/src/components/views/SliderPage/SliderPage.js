@@ -85,13 +85,13 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 42px;
+  font-size: 45px;
 `;
 
 const Desc = styled.p`
   margin: 30px 0px;
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 25px;
+  font-weight: 547;
   letter-spacing: 3px;
 `;
 

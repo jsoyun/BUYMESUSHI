@@ -32,9 +32,9 @@ function NewsApi({ sliders }) {
     centerPadding: "0px",
     // 한번에 보여줄 개수
     slidesToShow: 4,
+    arrows: false,
     // 드래그해서 슬라이드 가능
     swipeToSlide: true,
-    // arrow: true,
     // centerMode: true,
     dots: true,
     speed: 200,
