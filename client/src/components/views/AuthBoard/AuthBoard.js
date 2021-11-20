@@ -8,16 +8,16 @@ import "./AuthBoard.css";
 import AuthBoardComments from "./Sections/AuthBoardComments";
 
 const AuthBoard = (props) => {
-    const dispatch = useDispatch();
-    return (
-        <div className="authBoard-container">
-            <h1>지키미인증 페이지</h1>
-            <React.Fragment>
-                <AuthBoardPost />
-                <AuthBoardFeedsCard />
-            </React.Fragment>
-        </div>
-    );
+  const dispatch = useDispatch();
+  return (
+    <div className="authBoard-container">
+      {/* <h1>지키미인증 페이지</h1> */}
+      <React.Fragment>
+        <AuthBoardPost />
+        <AuthBoardFeedsCard />
+      </React.Fragment>
+    </div>
+  );
 };
 
 export default withRouter(AuthBoard);
