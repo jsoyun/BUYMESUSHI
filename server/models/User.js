@@ -93,6 +93,7 @@ const userSchema = mongoose.Schema({
             qty: { type: Number },
         },
     ],
+    points: { type: Number },
 });
 
 userSchema.pre("save", function (next) {
