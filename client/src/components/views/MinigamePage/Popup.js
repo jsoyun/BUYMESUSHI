@@ -10,8 +10,8 @@ const Popup = ({
     setPlayable,
     playAgain,
 }) => {
-    const user = useSelector((state) => state.user.userData);
-    const [userData, setUserData] = useState("");
+    // const user = useSelector((state) => state.user.userData);
+    // const [userData, setUserData] = useState("");
     let finalMessage = "";
     let finalMessageRevealWord = "";
     let playable = true;
@@ -19,11 +19,13 @@ const Popup = ({
     // setUserData(user._id);
 
     if (checkWin(correctLetters, wrongLetters, selectedWord) === "win") {
-        const plusPoint = () => {
-            axios.put("/api/minigame", { userId: userData });
-        };
         finalMessage = "축하합니다! 이겼습니다! 😃";
         playable = false;
+
+        const plusPoint = async () => {
+            await axios.put("/api/minigame").then(console.log("몇번 일어남"));
+        };
+        plusPoint();
     } else if (
         checkWin(correctLetters, wrongLetters, selectedWord) === "lose"
     ) {
@@ -34,7 +36,7 @@ const Popup = ({
 
     useEffect(() => {
         setPlayable(playable);
-    });
+    }, []);
 
     return (
         <div

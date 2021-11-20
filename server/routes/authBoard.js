@@ -62,9 +62,7 @@ router.get("/", async (req, res) => {
                     { _id: authBoards[i].postedBy._id },
                     { $set: { points: authBoards[i].postedBy.points + 500 } }
                 )
-                    .then(
-                        console.log("5보다 커서 compliteAuth true 변경 완료!")
-                    )
+                    .then(console.log("유저에게 500 포인트 지급 완료!"))
                     .catch((err) => console.error.apply(err));
             }
             if (authBoards[i].dislikes.length >= 5) {
