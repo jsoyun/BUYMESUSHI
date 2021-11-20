@@ -103,7 +103,7 @@ const AuthBoardPost = () => {
   return (
     //모달 시도
     <div className="M_body">
-      <div>
+      <div className="MyButton_css">
         <MyButton onClick={() => setModalIsOpen(true)}>지키미 올리기</MyButton>
       </div>
 

@@ -3,6 +3,11 @@
 body {
   background-color: #f5f5ff;
 }
+
+.MyButton_css {
+  margin-top: 17vh;
+  margin-bottom: 8vh;
+}
 .authBoard-container {
   margin: auto 240px;
   min-width: 800px;
