@@ -14,22 +14,24 @@ const useStyles = makeStyles((theme) => ({
     // maxWidth: "100vw",
     height: "100%",
     backgroundImage: `url(${
-      process.env.PUBLIC_URL + "/img/authBoard/bg5.jpg"
+      process.env.PUBLIC_URL + "/img/authBoard/bg9.jpg"
     })`,
     backgroundRepeat: "repeat",
-    // backgroundSize: "cover",
   },
 }));
 
 const AuthBoard = (props) => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   return (
-    <div className="authBoard-container">
-      {/* <h1>지키미인증 페이지</h1> */}
-      <React.Fragment>
-        <AuthBoardPost />
-        <AuthBoardFeedsCard />
-      </React.Fragment>
+    <div className={classes.root}>
+      <div className="authBoard-container">
+        {/* <h1>지키미인증 페이지</h1> */}
+        <React.Fragment>
+          <AuthBoardPost />
+          <AuthBoardFeedsCard />
+        </React.Fragment>
+      </div>
     </div>
   );
 };

@@ -27,7 +27,7 @@ body .clearfix:after {
 }
 
 .board .header {
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   text-align: center;
 }
 
@@ -91,7 +91,7 @@ body .clearfix:after {
 }
 
 .board .article .search {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   font-size: 14px;
   text-align: right;
 }

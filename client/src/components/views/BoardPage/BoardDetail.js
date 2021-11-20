@@ -1,13 +1,11 @@
 import React from "react";
 import "./BoardDetail.css";
 
-
 // props로 상위 컴포넌트의 게시글 값 받아오기
 function BoardDetail(props) {
-  console.log(props.clickData.detailTitle, '클릭데이터');
+  console.log(props.clickData.detailTitle, "클릭데이터");
 
   return (
-
     <div className="board">
       <div className="header">
         <div className="wrapper1">
@@ -23,8 +21,6 @@ function BoardDetail(props) {
           <br />
           <table style={{ border: "2px solid #3b5998" }}>
             <tbody>
-
-
               <tr>
                 <th>작성자</th>
                 <td>{props.clickData.detailPostedBy}</td>
@@ -41,19 +37,16 @@ function BoardDetail(props) {
               </tr>
               <tr>
                 <th>내 용</th>
-                <td colSpan="6" height="400" style={{ textAlign: "left" }} >
+                <td colSpan="6" height="200" style={{ textAlign: "left" }}>
                   {props.clickData.detailBody}
                 </td>
               </tr>
-
             </tbody>
           </table>
           <br />
           <br />
-
         </div>
       </div>
-
     </div>
   );
 }
