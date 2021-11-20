@@ -11,10 +11,16 @@
   display: flex;
   margin: 1vw;
   flex-direction: row;
+  list-style: none;
 }
 
 .col {
   /* margin: 5px 120px 5px 120px; */
   margin: 0.1vw 7vw 1vw 7vw;
   align-items: center;
+  list-style: none;
+}
+
+.list-unstyled {
+  list-style: none;
 }
