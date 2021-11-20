@@ -43,7 +43,7 @@ body .clearfix:after {
 }
 
 .board .article table {
-  width: 100vw;
+  width: 50vw;
   border-collapse: collapse;
   border: 1px solid #ddd;
 }
