@@ -19,7 +19,6 @@ function ApiPage({ sliders }) {
     slidesToShow: 3,
     // 드래그해서 슬라이드 가능
     // swipeToSlide: true,
-    // arrow: true,
     // centerMode: true,
 
     afterChange: function (index) {
@@ -36,23 +35,21 @@ function ApiPage({ sliders }) {
   `;
 
   const StyledSlider = styled(Slider)`
-    .slick-list {
+    /* .slick-list {
       width: 95vw;
       margin: 0;
       background-color: black;
-    }
+    } */
 
-    .slick-slide div {
+    /* .slick-slide div {
       /* align-items: center; */
-      text-align: center;
-      background-color: black;
-      /* border: 2px #5c75bb; */
-    }
-
-    .slick-dots {
+    text-align: center;
+    background-color: black;
+    /* border: 2px #5c75bb; */
+    /* .slick-dots {
       bottom: -50px;
       margin-top: 200px;
-    }
+    } */
 
     .slick-track {
       /* overflow-x: hidden; */

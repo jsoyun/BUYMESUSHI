@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Item = styled.div`
   position: relative;
-  width: 364px;
+  width: 360px;
   height: 420px;
   border: 7px solid #3b5998;
   background-color: black;
