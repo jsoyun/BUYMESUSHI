@@ -75,8 +75,8 @@ export default function AuthBoardComments({ authBoards, commentsData }) {
                         <ListItemAvatar>
                             <Avatar
                                 alt="Remy Sharp"
-                                // 댓글 아바타 이미지 rowData.postedBy.userPhoto
-                                src="/img/usEarth.png"
+                                // 댓글 아바타 이미지
+                                src={rowData.postedBy.profileImage}
                             />
                         </ListItemAvatar>
                         <ListItemText
@@ -106,7 +106,7 @@ export default function AuthBoardComments({ authBoards, commentsData }) {
                 </List>
             ))}
             <div className="authboard-commentPost-container">
-                <Avatar alt="Remy Sharp" src="/img/usEarth.png" />
+                <Avatar alt="Remy Sharp" src={user.profileImage} />
                 <form onSubmit={onSubmitHandler} id="authboard_commentPost">
                     <Input
                         type="text"

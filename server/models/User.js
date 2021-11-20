@@ -73,7 +73,7 @@ const userSchema = mongoose.Schema({
         type: Number,
         default: 0,
     },
-    image: String,
+    profileImage: { type: String, default: "/img/profile/defaultProfile.png" },
     token: {
         type: String,
     },
@@ -93,6 +93,7 @@ const userSchema = mongoose.Schema({
             qty: { type: Number },
         },
     ],
+    points: { type: Number },
 });
 
 userSchema.pre("save", function (next) {

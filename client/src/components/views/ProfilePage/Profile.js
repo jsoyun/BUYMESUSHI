@@ -19,10 +19,11 @@ const Profile = () => {
             comments: [],
         },
     ]);
+    const [PostStates, setPostStates] = useState({});
     const [lastIdx, setLastIdx] = useState(0);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchData = async (e) => {
             try {
                 const res = await axios.get(`/api/profile/${urlParam.id}`);
 
@@ -37,6 +38,8 @@ const Profile = () => {
                         }
                     )
                 );
+                // console.log(res.data.postsState, "포스트 스테이트");
+                setPostStates(res.data.postsState);
                 return setData(Data.concat(_Data));
             } catch (error) {
                 console.error(error);
@@ -47,7 +50,11 @@ const Profile = () => {
 
     return (
         <div className="Profile-container">
-            <ProfileHead photoData={Data} userData={urlParam.id} />
+            <ProfileHead
+                photoData={Data}
+                userData={urlParam.id}
+                postState={PostStates}
+            />
             <ProfileBody photoData={Data} />
         </div>
     );

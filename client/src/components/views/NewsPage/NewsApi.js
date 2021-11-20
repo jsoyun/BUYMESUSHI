@@ -34,7 +34,7 @@ function NewsApi({ sliders }) {
     slidesToShow: 4,
     // 드래그해서 슬라이드 가능
     swipeToSlide: true,
-    arrow: true,
+    // arrow: true,
     // centerMode: true,
     dots: true,
     speed: 200,

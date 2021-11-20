@@ -65,8 +65,8 @@ function ApiPage({ sliders }) {
         style={{
           // paddingLeft: "35px",
           // paddingRight: "35px",
-          paddingTop: "18px",
-          paddingBottom: "18px",
+          paddingTop: "20px",
+          paddingBottom: "20px",
         }}
       >
         <StyledSlider {...settings}>
