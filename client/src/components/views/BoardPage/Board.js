@@ -117,7 +117,7 @@ function Board() {
 
 
   return (
-    <div className="board">
+    <div className="board" style={{ marginLeft: "100px" }}>
       <br />
       <div className="header">
         <div className="wrapper">
