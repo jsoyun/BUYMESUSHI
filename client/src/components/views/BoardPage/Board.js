@@ -127,7 +127,7 @@ function Board() {
       </div>
       <div className="article">
         <div className="wrapper">
-          <table>
+          <table className="showlist">
             <tbody>
               <tr>
                 <th>게시글 번호</th>
