@@ -17,13 +17,16 @@ import { red } from "@mui/material/colors";
 const customStyles = {
   content: {
     width: "600px",
-    height: "600px",
+    // height: "600px",
+    height: "75vh",
+
     top: "50%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    borderRadius: "10px",
   },
   overlay: {
     position: "fixed",
@@ -103,7 +106,7 @@ const AuthBoardPost = () => {
   return (
     //모달 시도
     <div className="M_body">
-      <div>
+      <div className="MyButton_css">
         <MyButton onClick={() => setModalIsOpen(true)}>지키미 올리기</MyButton>
       </div>
 
@@ -144,7 +147,7 @@ const AuthBoardPost = () => {
                 />
               </div>
             </CardContent>
-            <CardActions>
+            <CardActions style={{ marginTop: "-5vh" }}>
               <Button
                 variant="contained"
                 component="label"
