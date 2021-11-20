@@ -17,6 +17,7 @@ const Profile = () => {
             compliteAuth: "",
             wrongAuth: "",
             comments: [],
+            userImage: "",
         },
     ]);
     const [PostStates, setPostStates] = useState({});
@@ -35,6 +36,7 @@ const Profile = () => {
                             compliteAuth: rowData.compliteAuth,
                             wrongAuth: rowData.wrongAuth,
                             comments: rowData.comments,
+                            userImage: rowData.postedBy.profileImage,
                         }
                     )
                 );

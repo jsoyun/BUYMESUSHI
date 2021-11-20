@@ -26,7 +26,7 @@ const RightMenu = (props) => {
     };
 
     const user = useSelector((state) => state.user);
-    console.log(cartItems);
+
     const onClickHandler = () => {
         axios.get("/api/users/logout").then((response) => {
             if (response.data.success) {

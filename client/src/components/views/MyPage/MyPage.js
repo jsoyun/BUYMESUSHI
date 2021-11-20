@@ -4,6 +4,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
 //
 
@@ -18,7 +19,7 @@ import axios from "axios";
 import MyPageAuth from "./Sections/MyPageAuth";
 ////////////////
 
-const MyPage = () => {
+const MyPage = (props) => {
     //   console.log("로컬 ", localStorage.getItem("cart"));
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
@@ -93,46 +94,21 @@ const MyPage = () => {
         axios
             .put("/api/mypage/payment", { payPrice: price })
             // .then((res) => res.json())
-            .then(alert("성공성공~"))
+            .then(alert("결제가 완료되었습니다."))
             .catch((err) => {
                 console.log(err);
             });
         localStorage.removeItem("cart");
+        window.location.replace("/mypage");
     };
 
-    // const useConfirm = (message = null, onConfirm, onCancel) => {
-    //     if (!onConfirm || typeof onConfirm !== "function") {
-    //         return;
-    //     }
-    //     if (onCancel && typeof onCancel !== "function") {
-    //         return;
-    //     }
-
-    //     const confirmAction = () => {
-    //         if (window.confirm(message)) {
-    //             onConfirm();
-    //         } else {
-    //             onCancel();
-    //         }
-    //     };
-
-    //     return confirmAction;
-    // };
-    // const deleteConfirm = () => console.log("삭제했습니다.");
-    // const cancelConfirm = () => console.log("취소했습니다.");
-    // const confirmDelete = useConfirm(
-    //     "삭제하시겠습니까?",
-    //     deleteConfirm,
-    //     cancelConfirm
-    // );
-
-    // const onRemove = () => {
-    //     if (window.confirm("정말 결제하시겠습니까?")) {
-    //         alert("결제 완료하였습니다.");
-    //     } else {
-    //         alert("취소합니다.");
-    //     }
-    // };
+    const emptyProduct = () => {
+        alert("카트가 비어있습니다!");
+        window.location.replace("/product");
+    };
+    const exceedPoint = () => {
+        alert("현재 포인트를 초과하였습니다!");
+    };
 
     return (
         <div className="MyPage">
@@ -195,24 +171,25 @@ const MyPage = () => {
                             {/* <p>결제예정금액 ${getCartSubTotasl().toFixed(2)}</p> */}
                         </div>
                         <div>
-                            {getCartSubTotasl() > userData1.points ? (
-                                <h2></h2>
+                            {getCartSubTotasl() <= userData1.points ? (
+                                cartItems.length === 0 ? (
+                                    <button onClick={emptyProduct}>
+                                        Proceed To Checkout
+                                    </button>
+                                ) : (
+                                    <button
+                                        onClick={() => {
+                                            paymentBtn(myPoint());
+                                        }}
+                                    >
+                                        Proceed To Checkout
+                                    </button>
+                                )
                             ) : (
-                                <button
-                                    onClick={() => {
-                                        paymentBtn(myPoint());
-                                    }}
-                                >
+                                <button onClick={exceedPoint}>
                                     Proceed To Checkout
                                 </button>
                             )}
-                            {/* <button
-                                onClick={() => {
-                                    paymentBtn(myPoint());
-                                }}
-                            >
-                                Proceed To Checkout
-                            </button> */}
                         </div>
                     </div>
                     <h2>Shopping Cart</h2>

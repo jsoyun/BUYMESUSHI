@@ -95,6 +95,7 @@ router.get("/auth", auth, (req, res) => {
         image: req.user.image,
         token: req.user.token,
         profileImage: req.user.profileImage,
+        points: req.user.points,
     });
 });
 

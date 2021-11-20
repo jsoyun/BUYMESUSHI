@@ -10,7 +10,7 @@ const ProfileHead = (props) => {
         };
         fetchData();
     }, [props.photoData]);
-
+    console.log(props.photoData);
     return (
         <div>
             <div className="Profile-header">

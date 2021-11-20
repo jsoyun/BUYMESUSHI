@@ -1,17 +1,42 @@
 .homescreen {
-  max-width: 1000px;
-  margin: 1rem auto;
+    max-width: 1000px;
+    margin: 1rem auto;
 }
 .homescreen_title {
-  font-size: 1.5rem;
-  color: #171717;
-  margin-bottom: 1rem;
-  margin-left: 8px;
+    font-size: 1.5rem;
+    color: #171717;
+    margin-bottom: 1rem;
+    margin-left: 8px;
 }
 
 .homescreen_products {
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.homescreen-myinfo-container {
+    margin: 0 auto;
+    min-width: 870px;
+    max-width: 970px;
+    width: 100%;
+}
+.homscreen-myinfo {
+    width: 100%;
+    padding: 1rem;
+    background: #fff;
+    /* background: #171717; */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    margin: 8px auto;
+}
+
+.homscreen-myinfo > div {
+    display: inline-block;
+}
+.homescreen-nickname {
+    margin-right: 10px;
+}
+.homescreen-point {
+    font-size: 1.1em;
+    font-weight: 600;
 }

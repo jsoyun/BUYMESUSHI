@@ -1,10 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const { auth } = require("../middleware/auth");
+
+router.use(auth);
+router.use((req, res, next) => {
+    res.locals.user = req.user;
+    next();
+});
 
 const {
-  getAllProducts,
-  getProductById,
+    getAllProducts,
+    getProductById,
 } = require("../controller/productControllers");
 //@desc GET all products from db
 //@route GET /api/products
@@ -16,11 +23,6 @@ router.get("/", getAllProducts);
 //@access Public
 router.get("/:id", getProductById);
 
-router.post("/:id", (req, res) => {
-  console.log(
-    req.body,
-    "여기 서버단임 데이터 넘어오나? 서버는 터미널에만 보이는구나"
-  );
-});
+router.post("/:id", (req, res) => {});
 
 module.exports = router;
