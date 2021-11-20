@@ -1,11 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from 'react-redux';
+import React from "react";
 import "./BoardDetail.css";
-import axios from "axios";
-import Button from '@mui/material/Button';
-import Modal from "react-modal";
-import CloseIcon from "@mui/icons-material/Close";
-import styled from "styled-components";
 
 
 // props로 상위 컴포넌트의 게시글 값 받아오기

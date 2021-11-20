@@ -7,7 +7,7 @@ body *:after {
 }
 
 body .wrapper {
-  width: 90vw;
+  /* width: 90vw; */
   margin: 0 auto;
   max-width: 100%;
   padding: 0 15px;
