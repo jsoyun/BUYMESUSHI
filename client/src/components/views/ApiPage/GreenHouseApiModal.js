@@ -48,7 +48,7 @@ export default function SeaTempApiModal(className, visible, children) {
                 size="large"
                 onClick={() => setModalIsOpen(true)}
             >
-                한국 온실가스 배출 변화
+                온실가스 배출량 변화
             </ApiButton>
             <Modal
                 style={customStyles}

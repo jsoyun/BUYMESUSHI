@@ -30,25 +30,19 @@ const SeaTempApiModalItem = () => {
       const arr = items.reduce((acc, cur) => {
         const currentDate = new Date(cur.Date);
         const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
-        const date = currentDate.getDate();
         const monthly = cur.Monthly;
-        const findItem = acc.find((a) => a.year === year && a.month === month);
+        const findItem = acc.find((a) => a.year === year);
         if (!findItem) {
           acc.push({
             year,
-            month,
-            date,
             monthly,
           });
         }
-        if (findItem && findItem.date < date) {
+        if (findItem) {
           findItem.monthly = monthly;
-          findItem.date = date;
           findItem.year = year;
-          findItem.month = month;
         }
-        console.log(year, month, date);
+        console.log(year);
         return acc;
       }, []);
       console.log(arr);
@@ -89,7 +83,7 @@ const SeaTempApiModalItem = () => {
                   fontSize: 16,
                 },
               },
-              { legend: { display: true, position: "bottom" } })
+                { legend: { display: true, position: "bottom" } })
             }
           />
         </div>

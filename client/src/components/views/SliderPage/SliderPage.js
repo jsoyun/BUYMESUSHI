@@ -76,7 +76,7 @@ const InfoContainer = styled.div`
   display: inline-block;
   padding: 3em;
   background: #c7d2fe66;
-  border-radius: 10px;
+  border-radius: 2px;
   z-index: 5;
   position: relative;
   backdrop-filter: blur(5px);
@@ -107,7 +107,7 @@ const Button = styled.a`
   background: linear-gradient(to left, raba(255, 255, 255, 0.15), transparent); */
   cursor: pointer;
   border: 2px solid #3b5998;
-  border-radius: 40%;
+  border-radius: 10%;
   overflow: hidden;
   &:hover {
     letter-spacing: 3px;
