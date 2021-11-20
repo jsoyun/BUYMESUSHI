@@ -8,6 +8,7 @@ import BoardDetail from "./BoardDetail";
 import BoardWrite from "./BoardWrite";
 import CloseIcon from "@mui/icons-material/Close";
 import styled from "styled-components";
+import { withTheme } from "@emotion/react";
 
 // styled component 1
 const customStyles = {
@@ -23,7 +24,7 @@ const customStyles = {
   },
   overlay: {
     position: "fixed",
-    backgroundColor: "rgba(118, 135, 163, 0.2)",
+    backgroundColor: "rgba(118, 135, 163, 0.6)",
   },
 };
 // styled component 2
@@ -58,7 +59,7 @@ const customStyles2 = {
   },
   overlay: {
     position: "fixed",
-    backgroundColor: "rgba(118, 135, 163, 0.4)",
+    backgroundColor: "rgba(118, 135, 163, 0.6)",
   },
 };
 
