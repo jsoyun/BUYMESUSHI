@@ -40,7 +40,7 @@ const Arrow = styled.div`
 
 const Wrapper = styled.div`
   width: fit-content;
-  height: 80%;
+  height: 70%;
   display: flex;
   transition: all 1.5s ease;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
@@ -51,7 +51,7 @@ const Slide = styled.div`
   height: 79vh;
   display: flex;
   align-items: center;
-  /* background-color: #${(props) => props.bg}; */
+  background-color: #${(props) => props.bg};
 `;
 
 const ImgContainer = styled.div`

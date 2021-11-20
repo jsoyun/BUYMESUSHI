@@ -38,7 +38,7 @@ function App() {
     <Router>
       <NavBar />
       {/* <BackDrop /> */}
-      <div style={{ marginTop: "9.8vh" }}>
+      <div style={{ marginTop: "8.5vh" }}>
         <Switch>
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />

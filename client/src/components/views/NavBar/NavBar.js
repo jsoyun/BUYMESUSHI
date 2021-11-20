@@ -19,13 +19,13 @@ import RightMenu from "./Sections/RightMenu";
 import MiddleMenu from "./Sections/MiddleMenu";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    padding: theme.spacing(1),
-    [theme.breakpoints.down("sm")]: {
-      backgroundColor: theme.palette.secondary.main,
-    },
-  },
+  // root: {
+  //   flexGrow: 1,
+  //   padding: theme.spacing(2),
+  //   [theme.breakpoints.down("sm")]: {
+  //     backgroundColor: theme.palette.secondary.main,
+  //   },
+  // },
 
   icon: {
     color: "#fff",
@@ -94,7 +94,8 @@ const NavBar = (props) => {
           // style={{ background: "#000000" }}
           style={{
             boxShadow: "none",
-            // color: "transparent",
+            color: "transparent",
+            width: "100%";
           }}
         >
           <Toolbar variant="regular">
