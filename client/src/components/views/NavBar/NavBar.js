@@ -59,17 +59,21 @@ const NavBar = (props) => {
   return (
     <Box sx={{ flexGrow: 5 }}>
       <ElevationScroll {...props}>
-        <AppBar position="fixed" style={{ background: "#000000" }}>
+        <AppBar
+          position="fixed"
+          style={{ background: "#000000", height: "71px" }}
+        >
           <Toolbar>
             <div>
-              <Link href="/" sx={{ flexGrow: 3, ml: 15, mr: 2 }}>
+              <Link href="/" sx={{ flexGrow: 3, ml: 17, mr: 2 }}>
                 <img className="navbar-logo" src="/img/usEarth.png" />
               </Link>
             </div>
             <Typography
               variant="h6"
               component="div"
-              sx={{ flexGrow: 2, mr: 25 }}
+              sx={{ flexGrow: 3, mr: 30 }}
+              style={{ marginTop: "7px" }}
             >
               <h2 className={classes.appbarTitle}>
                 us
