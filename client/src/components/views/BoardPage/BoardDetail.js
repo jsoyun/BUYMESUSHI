@@ -124,7 +124,9 @@ function BoardDetail(props) {
               </tr>
               <tr>
                 <th>이미지</th>
-                <td colSpan="6" height="400" style={{ maxWidth: "600px", maxHeight: "600px" }}><img src="{props.boardsData[props.clickData].img}" /></td>
+                <td colSpan="6" height="400" style={{ maxWidth: "600px", maxHeight: "600px" }}>
+                  <img src="{props.boardsData[props.clickData].img}" />
+                </td>
               </tr>
               <tr>
                 <th>내 용</th>

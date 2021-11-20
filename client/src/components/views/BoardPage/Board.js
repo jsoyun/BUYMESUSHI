@@ -80,12 +80,6 @@ function Board() {
   ]);
   const user = useSelector((state) => state.user.userData);
   const [viewCount, setViewCount] = useState("");
-  // const [boardId, setboardId] = useState('');
-  // const boardIdHandler = (e) => {
-  //   setboardId(e.data._id);
-  // };
-  // const [boards, setBoards] = useState([]);
-
 
   useEffect(() => {
     const fetchData = async () => {
