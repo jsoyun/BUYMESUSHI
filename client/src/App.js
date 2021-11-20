@@ -6,7 +6,7 @@ import LandingPage from "./components/views/LandingPage/LandingPage";
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import Auth from "./hoc/auth";
-import NavBar from "./components/views/NavBar/NavBar1";
+import NavBar from "./components/views/NavBar/NavBar";
 import About from "./components/views/AboutPage/About";
 import Play from "./components/views/MinigamePage/Hangman";
 import Board from "./components/views/BoardPage/Board";

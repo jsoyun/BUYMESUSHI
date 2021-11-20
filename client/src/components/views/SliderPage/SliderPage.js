@@ -82,7 +82,6 @@ const InfoContainer = styled.div`
   backdrop-filter: blur(5px);
   border: 2px solid transparent;
   /* background-clip: border-box; */
-  cursor: pointer;
 `;
 
 const Title = styled.h1`
@@ -105,13 +104,14 @@ const Button = styled.a`
   text-shadow: #999999 1px 1px 2px;
   /* box-shadow: 0 -6px rgba(0, 255, 72, 0.3) inset; */
   /* background-color: transparent;
-  background: linear-gradient(to left, raba(255, 255, 255, 0.15), transparent);
+  background: linear-gradient(to left, raba(255, 255, 255, 0.15), transparent); */
   cursor: pointer;
-  border-radius: 30%;
+  border: 2px solid #3b5998;
+  border-radius: 40%;
   overflow: hidden;
   &:hover {
     letter-spacing: 3px;
-  } */
+  }
 `;
 
 const calc = (x, y) => [
