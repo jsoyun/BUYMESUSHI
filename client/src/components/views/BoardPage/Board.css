@@ -25,6 +25,7 @@ body .clearfix:after {
 
 .board .header {
   margin-bottom: 30px;
+  margin-right: 100px;
   text-align: center;
 }
 
