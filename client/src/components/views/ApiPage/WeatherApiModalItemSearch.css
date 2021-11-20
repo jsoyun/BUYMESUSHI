@@ -58,7 +58,7 @@
 }
 .displayweather .weatherdetails {
   margin-left: 10px;
-  margin-right: 50px;
+  margin-right: 40px;
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto;
@@ -68,11 +68,13 @@
   justify-self: right;
   width: 100px;
   font-size: 1rem;
+  margin-right: 69px;
 }
 
 .displayweather .weatherdetails .section2 {
   width: 100px;
   font-size: 1rem;
+  margin-left: 45px;
 }
 
 td {

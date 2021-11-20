@@ -49,7 +49,7 @@ export default function SeaTempApiModal() {
         size="large"
         onClick={() => setModalIsOpen(true)}
       >
-        지면 온도 변화
+        해수면 온도 변화
       </ApiButton>
       <Modal
         style={customStyles}

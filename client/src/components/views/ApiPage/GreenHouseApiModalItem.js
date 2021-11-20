@@ -4,6 +4,14 @@ import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
 
+import styled from "styled-components";
+
+const Section = styled.div`
+  width: 100%;
+  background-color: white;
+  margin-left: 100px;
+`;
+
 const SeaTempApiModalItem = () => {
   const [tempData, setTempData] = useState({});
 
@@ -49,7 +57,7 @@ const SeaTempApiModalItem = () => {
   }, []);
 
   return (
-    <section>
+    <Section>
       <h2>한국 온실가스 배출량</h2>
       <div className="contents" style={{ width: "700px" }}>
         <div style={{ width: "700px" }}>
@@ -73,7 +81,7 @@ const SeaTempApiModalItem = () => {
           />
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 
