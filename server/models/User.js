@@ -83,17 +83,14 @@ const userSchema = mongoose.Schema({
     pic: {
         type: String,
     },
-    followers: [{ type: ObjectId, ref: "User" }],
-    following: [{ type: ObjectId, ref: "User" }],
-    //추가함
-    // products: [{ productId: { ref: "Product" }, qty: { type: Number } }],
+
     products: [
         {
             productId: { type: ObjectId, ref: "product" },
             qty: { type: Number },
         },
     ],
-    points: { type: Number },
+    points: { type: Number, default: 0 },
 });
 
 userSchema.pre("save", function (next) {
