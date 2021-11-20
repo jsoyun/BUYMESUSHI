@@ -14,7 +14,7 @@
     padding: 0;
 }
 .point h3 {
-    text-align: center;
+    display: inline-block;
 }
 .authboardLink > a {
     text-decoration-line: none;
@@ -145,6 +145,7 @@ B .cartscreen_right div button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 .MyPageAuth-header-column .MyPageAuth-header-title,
 .MyPageAuth-header-column .MyPageAuth-header-states {
@@ -190,4 +191,14 @@ B .cartscreen_right div button:hover {
     width: 160px;
 
     border-bottom-width: 0px;
+}
+#MyPageUserModal_imgForm {
+    width: 250px;
+    margin: 0 auto;
+}
+#MyPageUserModal_imgForm > label {
+    margin: 10px;
+}
+#MyPageUserModal_imgForm > button {
+    margin: 10px;
 }
