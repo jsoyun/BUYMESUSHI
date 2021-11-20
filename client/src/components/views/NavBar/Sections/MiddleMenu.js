@@ -7,6 +7,7 @@ import styled from "styled-components";
 
 const Navi = styled.div`
   display: flex;
+  margin-top: 10px;
 `;
 
 const RightMenu = (props) => {
