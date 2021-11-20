@@ -37,8 +37,6 @@ router.get('/:id', async (req, res) => {
         //   {
         //   viewcount : ++posts.viewcount,
         // },
-        // {where:{id : req.params.id}}
-        // )
         console.log({ Boards });
         res.status(200).json({ Boards });
     } catch (error) {
@@ -53,37 +51,6 @@ try {
     fs.mkdirSync('boarduploads');
 }
 
-// //
-// router.get('/', async (req, res) => {
-//   try {
-//     const posts = await Board.find({
-//       include: {
-//         model: User,
-//         attributes: ['id', 'nickname'],
-//       },
-//       order: [['createdAt', 'DESC']],
-//     });
-//     res.render({});
-//   } catch (error) {
-//     console.error(error);
-//     // next(error);
-//   }
-// });
-
-// // // 이미지 업로드를 위한 upload라는 상수에 multer 메서드 할당
-// // const upload = multer({
-// //   storage: multer.diskStorage({
-// //     destination(req, file, cb) {
-// //       cb(null, 'boarduploads/');
-// //     },
-// //     filename(req, file, cb) {
-// //       const ext = path.extname.stringFy(file.originalname);
-// //       cb(null, path.basename.stringFy(file.originalname, ext) + Date.now() + ext);
-// //     },
-// //   }),
-// //   limits: { fileSize: 5 * 1024 * 1024 },
-// // });
-
 // 게시글값 업로드
 router.post('/write', async (req, res) => {
     try {
@@ -92,13 +59,6 @@ router.post('/write', async (req, res) => {
         const title = req.body.Title;
         const body = req.body.Body;
 
-        // const board = await Board.create({
-        //   title: req.body.title,
-        //   body: req.body.body,
-        //   img: req.body.url,
-        //   viewcount: req.body.viewcount,
-        //   UserId: identity.id,
-        // });
         const insertMongo = {
             title: title,
             boardBody: body,
@@ -114,92 +74,5 @@ router.post('/write', async (req, res) => {
     }
 });
 
-// // //img 저장
-// // router.post('/img', upload.single('img'), (req, res) => {
-// //   console.log(req.file);
-// //   res.json({ url: `/img/${req.file.filename}` });
-// // });
-
-// // const upload2 = multer();
-// // router.post('/', upload2.none(), async (req, res, next) => {
-// //   try {
-// //     const identity = res.locals.user;
-// //     console.log(req.user);
-// //     const post = await Board.create({
-
-// //       title: req.body.title,
-// //       comment: req.body.comment,
-// //       viewcount: req.body.viewcount,
-// //       img: req.body.url,
-// //       UserId: identity.id,
-// //       createdAt: req.body.createdAt
-
-// //     });
-// //     // const hashtags = req.body.comment.match(/#[^\s#]*/g);
-// //     // if (hashtags) {
-// //     //   const result = await Promise.all(
-// //     //     hashtags.map(tag => {
-// //     //       return Hashtag.findOrCreate({
-// //     //         where: { title: tag.slice(1).toLowerCase() },
-// //     //       });
-// //     //     }),
-// //     //   );
-// //     //   await post.addHashtags(result.map(r => r[0]));
-// //     // }
-// //     res.redirect('/');
-// //   } catch (error) {
-// //     console.error(error);
-// //     next(error);
-// //   }
-// // });
-
-// // 본인 게시글 수정
-// router.route("/:id/boardedit")
-//   .get(async (req, res, next) => {
-//     try {
-//       const board = await Board.findOne({
-//         include: {
-//           model: User,
-//           attributes: ['id', 'nick'],
-//         },
-//         where: { id: req.params.id },
-//       });
-//       res.render({ board });
-//     } catch (err) {
-//       console.error(err);
-//       next(err);
-//     }
-//   })
-//   .post(async (req, res, next) => {
-//     try {
-//       const board = await Board.update(
-//         {
-//           title: req.body.title,
-//           board: req.body.board,
-//           img: req.body.url,
-//         },
-//         {
-//           where: { id: req.params.id },
-//         }
-//       );
-//       res.redirect("/boarddetail/" + req.params.id);
-//     } catch (err) {
-//       console.error(err);
-//       next(err);
-//     }
-//   });
-
-// // 본인 게시글 삭제
-// router.route('/:id/delete').get(async (req, res, next) => {
-//   try {
-//     await Board.destroy({
-//       where: { id: req.params.id }
-//     });
-//     res.redirect('/board');
-//   } catch (err) {
-//     console.error(err);
-//     next(err);
-//   }
-// });
 
 module.exports = router;

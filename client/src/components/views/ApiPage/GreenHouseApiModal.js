@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import GreenHouseApiModalItem from "./GreenHouseApiModalItem";
 import Button from "@mui/material/Button";
