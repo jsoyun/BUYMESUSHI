@@ -2,7 +2,6 @@ const express = require('express');
 const Board = require('../models/Board');
 const User = require('../models/User');
 const multer = require('multer');
-//const path = require("path");
 const fs = require('fs');
 const { auth } = require('../middleware/auth');
 const mongoose = require('mongoose');

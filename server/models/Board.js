@@ -7,7 +7,7 @@ const BoardSchema = mongoose.Schema({
     postedBy: { type: ObjectId, ref: 'User' },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date },
-    viewcount: { type: Number, default: 0, },
+    // viewcount: { type: Number, default: 0, },
 });
 BoardSchema.pre('save', function (next) {
     const Board = this;
