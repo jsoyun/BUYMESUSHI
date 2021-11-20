@@ -11,9 +11,9 @@ body *:after {
 }
 
 body .wrapper1 {
-  width: 500px;
+  width: 300px;
   margin: 0 auto;
-  max-width: 100%;
+  /* max-width: 100%; */
   padding: 0 10px;
 }
 
@@ -27,7 +27,7 @@ body .clearfix:after {
 }
 
 .board .header {
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   text-align: center;
 }
 
@@ -43,9 +43,9 @@ body .clearfix:after {
 }
 
 .board .article table {
-  width: 100vw;
+  width: 55vw;
   border-collapse: collapse;
-  border: 1px solid #ddd;
+  border: 1px solid #3b5998;
 }
 
 .board .article table th,
@@ -91,7 +91,7 @@ body .clearfix:after {
 }
 
 .board .article .search {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   font-size: 14px;
   text-align: right;
 }
@@ -103,7 +103,7 @@ body .clearfix:after {
 }
 
 .board .article .search .bundle {
-  width: 70vw;
+  width: 55vw;
   margin-left: auto;
 }
 
@@ -173,7 +173,7 @@ body .clearfix:after {
   color: #fff;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 500px) {
   .board .article table .check,
   .board .article table .num,
   .board .article table .date,

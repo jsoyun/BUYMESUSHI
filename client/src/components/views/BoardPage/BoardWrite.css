@@ -165,7 +165,7 @@ label {
 }
 
 .form .content .half .action button:hover {
-  background: red;
+  background: black;
 }
 
 @media (max-width: 767px) {

@@ -1,31 +1,26 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types;
+// const AutoIncrementFactory = require('mongoose-sequence');
+// const AutoIncrementFactory = await mongoose.createConnection("mongodb://localhost:3000/api/board");
+// const AutoIncrement = AutoIncrementFactory(connection);
+
+
 
 const BoardSchema = mongoose.Schema({
-    seq: { type: Number, default: 0 },
+    // seq: inc_field,
     title: { type: String, required: true },
     boardBody: { type: String, required: true },
-    img: { type: String },
     postedBy: { type: ObjectId, ref: 'User' },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date },
-    viewcount: {
-        type: Number,
-        default: 0,
-    },
+    // viewcount: {
+    //     type: Number,
+    //     default: 0,
+    // },
 });
-BoardSchema
-    // .plugin(
-    //     autoIncrement.plugin,
-    //     {
-    //         model: 'boards',
-    //         field: 'seq',
-    //         startAt: 1, //시작
-    //         increment: 1 // 증가
-    //     })
-    .pre('save', function (next) {
-        const Board = this;
-    });
+BoardSchema.pre('save', function (next) {
+    const Board = this;
+});
 
 const Board = mongoose.model('Board', BoardSchema);
 module.exports = Board;
