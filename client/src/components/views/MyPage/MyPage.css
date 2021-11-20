@@ -1,35 +1,35 @@
 .MyPage {
-  border: solid saddlebrown;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  /* grid-template-columns: 800px 200px; */
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* grid-template-columns: 800px 200px; */
 }
+
 .AuthBoard {
-  border: solid red;
-  grid-column-start: 1;
-  grid-column-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
 }
 .point {
-  margin-top: -20px;
-  padding: 0;
+    margin-top: -20px;
+    padding: 0;
 }
 .point h3 {
-  text-align: center;
+    text-align: center;
 }
 .authboardLink > a {
-  text-decoration-line: none;
-  /* border: solid blue; */
+    text-decoration-line: none;
+    /* border: solid blue; */
 
-  color: #2c2c2c;
-  margin: 5px;
+    color: #2c2c2c;
+    margin: 5px;
 }
 
 .gameLink > a {
-  text-decoration-line: none;
-  /* border: solid blue; */
+    text-decoration-line: none;
+    /* border: solid blue; */
 
-  color: #2c2c2c;
-  margin: 5px;
+    color: #2c2c2c;
+    margin: 5px;
 }
 /* a:hover {
   text-decoration-line: none;
@@ -46,73 +46,138 @@
 
 .authboardLink,
 .gameLink {
-  list-style: none;
-  display: inline-block;
+    list-style: none;
+    display: inline-block;
 }
 .point > ul {
-  margin: 0;
+    margin: 0;
 }
 
 .cartscreen {
-  display: flex;
-  max-width: 1000px;
-  /* margin: 2rem auto; */
-  border: solid blue;
-  /* grid-column-start: 2; */
-  /* grid-column-start: 2;
+    display: flex;
+    max-width: 1000px;
+    /* margin: 2rem auto; */
+
+    /* grid-column-start: 2; */
+    /* grid-column-start: 2;
   grid-column-end: 3; */
 }
 .cartscreen h2 {
-  margin-bottom: 1rem;
-  display: inline-block;
+    margin-bottom: 1rem;
+    display: inline-block;
 }
 
 .cartscreen_left {
-  flex: 0.7;
-  margin-right: 1rem;
-  background-color: transparent;
+    flex: 0.7;
+    margin-right: 1rem;
+    background-color: transparent;
 
-  padding: 1rem;
-  /* grid-row-start: 3; */
+    padding: 1rem;
+    /* grid-row-start: 3; */
 }
 
 .cartscreen_right {
-  flex: 0.3;
-  background: #fff;
+    flex: 0.3;
+    background: #fff;
 
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.4);
-  height: fit-content;
-  grid-row-start: 1;
-  grid-row-end: 2;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.4);
+    height: fit-content;
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
 .cartscreen_right div {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1rem;
 }
 .cartscreen_right div:last-child {
-  border: none;
+    border: none;
 }
 .cartscreen_info p {
-  padding: 0;
+    padding: 0;
 }
 .cartscreen_info p:first-child {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .cartscreen_right div:last-child {
-  border: none;
+    border: none;
 }
 
 .cartscreen_right button {
-  padding: 10px 17px;
-  width: 100%;
-  background: #171717;
-  color: #f4f4f4;
-  border: 1px solid #171717;
-  cursor: pointer;
+    padding: 10px 17px;
+    width: 100%;
+    background: #171717;
+    color: #f4f4f4;
+    border: 1px solid #171717;
+    cursor: pointer;
+}
+B .cartscreen_right div button:hover {
+    opacity: 0.9;
 }
 
-.cartscreen_right div button:hover {
-  opacity: 0.9;
+/* ////////////////////////////////////////////////////// */
+/* 현석 */
+.MyPageAuth-container {
+    width: 100%;
+    height: 100%;
 }
+.MyPageAuth-header-container {
+    width: 100%;
+    padding: 20px;
+    height: 184px;
+    display: flex;
+    border-bottom: 1px solid #cccccc;
+}
+.MyPageAuth-profileImg {
+    width: 144px;
+    height: 144px;
+    border-radius: 100%;
+}
+.MyPageAuth-header-column {
+    box-sizing: border-box;
+    width: 70%;
+}
+.MyPageAuth-header-column:first-child {
+    box-sizing: border-box;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.MyPageAuth-header-column .MyPageAuth-header-title,
+.MyPageAuth-header-column .MyPageAuth-header-states {
+    display: flex;
+    align-items: center;
+}
+.MyPageAuth-header-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.MyPageAuth-header-state {
+    font-size: 1em;
+    margin-right: 20px;
+}
+.MyPageAuth-header-states-qty {
+    font-weight: 500;
+}
+.MyPageAuth-body-container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 960px;
+    min-width: 960px;
+    max-width: 960px;
+}
+.MyPageUserImg {
+    border-radius: 100%;
+    width: 550px;
+    height: 432px;
+}
+.css-o69gx8-MuiCardMedia-root {
+    width: 100%;
+    margin-bottom: 20px;
+}
+/* ////////////////////////////////////////////////////// */

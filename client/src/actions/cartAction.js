@@ -48,14 +48,19 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
 };
 
 export const removeFromCart = (id) => (dispatch, getState) => {
+  console.log(id, "id 상품 리무브버튼 ");
   dispatch({
     type: actionTypes.REMOVE_FROM_CART,
     payload: id,
   });
   //삭제!!
+
+  //id 상품이니까 이걸 보내고 id 삭제해야
   const removeProductCartDB = () => {
-    axios.post(`api/mypage`);
+    //id는 걍 숫자string이라서 객체값으로 묶어준거임.id이름흔해서 다시 지음
+    axios.post(`api/mypage`, { productId: id });
   };
+
   removeProductCartDB();
 
   localStorage.setItem("cart", JSON.stringify(getState().cart.cartItems));

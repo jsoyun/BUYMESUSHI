@@ -34,47 +34,66 @@ import { createGlobalStyle } from "styled-components";
 // }`;
 
 function App() {
-  return (
-    <Router>
-      <NavBar />
-      {/* <BackDrop /> */}
-      <div style={{ marginTop: "8.5vh" }}>
-        <Switch>
-          <Route exact path="/" component={Auth(LandingPage, null)} />
-          <Route exact path="/login" component={Auth(LoginPage, false)} />
-          <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/about" component={Auth(About, null)} />
+    return (
+        <Router>
+            <NavBar />
+            <div style={{ marginTop: "8.5vh" }}>
+                <Switch>
+                    <Route exact path="/" component={Auth(LandingPage, null)} />
+                    <Route
+                        exact
+                        path="/login"
+                        component={Auth(LoginPage, false)}
+                    />
+                    <Route
+                        exact
+                        path="/register"
+                        component={Auth(RegisterPage, false)}
+                    />
+                    <Route exact path="/about" component={Auth(About, null)} />
 
-          {/* usEarth 페이지 추후 null -> true로 변경 */}
-          <Route exact path="/authboard" component={Auth(AuthBoard, true)} />
-          {/* <Route exact path="/shop" component={Auth(About, null)} /> */}
-          <Route
-            exact
-            // path="/products"
-            path="/product"
-            component={Auth(HomeScreen, true)}
-          />
-          <Route
-            exact
-            // path="/products/:id"
-            path="/product/:id"
-            component={Auth(ProductScreen, true)}
-          />
-          <Route exact path="/mypage" component={Auth(MyPage, true)} />
-          <Route exact path="/profile/:id" component={Auth(Profile, true)} />
-          <Route exact path="/play" component={Auth(Play, true)} />
-          <Route exact path="/board" component={Auth(Board, null)} />
-          {/* <Route exact path="/write" component={Auth(WriteBoard, null)} /> */}
-          <Route
-            path="/article/:articleId"
-            // render={() => <Article component={Auth(MyPage, null)} />}
-            exact
-          />
-        </Switch>
-      </div>
-      <Footer />
-    </Router>
-  );
+                    {/* usEarth 페이지 추후 null -> true로 변경 */}
+                    <Route
+                        exact
+                        path="/authboard"
+                        component={Auth(AuthBoard, true)}
+                    />
+                    {/* <Route exact path="/shop" component={Auth(About, null)} /> */}
+                    <Route
+                        exact
+                        // path="/products"
+                        path="/product"
+                        component={Auth(HomeScreen, true)}
+                    />
+                    <Route
+                        exact
+                        // path="/products/:id"
+                        path="/product/:id"
+                        component={Auth(ProductScreen, true)}
+                    />
+                    <Route
+                        exact
+                        path="/mypage"
+                        component={Auth(MyPage, true)}
+                    />
+                    <Route
+                        exact
+                        path="/profile/:id"
+                        component={Auth(Profile, true)}
+                    />
+                    <Route exact path="/play" component={Auth(Play, true)} />
+                    <Route exact path="/board" component={Auth(Board, null)} />
+                    {/* <Route exact path="/write" component={Auth(WriteBoard, null)} /> */}
+                    <Route
+                        path="/article/:articleId"
+                        // render={() => <Article component={Auth(MyPage, null)} />}
+                        exact
+                    />
+                </Switch>
+            </div>
+            <Footer />
+        </Router>
+    );
 }
 
 export default observer(App);

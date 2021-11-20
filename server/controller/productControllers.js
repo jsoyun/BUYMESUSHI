@@ -4,7 +4,7 @@ const getAllProducts = async (req, res) => {
   try {
     //원래있음
     const products = await Product.find({});
-    console.log(products, "프로덕111111");
+
     // const products = await Product.find({}).populate("user");
 
     res.json(products);

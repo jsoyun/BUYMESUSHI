@@ -23,6 +23,7 @@ export default function AuthBoardFeedsCard() {
             likes: [],
             dislikes: [],
             comments: [],
+            profileImage: "",
         },
     ]);
     const [lastIdx, setLastIdx] = useState(0);
@@ -43,6 +44,7 @@ export default function AuthBoardFeedsCard() {
                             likes: rowData.likes,
                             dislikes: rowData.dislikes,
                             comments: rowData.comments,
+                            profileImage: rowData.postedBy.profileImage,
                         }
                     )
                 );
@@ -61,7 +63,7 @@ export default function AuthBoardFeedsCard() {
                 postId: id,
             })
             // .then((res) => res.json())
-            .then((result) => { })
+            .then((result) => {})
             .catch((err) => {
                 console.log(err);
             });
@@ -72,7 +74,7 @@ export default function AuthBoardFeedsCard() {
                 postId: id,
             })
             // .then((res) => res.json())
-            .then((result) => { })
+            .then((result) => {})
             .catch((err) => {
                 console.log(err);
             });
@@ -96,7 +98,7 @@ export default function AuthBoardFeedsCard() {
                                     avatar={
                                         <Avatar aria-label="user">
                                             <img
-                                                src="img/authBoard/abc.jpg"
+                                                src={rowData.profileImage}
                                                 style={{
                                                     width: "40px",
                                                     height: "40px",
@@ -144,7 +146,7 @@ export default function AuthBoardFeedsCard() {
                                         variant="contained"
                                         className="AuthBoard-like-btn-area"
                                         style={{
-                                            background: "#0000e8",
+                                            background: "#3b5998",
                                             fontWeight: "600",
                                         }}
                                     >
@@ -166,7 +168,7 @@ export default function AuthBoardFeedsCard() {
                                             fontWeight: "600",
                                         }}
                                     >
-                                        인증 미흡 {rowData.dislikes.length}
+                                        미흡 {rowData.dislikes.length}
                                     </Button>
                                 </div>
                             </CardActions>
