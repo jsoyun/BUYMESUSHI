@@ -1,5 +1,5 @@
 .MyPage {
-    padding-top: 30px;
+    padding-top: 10px;
     display: grid;
     grid-template-columns: 2fr 1fr;
     /* grid-template-columns: 800px 200px; */
