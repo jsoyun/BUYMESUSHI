@@ -20,6 +20,7 @@ body .clearfix:after {
 }
 .board {
   margin-bottom: 30px;
+  margin-left: 100px;
 }
 
 .board .header {
