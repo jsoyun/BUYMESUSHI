@@ -71,7 +71,7 @@
     flex: 0.7;
     margin-right: 1rem;
     background-color: transparent;
-
+    width: 508px;
     padding: 1rem;
     /* grid-row-start: 3; */
 }
