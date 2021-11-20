@@ -94,11 +94,11 @@ const NavBar = (props) => {
           // style={{ background: "#000000" }}
           style={{
             boxShadow: "none",
-            color: "transparent",
+            // color: "transparent",
           }}
         >
-          <Toolbar>
-            <Link href="/" sx={{ ml: 3, mr: 2 }}>
+          <Toolbar variant="regular">
+            <Link href="/" sx={{ ml: 5, mr: 2 }}>
               <img className="navbar-logo" src="img/usEarth.png" />
             </Link>
             <Typography

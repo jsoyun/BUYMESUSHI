@@ -6,11 +6,13 @@ import styled from "styled-components";
 // import { errorHandler } from "../../../services/error-handler";
 import Modal from "react-modal";
 
-const Textarea = styled.textarea`
-  width: 100%;
-  height: 3em;
-  border: none;
+const StyledTextArea = styled.textarea`
   resize: none;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  outline: none;
+  border: none;
 `;
 
 // // 이미지 업로드
@@ -152,14 +154,15 @@ function BoardWrite() {
                   <label htmlFor="comment">
                     <span>내 용</span>
                   </label>
-                  <Textarea
-                    rows="5"
+                  <StyledTextArea
+                    // rows={6}
+                    // cols="10"
                     id="comment"
                     name="comment"
                     onChange={onBodyHandler}
                     value={Body}
                     placeholder="자유롭게 글을 작성해주세요"
-                  ></Textarea>
+                  />
                 </div>
               </div>
             </div>
