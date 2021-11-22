@@ -30,12 +30,12 @@ const { auth } = require("./middleware/auth");
 const importDate = require("./routes/seederScript");
 
 const connectAndImport = async () => {
-    try {
-        await connectDB();
-        await importDate();
-    } catch (err) {
-        console.log(err);
-    }
+  try {
+    await connectDB();
+    await importDate();
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 connectAndImport();
@@ -58,5 +58,5 @@ app.use("/api/minigame", minigameRouter);
 /////////////////
 
 app.listen(port, () => {
-    console.log(`Example app listening at ${port}`);
+  console.log(`Example app listening at ${port}`);
 });

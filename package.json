@@ -1,35 +1,35 @@
 {
-    "name": "boiler-plate",
-    "version": "1.0.0",
-    "description": "",
-    "main": "./server/index.js",
-    "scripts": {
-        "start": "nodemon index",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "concurrently \"npm run start\" \"npm run start --prefix client\""
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "bcrypt": "^5.0.1",
-        "body-parser": "^1.19.0",
-        "concurrently": "^6.3.0",
-        "cookie-parser": "^1.4.5",
-        "cors": "^2.8.5",
-        "express": "^4.17.1",
-        "faker": "^5.5.3",
-        "fs": "^0.0.1-security",
-        "jsonwebtoken": "^8.5.1",
-        "jwt-decode": "^3.1.2",
-        "jwt-token": "^1.0.9",
-        "mongo-seeding": "^3.7.0",
-        "mongoose": "^6.0.12",
-        "mongoose-auto-increment": "^5.0.1",
-        "mongoose-sequence": "^5.3.1",
-        "multer": "^1.4.3",
-        "path": "^0.12.7"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.14"
-    }
+  "name": "boiler-plate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./server/index.js",
+  "scripts": {
+    "start": "nodemon index",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run start\" \"npm run start --prefix client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.3.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "faker": "^5.5.3",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "jwt-token": "^1.0.9",
+    "mongo-seeding": "^3.7.0",
+    "mongoose": "^6.0.12",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-sequence": "^5.3.1",
+    "multer": "^1.4.3",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
 }
